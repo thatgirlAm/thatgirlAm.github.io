@@ -189,9 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
             youtubeContainer.style.display = 'none';
             if (videoDescription) videoDescription.classList.add('hidden');
             // Hide video sub-tabs when viewing images
-            if (currentYouTubeIds.length <= 1) {
-                videoSubTabs.classList.remove('show');
-            }
+            videoSubTabs.classList.remove('show');
             prevBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
             nextBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
             currentMediaType = 'images';
@@ -274,8 +272,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     videoSubTabs.appendChild(button);
                 });
-                // Always show video sub-tabs when there are multiple videos
-                videoSubTabs.classList.add('show');
+                
+                // Show video sub-tabs only when video tab is active
+                if (currentMediaType === 'video') {
+                    videoSubTabs.classList.add('show');
+                } else {
+                    videoSubTabs.classList.remove('show');
+                }
             } else {
                 videoSubTabs.classList.remove('show');
             }

@@ -133,17 +133,17 @@ ul {
 .dropdown-menu a {
     display: block;
     padding: 0.75rem 1rem;
-    color: var(--dark-color);
+    color: var(--dark-color) !important;
     text-decoration: none;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 6px;
     margin: 0.25rem;
 }
 
 .dropdown-menu a:hover {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--primary-color) !important;
+    color: white !important;
 }
 
 /* Vertical CV Menu Styles */
@@ -174,6 +174,12 @@ ul {
     font-size: 0.9rem;
     display: block;
     width: 100%;
+    color: var(--dark-color) !important;
+}
+
+.cv-vertical li:not(.language-header) a:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
 }
 
 .navbar nav a {
