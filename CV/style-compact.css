@@ -24,6 +24,13 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.profile-description {
+    text-align: justify;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin-top: 1mm;
+}
 /* HEADER COMPACT */
 .cv-header {
     display: flex;
@@ -362,10 +369,12 @@ a:hover { text-decoration: underline; }
         gap: 5mm; /* Plus d'espace entre les QR codes pour mieux les distribuer */
         min-height: 60mm; /* Hauteur minimale pour assurer la distribution */
     }
+
+
     
     .qr-code {
-        width: 18mm; /* Légèrement plus petit pour l'impression */
-        height: 18mm;
+        width: 20mm !important; /* Force 20mm pour l'impression */
+        height: 20mm !important;
     }
     
     .qr-label {
@@ -378,6 +387,7 @@ a:hover { text-decoration: underline; }
         margin-top: 0mm; /* Suppression complète de la marge pour économiser l'espace */
         padding-top: 0.2mm;
     }
+    
     
 
 }
@@ -462,8 +472,8 @@ a:hover { text-decoration: underline; }
 }
 
 .qr-code {
-    width: 20mm;
-    height: 20mm;
+    width: 35mm;
+    height: 35mm;
     border: 1px solid #ddd;
     border-radius: 2px;
     flex-shrink: 0;
