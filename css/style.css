@@ -1,0 +1,893 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #a05fa4; /* Your purple */
+    --gold-accent: #D4AF37;   /* A subtle gold */
+    --dark-color: #1a1a1a;    /* Near-black for text */
+    --light-color: #ffffff;   /* White background */
+    --grey-color: #f4f4f4;    /* Light grey for subtle backgrounds */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background: var(--light-color);
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--grey-color);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
+.navbar .logo .profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover .profile-pic {
+    transform: scale(1.05);
+}
+
+.navbar nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Dropdown Navigation Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.dropdown-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    color:white
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--dark-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    margin: 0.25rem;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Vertical CV Menu Styles */
+.cv-vertical {
+    min-width: 180px;
+    display: block !important;
+}
+
+.cv-vertical li {
+    display: block;
+    width: 100%;
+}
+
+.language-header {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+    border-radius: 4px;
+    cursor: default;
+    display: block;
+}
+
+.cv-vertical li:not(.language-header) a {
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+    display: block;
+    width: 100%;
+}
+
+.navbar nav a {
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: var(--primary-color);
+}
+
+/* --- Hero Section --- */
+#hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+/* --- Typewriter Effect --- */
+#typewriter {
+    display: inline-block;
+    border-right: 3px solid var(--primary-color);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { border-color: var(--primary-color); }
+    51%, 100% { border-color: transparent; }
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 0.8rem 1.8rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #894b8d; /* A slightly darker purple */
+    transform: translateY(-2px);
+}
+
+/* --- Project Section --- */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 3rem 0;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Underline effect with the gold accent */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gold-accent);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.project-card {
+    background: var(--light-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    color: var(--dark-color); /* To ensure text inside the link is dark */
+}
+
+/* THE EXPAND ON HOVER EFFECT */
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Specific styling for Sky Denied thumbnail to zoom horizontally */
+.project-card img[src*="sky_denied_thumbnail"] {
+    object-fit: cover;
+    object-position: center;
+    transform: scaleX(1.15);
+    transform-origin: center;
+}
+
+/* Zoom out Piloustia and IELTS images to show full image without cropping */
+.project-card img[src*="piloustia/logo"] {
+    object-fit: contain;
+    background: white;
+    padding: 8px;
+    
+}
+
+.project-card img[src*="python_logo"] {
+    object-fit: contain;
+    background: white;
+    padding: 8px;
+    
+}
+
+.project-card .project-info {
+    padding: 1.5rem;
+}
+
+.project-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.view-all-container {
+    text-align: center;
+    margin-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* --- Contact Page --- */
+#contact {
+    padding: 4rem 0;
+}
+.contact-intro {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+}
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.success-message p {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background: var(--grey-color);
+    margin-top: 4rem;
+}
+
+
+/* --- Fade-in Animation --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* --- Add these styles to the end of your existing CSS file --- */
+
+/* Utility class to prevent body scroll when modal is open */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* --- Project Modal Styles --- */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-container:not(.hidden) {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--light-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal-container:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: var(--dark-color);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.modal-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--grey-color);
+    padding-bottom: 0.3rem;
+}
+
+/* Modal Gallery */
+.modal-gallery {
+    position: relative;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#modal-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(26, 26, 26, 0.5);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.gallery-nav:hover {
+    opacity: 1;
+}
+
+.gallery-nav.prev {
+    left: 10px;
+}
+
+.gallery-nav.next {
+    right: 10px;
+}
+
+/* Tech Tags */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    background-color: var(--grey-color);
+    color: var(--dark-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Modal Links */
+.modal-links {
+    margin-top: 1.5rem;
+}
+
+.modal-links .btn {
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+.modal-links .btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+.modal-links .btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Project Filter Styles */
+.project-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Project Card Enhancements */
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.category-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-tag.professional {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.category-tag.school {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+}
+
+.school-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: white;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Project card logos should be smaller */
+.company-logo .logo-img {
+    width: 90px;
+    height: 90px;
+    object-fit:contain;
+    padding:3px;
+}
+/* Project card logos should be smaller */
+.school-logo .logo-img[src*="cranfield_logo"] {
+    object-fit: cover;
+    object-position: center;
+    width: 100px;
+    height: 100px;
+
+}
+
+.school-logo .logo-img {
+    width: 100px;
+    height: 100px;
+    object-fit:contain;
+    padding:3px;
+}
+
+/* Dual logos for UAV project */
+.dual-logos {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.dual-logos .logo-img {
+    width: 50px;
+    height: 50px;
+}
+
+/* UAV Project - Larger logos */
+.dual-logos.uav-project .logo-img {
+    width: 70px;
+    height: 70px;
+}
+
+/* Modal Enhancements */
+.modal-header {
+    margin-bottom: 1.5rem;
+}
+
+.modal-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.organization-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.company-info .logo-img {
+    width: 30px;
+    height: 30px;
+}
+
+.organization-info .logo-img {
+    width: 30px;
+    height: 30px;
+}
+
+.organization-info .logo-img[src*="cranfield_logo"] {
+    object-fit: cover;
+    object-position: center;
+    width: 30px;
+    height: 30px;
+}
+
+#modal-company-name {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+#modal-organization-name {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Modal Gallery and Media Tabs */
+.modal-gallery {
+    position: relative;
+    margin: 2rem 0;
+}
+
+#modal-media-container {
+    position: relative;
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    max-height: 400px;
+}
+
+#modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.youtube-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#modal-youtube-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.gallery-nav:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+.gallery-nav.prev {
+    left: 10px;
+}
+
+.gallery-nav.next {
+    right: 10px;
+}
+
+.media-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.media-tab {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.media-tab:hover,
+.media-tab.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.video-sub-tabs {
+    display: none;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.video-sub-tabs.show {
+    display: flex;
+}
+
+.video-sub-tab {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.video-sub-tab:hover,
+.video-sub-tab.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Video description styling */
+.video-description {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.video-description p {
+    margin: 0;
+    color: var(--text-color);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.video-description.hidden {
+    display: none;
+}
+
+/* Hidden state for filtering */
+.project-card.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - [Amaëlle DIOP]</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="CV/profile.png" alt="Amaëlle DIOP" class="profile-pic">
+                <span>[Amaëlle DIOP]</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                   <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">CV <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu cv-vertical">
+                            <li class="language-header">🇫🇷 French</li>
+                            <li><a href="CV/fr-cv-single-page.html" target="_blank">Short Version</a></li>
+                            <li><a href="CV/fr-cv-index.html" target="_blank">Full Version</a></li>
+                            <li class="language-header">🇺🇸 English</li>
+                            <li><a href="CV/cv_index_en.html" target="_blank">Full Version</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact" class="container">
+            <h1 class="section-title fade-in">Get In Touch</h1>
+            <p class="contact-intro fade-in">I'm currently open to new opportunities. Feel free to send me a message!</p>
+            
+            <div id="success-message" class="success-message" style="display: none;">
+                <p>✅ Thank you! Your message has been sent successfully. I'll get back to you soon!</p>
+            </div>
+            
+            <form action="https://formspree.io/f/xovkkavp" method="POST" class="contact-form fade-in">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="_replyto" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="New contact form submission">
+                <input type="hidden" name="_next" value="https://thatgirlam.github.io/contact.html?success=1">
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 [Amaëlle DIOP]. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

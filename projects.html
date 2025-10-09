@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - [Amaëlle DIOP]</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="CV/profile.png" alt="Amaëlle DIOP" class="profile-pic">
+                <span>[Amaëlle DIOP]</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">CV <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu cv-vertical">
+                            <li class="language-header">🇫🇷 French</li>
+                            <li><a href="CV/fr-cv-single-page.html" target="_blank">Short Version</a></li>
+                            <li><a href="CV/fr-cv-index.html" target="_blank">Full Version</a></li>
+                            <li class="language-header">🇺🇸 English</li>
+                            <li><a href="CV/cv_index_en.html" target="_blank">Full Version</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="all-projects" class="container">
+            <h1 class="section-title fade-in">My Projects & Experience</h1>
+            
+            <!-- Project Filter -->
+            <div class="project-filter fade-in">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="professional">Professional</button>
+                <button class="filter-btn" data-filter="school">Academic Projects</button>
+            </div>
+
+            <div class="project-grid fade-in">
+                <!-- Professional Experience 1a: Dassault Systèmes - Custom Framework -->
+                <a href="#" class="project-card" 
+                   data-category="professional"
+                   data-title="[QA Engineering] - Custom Framework & SDK for Web Services Test Automation"
+                   data-youtube-id="WV1XZkva-oI"
+                   data-video-description="Demo video showcases the framework's CLI commands, automated test execution, and comprehensive HTML reporting system in action."
+                   data-images="images/framework_structure.png"
+                   data-description="<p>6-month internship at Dassault Systèmes developing a custom testing framework and SDK for enterprise-scale web services automation.</p>
+                   
+                   <p><strong>Key Achievements:</strong><br>
+                   • <strong>CI/CD Integration</strong> in ItGit/Gitlab<br>
+                   • <strong>HTML Reporting System</strong><br>
+                   • <strong>Decentralization of the login process</strong> with a custom Session Manager SDK<br>
+                   • <strong>CLI Commands</strong><br>
+                   • <strong>CLI/Physical Documentation</strong><br>
+                   • <strong>Reusable test components</strong> accelerating development cycles</p><br>
+                   
+                   <p><strong>Framework Features:</strong><br>
+                   • Modular architecture for scalable automated testing workflows<br>
+                   • Advanced dependency management and dynamic configuration<br>
+                   • Comprehensive reporting and CI/CD pipeline integration<br>
+                   • Intuitive CLI commands for test creation and monitoring</p><br>
+                   
+                   <p><strong>Technical Impact:</strong><br>
+                   • Company-scale testing solution for cloud transition contexts<br>
+                   • Accessible automated testing for technical and non-technical teams<br>
+                   • Seamless integration with existing development workflows</p>
+                   
+                   <p><em>Demo video showcases the framework's CLI commands, automated test execution, and comprehensive HTML reporting system in action.</em></p>
+                   
+                   <p><em>This project demonstrates required skills in software architecture conception, test automation, and SDK development for large-scale systems.</em></p>"
+                   data-tech="Python,PyTest,HTML/CSS,Web Services,SDK Development,Test Automation,Git,Packaging,CI/CD,REST APIs"
+                   data-live-url="#"
+                   data-repo-url="#"
+                   data-company="Dassault Systèmes"
+                   data-company-logo="images/3ds_logo_simple.png">
+                    <img src="images/3ds_logo.png" alt="Dassault Systèmes Framework Screenshot">
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-tags">
+                                <span class="category-tag professional">Professional</span>
+                            </div>
+                            <div class="company-logo">
+                                <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes Logo" class="logo-img">
+                            </div>
+                        </div>
+                        <h3>[QA & Software Testing] - Custom Framework & SDK Development</h3>
+                        <p>Enterprise-scale modular testing framework with significant maintenance reduction and speed improvement.</p>
+                    </div>
+                </a>
+
+                <!-- Professional Experience 1b: Dassault Systèmes - AI Agent -->
+                <a href="#" class="project-card" 
+                   data-category="professional"
+                   data-title="QA Engineer - AI-Adaptive Agent for Self-Healing GUI Test Framework"
+                   data-youtube-id="PpEoGfGhyz0"
+                   data-video-description="Note: The demo video shows a partial test of the agent's structure. This breakthrough solution revolutionizes GUI testing by maintaining stability across multiple application versions in rapidly evolving software environments."
+                   data-images="images/DS_self_healing.png,https://via.placeholder.com/800x500/0066CC/FFFFFF?text=SikuliX+Integration"
+                   data-description="<p><strong>Ongoing Project:</strong> Pioneered development of an AI-adaptive agent utilizing decision tree algorithms to implement self-healing on a SikuliX GUI testing framework at Dassault Systèmes.</p>
+                   
+                   <p><strong>Revolutionary Achievements:</strong><br>
+                   • Self-learning knowledge base from previous adaptations</p>         
+                   • Component-based encyclopedia</p>
+                   • Processing of False Negatives or Errors given by the existing framework</p>
+                   • Incremental SikuliX parameters tuning</p>
+                   • Training of two YOLO Models (V8N and V11)</p>
+                   • Creation and population of a dataset for model training from CATIA Tutorials from YouTube</p>
+                   • Selection of 5 component classes</p>
+                   • Referencing the component encyclopedia</p>
+                   • Utilization of contextual elements</p>
+                   • Continuous performance improvement</p>
+                   
+                   <p><strong>AI Agent Features:</strong><br>
+                   • Intelligent element recognition using computer vision<br>
+                   • Dynamic test script adaptation through decision tree logic<br>
+                   • Automatic fallback mechanisms for real-time UI changes<br>
+
+                   
+                   <p><strong>Technical Innovation:</strong><br>
+                   • Advanced image-based detection and machine learning<br>
+                   • Seamless integration with existing test suites<br>
+                   • Continuous test execution without manual intervention</p>
+                   <p><em>Note: The demo video shows a partial test of the agent's structure. This breakthrough solution revolutionizes GUI testing by maintaining stability across multiple application versions in rapidly evolving software environments.</em></p>"
+                   
+                   data-tech="Python,SikuliX,Machine Learning,Computer Vision,Decision Trees,GUI Testing,AI Agents,Image Processing,OpenCV,Selenium"
+                   data-live-url="#"
+                   data-repo-url="#"
+                   data-company="Dassault Systèmes"
+                   data-company-logo="images/3ds_logo_simple.png">
+                    <img src="images/3ds_logo.png" alt="AI Self-Healing Tests Screenshot">
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-tags">
+                                <span class="category-tag professional">Professional</span>
+                            </div>
+                            <div class="company-logo">
+                                <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes Logo" class="logo-img">
+                            </div>
+                        </div>
+                        <h3>[QA & Software Testing] - AI-Adaptive Self-Healing GUI Tests</h3>
+                        <p> AI Agent with intelligent UI adaptation and automated test maintenance capabilities.</p>
+                    </div>
+                </a>
+
+                <!-- Academic Project 1: AI Flight Delay Prediction -->
+                <a href="#" class="project-card"
+                   data-category="school"
+                   data-title="Sky Denied Web Application: Novel AI Model for Multi-Airport Flight Delay Prediction"
+                   data-youtube-ids="FdRefPmquR0,JB5f4Kh03jk"
+                   data-youtube-titles="Sky Denied - Demo, Teaser"
+                   data-video-descriptions="The full demo showcases real-time flight delay predictions and interactive web interface., Teaser video introduces the project concept"
+                   data-images="images/sky_denied_logo_final.png, images/sky_denied_screenshot.png, images/sky_denied_infrastructure.png,images/sky_denied_training.png,images/sky_denied_f1.png,images/sky_denied_loss.png"
+                   data-description="<p>Collaborative group project at Cranfield University developing an intelligent flight delay prediction system accessible through a web application.</p>
+                   
+                   <p><strong>My Core Responsibilities:</strong><br>
+                   • Data Pre-Processing: Flight data cleaning and preparation after scraping and before handing it out to the model<br>
+                   • Full-Stack Development: web platform architecture based on Laravel and Angular<br>
+                   • DevOps Engineering: Managed the implementation and linkage of components, Azure Cloud deployment of the website</p>
+                   
+                   <p><strong>Technical Deliverables:</strong><br>
+                   • Real-time prediction web application<br>
+                   • Interactive data visualization dashboards<br>
+                   • Research on model transferability between airspaces</p>
+                   
+                   <p><strong>AI Model Development:</strong><br>
+                    My Data Scientists colleagues developed the novel QTSimAM (Queueing Theory-SimAM-CNN-LSTM) model and published their research findings. Their academic paper is currently in the pre-print stage and is available on ResearchGate: <a href='https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction'>Link to the pre-print</a>.</p>
+                    <br><p><em>This project demonstrates successful integration of advanced AI research with practical web development and cloud deployment.</em></p>"
+                   
+                  
+                   
+                   data-tech="Python,Deep Learning,LSTM,CNN,Queueing Theory,SimAM,Azure Cloud,Angular,TypeScript,PHP,PostgreSQL,Docker,Machine Learning Research"
+                   data-live-url="#"
+                   data-repo-url="https://github.com/thatgirlAm/sky_denied_WEB_APP"
+                   data-paper-url="https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction"
+                   data-school="Cranfield University"
+                   data-school-logo="images/cranfield_logo.png">
+                    <img src="images/sky_denied_thumbnail.jpg" alt="Sky Denied AI Model Logo">
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-tags">
+                                <span class="category-tag school">Academic Research</span>
+                            </div>
+                            <div class="school-logo">
+                                <img src="images/cranfield_logo.png" alt="Cranfield University Logo" class="logo-img">
+                            </div>
+                        </div>
+                        <h3>[Machine Learning - Full-Stack Dev] - Sky Denied Web Application</h3>
+                        <p>Novel queueing theory-integrated deep learning model for intelligent flight delay prediction available to any user through a robust Web Application.</p>
+                    </div>
+                </a>
+
+                <!-- Professional Experience 2: Orange Finance Mobile -->
+                <a href="#" class="project-card"
+                   data-category="professional"
+                   data-title="Full-Stack Developer & Data Analyst - FinTech Banking Reconciliation Platform"
+                   data-youtube-id="cITKmPQY9gs"
+                   data-video-description="Demo video demonstrates the complete reconciliation workflow, dashboard analytics, and automated discrepancy detection in real-time."
+                   data-images="images/daily_logo.png,images/daily_logoofms.png"
+                   data-description="<p>4-month internship at Orange Finances Mobiles in Dakar, leading development of a comprehensive FinTech solution to address critical transactional data discrepancies.</p>
+                   
+                   <p><strong>Business Impact:</strong><br>
+                   • Monitoring preventing future data losses<br>
+                   • Automation of former time-consuming manual tasks</p>
+
+                   <p><strong>Technical Architecture:</strong><br>
+                   • End-to-end data engineering pipeline with automated extraction<br>
+                   • Data validation and cleansing processes<br>
+                   • Reconciliation algorithms for transaction matching<br>
+                   • Automated pre-analysis for potential discrepancies causes</p>
+                   
+                   <p><strong>Platform Features:</strong><br>
+                   • Ergonomic web dashboard with monitoring and data visualisation features<br>
+                   • Detailed analytics and reporting capabilities<br>
+                   • Seamless integration with existing banking infrastructure</p>
+                   
+                   
+                   <p><em>This solution contributed to financial reconciliation processes while providing actionable insights for strategic business decision-making and discrepancies justification.</em></p>"
+                   data-tech="Python,SQL,Data Engineering,Pandas,NumPy, Angular, Typescript, HTML/CSS, PHP, Laravel"
+                   data-live-url="#"
+                   data-repo-url="#"
+                   data-company="Orange Finances Mobiles"
+                   data-company-logo="images/daily_logoofms.png">
+                    <img src="images/daily_logo.png" alt="Daily FinTech Solution Screenshot">
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-tags">
+                                <span class="category-tag professional">Professional</span>
+                            </div>
+                            <div class="company-logo">
+                                <img src="images/daily_logoofms.png" alt="Orange Finances Mobiles Logo" class="logo-img">
+                            </div>
+                        </div>
+                        <h3>[Full-Stack Dev] - FinTech Banking Reconciliation Platform</h3>
+                        <p>Enterprise solution with automated reconciliation and significant discrepancy analysis.</p>
+                    </div>
+                </a>
+
+                <!-- Academic Project 4: Piloustia - Automatic Pill Dispenser -->
+                <a href="#" class="project-card"
+                   data-category="school"
+                   data-title="Piloustia - Automatic Pill Dispenser IoT System"
+                   data-youtube-id="_E-y-EULsg0"
+                   data-video-description="Demo video shows the complete prototype in action, from mobile app control to automated pill dispensing and security features."
+                   data-images="images/piloustia/prototype1.png, images/piloustia/prototype2.png, images/piloustia/CAO+.png,images/piloustia/CAO.png,images/piloustia/digicode.png"
+                   data-description="<p>Collaborative group project developing an innovative IoT-enabled automatic pill dispenser system for healthcare applications.</p>
+                   
+                   <p><strong>My Technical Responsibilities:</strong><br>
+                   • Structural Design: Inner components and 3D CAD modeling<br>
+                   • Prototype Development: Complete 3D printing and fabrication<br>
+                   • Electrical Engineering: Circuit design and wiring assembly<br>
+                   • Programming: Complete Arduino C++ development for hardware control</p>
+                   
+                   <p><strong>System Features:</strong><br>
+                   • Automated medication dispensing with servo motor control<br>
+                   • Android mobile app (MIT App Inventor) for user interface<br>
+                   • Bluetooth wireless communication and security keypad<br>
+                   • Real-time medication tracking and missed dose alerts</p>
+                   
+                   <p><strong>Technical Implementation:</strong><br>
+                   • Arduino-based microcontroller system with sensor integration<br>
+                   • Precise dispensing mechanisms and alarm systems<br>
+                   • Patient medication history tracking and compliance monitoring</p>
+                   
+                   
+                   <p><em>This project required skills in mechanical design, embedded programming, electrical engineering, and healthcare technology through hands-on prototype development.</em></p>"
+                   data-tech="Arduino,C++,3D Printing,CAD Design,Circuit Design,MIT App Inventor,Android Development,IoT,Bluetooth,Servo Motors,Healthcare Technology,Embedded Systems,Electrical Engineering"
+                   data-live-url="#"
+                   data-repo-url="https://github.com/thatgirlAm/Arduino-project-automatic-pill-dispenser"
+                   data-school="ESTIA"
+                   data-school-logo="images/estia_logo.png">
+                    <img src="images/piloustia/logo.png" alt="Piloustia Automatic Pill Dispenser">
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-tags">
+                                <span class="category-tag school">Academic Project</span>
+                            </div>
+                            <div class="school-logo">
+                                <img src="images/estia_logo.png" alt="ESTIA Logo" class="logo-img">
+                            </div>
+                        </div>
+                        <h3>[IoT] - Piloustia - Automatic Pill Dispenser</h3>
+                        <p>IoT-enabled medical device for autonomous medication management with 3D printed prototype and Arduino control.</p>
+                    </div>
+                </a>
+
+                <!-- Academic Project 3: Dassault UAV Challenge -->
+                <a href="#" class="project-card"
+                   data-category="school"
+                   data-title="Dassault Aviation UAV Challenge - Autonomous Drone Control System"
+                   data-images="images/UAV_scr3_ the_team.jpeg,images/UAV_scr1_body_of_the_drone.jpeg, images/UAV_scr2_assembling_the_drone.jpeg"
+                   data-description="<p>Prestigious Dassault Aviation UAV Challenge where our team achieved <strong>4th place</strong> among all participating universities and engineering schools.</p>
+                   
+                   <p><strong>My Key Responsibilities:</strong><br>
+                   • Simulation Management: Complex Gazebo robotic simulations<br>
+                   • Ground Control Optimization Proposal: Autonomous drone operations for payload unloading<br>
+                   
+                   <p><strong>Technical Stack:</strong><br>
+                   • ROS (Robot Operating System) for drone communication<br>
+                   • PX4 flight stack for autonomous flight control<br>
+                   • QGround Control for real-time monitoring and mission planning<br>
+                   • Advanced path planning and payload unloading features</p>
+                   
+                   
+                   <p><em>This project required skills in autonomous systems monitoring, and competitive problem-solving in cutting-edge UAV technology.</em></p>"
+                   data-tech="Gazebo,Qt, C++,QGround Control,PX4, Simulation,Autonomous Systems"
+                   data-live-url="#"
+                   data-repo-url="https://github.com/thatgirlAm/SITL-controling-your-autonomous-drone-with-dronekit"
+                   data-company="Dassault Aviation"
+                   data-company-logo="images/logo dassault aviation.png"
+                   data-school="ESTIA"
+                   data-school-logo="images/estia_logo.png">
+                    <img src="images/UAV_scr3_ the_team.jpeg" alt="Dassault UAV Challenge Team Photo">
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-tags">
+                                <span class="category-tag school">Competition</span>
+                            </div>
+                            <div class="dual-logos uav-project">
+                                <div class="company-logo">
+                                    <img src="images/logo dassault aviation.png" alt="Dassault Aviation Logo" class="logo-img">
+                                </div>
+                                <div class="school-logo">
+                                    <img src="images/estia_logo.png" alt="ESTIA Logo" class="logo-img">
+                                </div>
+                            </div>
+                        </div>
+                        <h3>[Simulation & Drone] - Dassault Aviation UAV Challenge - Autonomous Drone Control System</h3>
+                        <p>Great ranking in prestigious Dassault UAV Challenge with advanced autonomous flight and simulation systems.</p>
+                    </div>
+                </a>
+
+                <!-- Academic Project 2: IELTS Automation -->
+                <a href="#" class="project-card"
+                   data-category="school"
+                   data-title="IELTS Smart De-anonymization Automation Solution"
+                   data-images="images/python_logo.png"
+                   data-description="I designed and developed a comprehensive desktop application in Python to optimize the IELTS examination de-anonymization process for ESTIA. This solution addressed the time-consuming and error-prone manual administrative tasks that were previously handled by staff members. The application features: intelligent data parsing from multiple Excel formats, automated student identification and matching algorithms, bulk processing capabilities for large examination batches, comprehensive error handling and validation systems, and intuitive GUI interface for non-technical users. Key technical implementations include advanced Excel manipulation using openpyxl and pandas, robust data validation algorithms, automated backup and recovery systems, and detailed logging for audit trails. 
+                   The solution made the process go from hours to minutes while allowing complete elimination of manual transcription errors, improved data accuracy and consistency, and enhanced workflow efficiency for academic administrators."
+                   data-tech="Python,Tkinter,openpyxl,pandas,Excel Automation,GUI Development,Data Processing,File Management,Error Handling"
+                   data-live-url="#"
+                   data-repo-url="#"
+                   data-school="ESTIA"
+                   data-school-logo="images/estia_logo.png">
+                    <img src="images/python_logo.png" alt="IELTS Automation Screenshot">
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-tags">
+                                <span class="category-tag school">Academic Project</span>
+                            </div>
+                            <div class="school-logo">
+                                <img src="images/estia_logo.png" alt="ESTIA Logo" class="logo-img">
+                            </div>
+                        </div>
+                        <h3>[Task Automation] - IELTS Smart Automation Solution</h3>
+                        <p>Intelligent desktop application with significant time reduction in IELTS processing and error elimination.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==== PROJECT MODAL ==== -->
+    <div id="project-modal" class="modal-container hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-title">Project Title</h2>
+                <div class="modal-meta">
+                    <span id="modal-category-tag" class="category-tag"></span>
+                    <div id="modal-organization-info" class="organization-info">
+                        <img id="modal-organization-logo" src="" alt="" class="logo-img">
+                        <span id="modal-organization-name"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-gallery">
+                <div id="modal-media-container">
+                    <img src="https://via.placeholder.com/800x500" alt="Project Screenshot" id="modal-image">
+                    <div id="modal-youtube-container" class="youtube-container">
+                        <iframe id="modal-youtube-iframe" src="" frameborder="0" allowfullscreen title="Project Demo Video"></iframe>
+                    </div>
+                </div>
+                <div id="video-description" class="video-description hidden">
+                    <p id="video-description-text"></p>
+                </div>
+                <div id="video-sub-tabs" class="video-sub-tabs">
+                    <!-- Video sub-tabs will be generated by JS -->
+                </div>
+                <button id="prev-btn" class="gallery-nav prev">&lt;</button>
+                <button id="next-btn" class="gallery-nav next">&gt;</button>
+                <div id="media-tabs" class="media-tabs">
+                    <button id="video-tab" class="media-tab">📹 Videos</button>
+                    <button id="images-tab" class="media-tab active">🖼️ Images</button>
+                </div>
+            </div>
+            
+            <h3>About this project</h3>
+            <p id="modal-description">Project description goes here...</p>
+            
+            <h3>Technologies Used</h3>
+            <div id="modal-tech" class="tech-tags">
+                <!-- Tech tags will be generated by JS -->
+            </div>
+            
+            <div id="modal-links" class="modal-links">
+                <!-- Links will be generated by JS -->
+            </div>
+        </div>
+    </div>
+    <!-- ==== END PROJECT MODAL ==== -->
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Amaëlle DIOP. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+/* --- Global Styles & Variables from your Portfolio --- */
+:root {
+    --primary-color: #a05fa4; /* Your purple */
+    --gold-accent: #D4AF37;   /* A subtle gold */
+    --dark-color: #1a1a1a;    /* Near-black for text */
+    --light-color: #ffffff;   /* White background */
+    --grey-color: #f4f4f4;    /* Light grey for subtle backgrounds */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e0e0e0; /* A neutral background for the page "effect" */
+    color: var(--dark-color);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- CV Container & Layout --- */
+.cv-container {
+    display: flex;
+    max-width: 8.5in; /* Standard US Letter width */
+    min-height: 11in;
+    margin: 2rem auto;
+    background: var(--light-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.main-content {
+    padding: 2.5rem;
+    width: 70%;
+}
+
+.sidebar {
+    width: 30%;
+    background: var(--grey-color);
+    padding: 2.5rem;
+}
+
+/* --- Header Section --- */
+.cv-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.cv-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.cv-header .summary {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Main Content Styling --- */
+section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* The iconic gold underline from your portfolio */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; /* Left-aligned for CV readability */
+    width: 50px;
+    height: 4px;
+    background: var(--gold-accent);
+}
+
+.entry {
+    margin-bottom: 1.5rem;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+}
+
+.entry-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.entry-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    font-style: italic;
+}
+
+.entry-company {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.entry-description {
+    margin-left: 1.2rem;
+    list-style-type: disc;
+}
+
+.entry-description li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.entry-tech {
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+    color: #333;
+}
+
+.entry-tech strong {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* --- Sidebar Styling --- */
+.sidebar-section {
+    margin-bottom: 2rem;
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.3rem;
+}
+
+.contact-list li, .skills-list li, .sidebar p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.skills-list strong {
+    display: inline-block;
+    min-width: 100px; /* Aligns the skill details */
+}
+
+/* --- Print & Responsive Styles --- */
+@media print {
+    body {
+        background-color: var(--light-color); /* No grey background when printing */
+    }
+
+    .cv-container {
+        margin: 0;
+        box-shadow: none;
+        max-width: 100%;
+    }
+    
+    /* Ensures the sidebar background color prints */
+    .sidebar {
+       -webkit-print-color-adjust: exact;
+       print-color-adjust: exact;
+    }
+}
+
+@media (max-width: 8.5in) {
+    .cv-container {
+        flex-direction: column;
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    .main-content, .sidebar {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
