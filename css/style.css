@@ -400,6 +400,281 @@ footer {
 }
 
 /* --- Responsive Design --- */
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--dark-color);
+    margin: 5px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Navbar Mobile */
+    .navbar .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .navbar nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--light-color);
+        padding: 6rem 2rem 2rem;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar nav.active {
+        left: 0;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .navbar nav ul li a {
+        font-size: 1.2rem;
+        font-weight: 500;
+        padding: 0.5rem 0;
+        display: block;
+        border-bottom: 1px solid var(--grey-color);
+    }
+
+    /* Dropdown adjustments for mobile */
+    .dropdown-menu {
+        position: static !important;
+        background: var(--grey-color) !important;
+        box-shadow: none !important;
+        border-radius: 8px;
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* Hero Section Mobile */
+    #hero {
+        padding: 4rem 0;
+        text-align: center;
+    }
+
+    #hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #hero p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    /* Projects Grid Mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .project-card h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Project Filter Mobile */
+    .project-filter {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .filter-btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
+
+    /* Modal Mobile */
+    .modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 1rem;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact Form Mobile */
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    /* About Section Mobile */
+    .about-content {
+        text-align: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+
+    .skill-item {
+        padding: 1rem;
+    }
+
+    /* Mobile-specific improvements */
+    body {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Touch-friendly buttons */
+    .btn, .filter-btn, .mobile-menu-btn {
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation;
+    }
+
+    /* Improve text readability on mobile */
+    h1, h2, h3 {
+        line-height: 1.3;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    /* Better spacing for mobile */
+    section {
+        padding: 3rem 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Mobile navigation overlay */
+    .navbar nav.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 20%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    /* Success message mobile styling */
+    .success-message {
+        display: none;
+        padding: 1rem;
+        margin: 1rem 0;
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 8px;
+        color: #155724;
+    }
+
+    .success-message.show {
+        display: block;
+    }
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .navbar nav ul {
+        gap: 1rem;
+    }
+
+    .navbar .logo {
+        font-size: 1.3rem;
+    }
+
+    .navbar .logo .profile-pic {
+        width: 50px;
+        height: 50px;
+    }
+}
+
 @media (max-width: 768px) {
     #hero h1 {
         font-size: 2.5rem;

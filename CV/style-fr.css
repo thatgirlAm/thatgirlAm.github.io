@@ -165,9 +165,8 @@ a:hover { text-decoration: underline; }
 .entry { 
     margin-bottom: 0.6rem; 
     padding: 0.4rem; 
-    background: rgba(240, 240, 240, 0.3); 
     border-radius: 3px; 
-    border-left: 2px solid var(--primary-color); 
+    transition: all 0.3s ease;
 }
 
 .entry h4 { 
@@ -215,29 +214,28 @@ a:hover { text-decoration: underline; }
     border-radius: 2px; 
 }
 
-/* --- Améliorations visuelles --- */
-.entry h4:hover { 
-    color: var(--gold-accent); 
-    transition: color 0.3s ease; 
-}
-
+/* --- Effets de survol uniquement --- */
 .entry:hover { 
     transform: translateY(-1px); 
-    transition: transform 0.3s ease; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: rgba(160, 95, 164, 0.1); /* Fond teinté violet au survol */
+    border-left: 4px solid var(--primary-color); /* Bordure plus épaisse et plus visible */
 }
 
-/* --- Project Link Styles --- */
+/* --- Project Link Styles (simplifiés) --- */
 .project-link {
     cursor: pointer;
     transition: all 0.3s ease;
-    border-left: 3px solid transparent;
-    padding-left: 0.8rem;
+    padding: 0.4rem;
+    border-radius: 3px;
+    margin-bottom: 0.6rem;
 }
 
 .project-link:hover {
-    border-left-color: var(--primary-color);
-    background-color: rgba(160, 95, 164, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: rgba(160, 95, 164, 0.1); /* Fond teinté violet au survol */
+    border-left: 4px solid var(--primary-color); /* Bordure plus épaisse et plus visible */
 }
 
 .external-link {
