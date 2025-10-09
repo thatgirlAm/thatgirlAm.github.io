@@ -75,7 +75,7 @@ body {
 
 .contact-section {
     display: flex;
-    gap: 10mm; /* Réduit de 15mm à 10mm pour réduire l'espace */
+    gap: 8mm; /* Réduit de 15mm à 10mm pour réduire l'espace */
     font-size: 0.7rem;
 }
 
@@ -84,8 +84,9 @@ body {
 /* LAYOUT EN 2 COLONNES */
 .cv-body {
     display: flex;
-    gap: 8mm;
+    gap: 6mm;
     flex: 1;
+    margin-left: 10mm;
     min-height: 200mm;
 }
 
