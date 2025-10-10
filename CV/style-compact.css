@@ -367,7 +367,7 @@ a:hover { text-decoration: underline; }
     
     /* Ajustements spécifiques pour les QR codes en impression */
     .qr-codes-container {
-        gap: 5mm; /* Plus d'espace entre les QR codes pour mieux les distribuer */
+        gap: 4mm; /* Plus d'espace entre les QR codes pour mieux les distribuer */
         min-height: 60mm; /* Hauteur minimale pour assurer la distribution */
     }
 
