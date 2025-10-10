@@ -254,7 +254,7 @@ a:hover { text-decoration: underline; }
     
     .cv-header { 
         padding: 1.5mm 3.7mm;
-        margin-bottom: 1.5mm;
+        margin-bottom: 1.2mm;
     }
     
     .profile-picture {
@@ -277,6 +277,7 @@ a:hover { text-decoration: underline; }
     
     .cv-body {
         gap:1mm;
+        margin-left: 0mm;
     }
     
     .right-column {
