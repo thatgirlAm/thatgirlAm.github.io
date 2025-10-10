@@ -243,7 +243,7 @@ a:hover { text-decoration: underline; }
     
     .cv-container { 
         margin: 0; 
-        padding: 4mm 3.7mm;
+        padding: 3.7mm 3.7mm;
         min-height: 0;
         height: auto;
         max-height: none;
