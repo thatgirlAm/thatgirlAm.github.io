@@ -44,6 +44,7 @@ a:hover { text-decoration: underline; }
     display: flex;
     align-items: center;
     gap: 1rem;
+    text-align: justify;
 }
 
 .profile-picture { 
