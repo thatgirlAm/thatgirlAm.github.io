@@ -11,4 +11,4 @@
 Python • TypeScript • Angular • Laravel • Docker • Cloud (AWS/Azure) • SQL • C++
 
 📫 [Portfolio](https://thatgirlam.github.io) | [LinkedIn](https://www.linkedin.com/in/amaellediop/)  
-🌍 Based in Toulouse, France
+🌍 Based in  France
