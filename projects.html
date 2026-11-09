@@ -1,480 +1,1658 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - [Amaëlle DIOP]</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets & Expériences · [Amaëlle DIOP] · Software Engineer</title>
+  <meta name="description" content="Découvrez tous les projets et réalisations d'Amaëlle DIOP : R&D logicielle, automatisation QA augmentée par l'IA chez Dassault Systèmes, Deep Learning à Cranfield et FinTech chez Orange.">
+  <meta name="theme-color" content="#FAF7F2">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Projets & Expériences · [Amaëlle DIOP]">
+  <meta property="og:description" content="R&D logicielle, automatisation QA augmentée par l'IA, Deep Learning et IoT.">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google Fonts: Fraunces (refined variable serif) + DM Sans (body) + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,50..100;1,9..144,300..700,50..100&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --bordeaux: #6E1F2B;
+      --bordeaux-dark: #52151F;
+      --bordeaux-light: #F4EBEA;
+      --bordeaux-subtle: rgba(110, 31, 43, 0.07);
+      --text: #242220;
+      --muted: #6B665E;
+      --border: #E8E2D8;
+      --border-light: #F0ECE4;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .serif {
+      font-family: var(--serif);
+      font-variation-settings: "SOFT" 80, "opsz" 72;
+      letter-spacing: -0.015em;
+    }
+    .mono { font-family: var(--mono); }
+
+    /* Scroll progress bar */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--bordeaux), #A83244);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+
+    /* Classy Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(0.99);
+      filter: blur(5px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Interactive Card with subtle tilt and sheen */
+    .interactive-card {
+      position: relative;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.4s;
+      box-shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.04);
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-6px);
+      border-color: #D6C2B4;
+      box-shadow: 0 24px 44px -12px rgba(110, 31, 43, 0.14),
+                  0 4px 12px -2px rgba(28, 25, 23, 0.04);
+    }
+
+    .interactive-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(110, 31, 43, 0.06), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .interactive-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Pill Buttons */
+    .pill-btn {
+      border-radius: 9999px;
+      padding: 0.75rem 1.6rem;
+      font-size: 0.925rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pill-btn-primary {
+      background-color: var(--bordeaux);
+      color: #FFFFFF;
+    }
+
+    .pill-btn-primary:hover {
+      background-color: var(--bordeaux-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px -4px rgba(110, 31, 43, 0.35);
+    }
+
+    .pill-btn-secondary {
+      background-color: #FFFFFF;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .pill-btn-secondary:hover {
+      background-color: var(--bg);
+      border-color: var(--bordeaux);
+      color: var(--bordeaux);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px -4px rgba(28, 25, 23, 0.08);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background-color: var(--bg);
+      color: var(--muted);
+      border: 1px solid var(--border-light);
+      transition: all 0.2s ease;
+    }
+
+    .tag:hover {
+      border-color: var(--border);
+      color: var(--text);
+      background-color: #FFFFFF;
+    }
+
+    /* CV Dropdown Menu - Fully Opaque White */
+    .cv-dropdown-menu {
+      background-color: #FFFFFF !important;
+      background: #FFFFFF !important;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+    .group\/cv:hover .cv-dropdown-menu,
+    .cv-dropdown-menu.is-open {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateY(0) !important;
+    }
+
+    /* Modal & Lightbox Styles */
+    .modal-container,
+    .lightbox-container {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-container.active,
+    .lightbox-container.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-overlay,
+    .lightbox-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(28, 25, 23, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .modal-content-box {
+      position: relative;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px -15px rgba(28, 25, 23, 0.3);
+      transform: scale(0.96) translateY(12px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10;
+    }
+
+    .modal-container.active .modal-content-box {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Filter buttons */
+    .filter-pill {
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background-color: #FFFFFF;
+      color: var(--muted);
+    }
+    .filter-pill:hover {
+      border-color: var(--bordeaux);
+      color: var(--bordeaux);
+    }
+    .filter-pill.active {
+      background-color: var(--bordeaux);
+      color: #FFFFFF;
+      border-color: var(--bordeaux);
+      box-shadow: 0 6px 16px -2px rgba(110, 31, 43, 0.3);
+    }
+
+    /* Toast notification */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #242220;
+      color: #FFFFFF;
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 200;
+    }
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
 </head>
-<body>
+<body class="selection:bg-[var(--bordeaux)] selection:text-white">
 
-    <header class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="CV/profile.png" alt="Amaëlle DIOP" class="profile-pic">
-                <span>[Amaëlle DIOP]</span>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast">Lien copié dans le presse-papier !</div>
+
+  <!-- ================= STICKY FROSTED NAVBAR ================= -->
+  <header class="sticky top-0 z-40 bg-[var(--bg)]/85 backdrop-blur-md border-b border-[var(--border)] transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      
+      <!-- Logo / Identity -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--border)] group-hover:border-[var(--bordeaux)] transition-colors shadow-xs">
+          <img src="images/picture-self.jpeg" alt="Amaëlle Diop" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col">
+          <span class="serif font-semibold text-lg sm:text-xl tracking-tight text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-tight">
+            [Amaëlle DIOP]
+          </span>
+          <span class="text-[11px] text-[var(--muted)] font-medium leading-tight">
+            Software Engineer · Dassault Systèmes
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1.5 text-xs font-medium text-[var(--muted)]">
+        <a href="index.html#accueil" class="px-3 py-1.5 rounded-full hover:text-[var(--text)] hover:bg-white/60 transition" data-i18n="nav-home">Accueil</a>
+        <a href="index.html#talk" class="px-3 py-1.5 rounded-full hover:text-[var(--text)] hover:bg-white/60 transition" data-i18n="nav-talk">Le Talk</a>
+        <a href="projects.html" class="px-3 py-1.5 rounded-full text-[var(--bordeaux)] font-semibold bg-white border border-[var(--border)] shadow-2xs" data-i18n="nav-projects">Projets</a>
+        <a href="index.html#evenements" class="px-3 py-1.5 rounded-full hover:text-[var(--text)] hover:bg-white/60 transition" data-i18n="nav-events">Événements</a>
+        <a href="index.html#contact" class="px-3 py-1.5 rounded-full hover:text-[var(--text)] hover:bg-white/60 transition" data-i18n="nav-contact">Contact</a>
+        
+        <span class="h-4 w-[1px] bg-[var(--border)] mx-1"></span>
+
+        <!-- CV Dropdown Menu (Desktop) -->
+        <div class="relative group/cv">
+          <button type="button" class="cv-dropdown-toggle px-3 py-1.5 rounded-full border border-[var(--border)] bg-white hover:bg-white text-[var(--text)] transition font-medium text-xs flex items-center gap-1.5 cursor-pointer shadow-2xs">
+            <span data-i18n="nav-cv">Mon CV</span>
+            <span class="text-[9px] text-[var(--muted)] group-hover/cv:rotate-180 transition-transform">▼</span>
+          </button>
+          
+          <div class="cv-dropdown-menu absolute right-0 top-full mt-2 w-64 border border-[var(--border)] rounded-2xl p-2 shadow-2xl z-50 text-xs" style="background: #FFFFFF !important; background-color: #FFFFFF !important;">
+            <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--bordeaux)] border-b border-[var(--border-light)] pb-1 mb-1">
+              🇫🇷 Version Française
+            </div>
+            <a href="CV/fr-cv-single-page.html" target="_blank" class="flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-[var(--bg)] text-[var(--text)] transition font-medium">
+              <span data-i18n="cv-fr-short">Format Synthétique (1 page)</span>
+              <span class="text-[var(--bordeaux)]">↗</span>
             </a>
-            
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">CV <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu cv-vertical">
-                            <li class="language-header">🇫🇷 French</li>
-                            <li><a href="CV/fr-cv-single-page.html" target="_blank">Short Version</a></li>
-                            <li><a href="CV/fr-cv-index.html" target="_blank">Full Version</a></li>
-                            <li class="language-header">🇺🇸 English</li>
-                            <li><a href="CV/cv_index_en.html" target="_blank">Full Version</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+            <a href="CV/fr-cv-index.html" target="_blank" class="flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-[var(--bg)] text-[var(--text)] transition font-medium">
+              <span data-i18n="cv-fr-full">Format Complet Détaillé</span>
+              <span class="text-[var(--bordeaux)]">↗</span>
+            </a>
+            <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--bordeaux)] border-t border-[var(--border-light)] pt-1.5 mt-1 mb-1">
+              🇬🇧 English Version
+            </div>
+            <a href="CV/cv_index_en.html" target="_blank" class="flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-[var(--bg)] text-[var(--text)] transition font-medium">
+              <span data-i18n="cv-en-full">Full Detailed Resume</span>
+              <span class="text-[var(--bordeaux)]">↗</span>
+            </a>
+          </div>
         </div>
-    </header>
 
-    <main>
-        <section id="all-projects" class="container">
-            <h1 class="section-title fade-in">My Projects & Experience</h1>
-            
-            <!-- Project Filter -->
-            <div class="project-filter fade-in">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="professional">Professional</button>
-                <button class="filter-btn" data-filter="school">Academic Projects</button>
-            </div>
+        <!-- Language Switcher Button -->
+        <button id="lang-switch-btn" class="ml-1 px-2.5 py-1.5 rounded-full border border-[var(--border)] bg-white/70 hover:bg-white text-[11px] font-semibold text-[var(--bordeaux)] transition flex items-center gap-1 shadow-2xs cursor-pointer">
+          <span id="lang-flag">🇬🇧</span>
+          <span id="lang-label">EN</span>
+        </button>
 
-            <div class="project-grid fade-in">
-                <!-- Professional Experience 0: Dassault Systèmes - R&D Automation Software Engineer -->
-                <a href="#" class="project-card"
-                   data-category="professional"
-                   data-title="R&D Automation Software Engineer - Performance & AI-Driven Test Automation"
-                   data-images="images/3ds_logo.png"
-                   data-description="<p>Full-time R&D Automation Software Engineer at Dassault Systèmes, building on my QA Engineering internship to design performance-driven and AI-augmented test automation solutions.</p>
+        <!-- CTA Contact Button -->
+        <a href="index.html#contact" class="ml-2 pill-btn pill-btn-primary !py-2 !px-4 text-xs">
+          <span data-i18n="nav-cta">Me contacter</span>
+          <span>→</span>
+        </a>
+      </nav>
 
-                   <p><strong>Key Responsibilities:</strong><br>
-                   • <strong>Performance Engineering:</strong> Designing solutions to enhance the performance of automated testing processes<br>
-                   • <strong>Full-Stack Development:</strong> Backend and Front-End development for internal tooling<br>
-                   • <strong>QA Assistance:</strong> Supporting QA teams across testing workflows<br>
-                   • <strong>AI Integration:</strong> Integrating AI solutions into existing applications, including automated evaluation using LLM-as-a-Judge<br>
-                   • <strong>AI Assistants:</strong> Building specialized AI assistants to translate specific business needs into technical solutions<br>
-                   • <strong>SDK Development:</strong> Creating SDKs to streamline adoption of internal tools</p><br>
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="mobile-lang-btn" class="px-2.5 py-1 rounded-full border border-[var(--border)] bg-white text-[11px] font-semibold text-[var(--bordeaux)]">
+          EN
+        </button>
+        <button id="mobile-menu-toggle" class="p-2 rounded-xl border border-[var(--border)] bg-white text-[var(--text)]" aria-label="Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
 
-                   <p><strong>Technical Stack:</strong><br>
-                   • Python and Microsoft Playwright for test automation<br>
-                   • TypeScript, JavaScript and Node.js for front-end and back-end tooling development<br>
-                   • GitLab, GitLab CI/CD and Jenkins for version control and pipeline automation<br>
-                   • AI-driven enhancements integrated into existing applications</p>"
-                   data-tech="Python,Microsoft Playwright,TypeScript,JavaScript,Node.js,GitLab,GitLab CI/CD,Jenkins,SDK Development,LLM-as-a-Judge,AI Assistants,AI Integration,Backend Development,Frontend Development,QA Automation"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-company="Dassault Systèmes"
-                   data-company-logo="images/3ds_logo_simple.png">
-                    <img src="images/3ds_logo.png" alt="Dassault Systèmes R&D Automation">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag professional">Professional</span>
-                            </div>
-                            <div class="company-logo">
-                                <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[R&D] - Automation Software Engineer</h3>
-                        <p>Performance-driven and AI-augmented test automation solutions with Backend, Front-End, and QA contributions.</p>
-                    </div>
-                </a>
-
-                <!-- Professional Experience 1a: Dassault Systèmes - Custom Framework -->
-                <a href="#" class="project-card" 
-                   data-category="professional"
-                   data-title="[QA Engineering] - Custom Framework & SDK for Web Services Test Automation"
-                   data-youtube-id="WV1XZkva-oI"
-                   data-video-description="Demo video showcases the framework's CLI commands, automated test execution, and comprehensive HTML reporting system in action."
-                   data-images="images/framework_structure.png"
-                   data-description="<p>6-month internship at Dassault Systèmes developing a custom testing framework and SDK for enterprise-scale web services automation.</p>
-                   
-                   <p><strong>Key Achievements:</strong><br>
-                   • <strong>CI/CD Integration</strong> in ItGit/Gitlab<br>
-                   • <strong>HTML Reporting System</strong><br>
-                   • <strong>Decentralization of the login process</strong> with a custom Session Manager SDK<br>
-                   • <strong>CLI Commands</strong><br>
-                   • <strong>CLI/Physical Documentation</strong><br>
-                   • <strong>Reusable test components</strong> accelerating development cycles</p><br>
-                   
-                   <p><strong>Framework Features:</strong><br>
-                   • Modular architecture for scalable automated testing workflows<br>
-                   • Advanced dependency management and dynamic configuration<br>
-                   • Comprehensive reporting and CI/CD pipeline integration<br>
-                   • Intuitive CLI commands for test creation and monitoring</p><br>
-                   
-                   <p><strong>Technical Impact:</strong><br>
-                   • Company-scale testing solution for cloud transition contexts<br>
-                   • Accessible automated testing for technical and non-technical teams<br>
-                   • Seamless integration with existing development workflows</p>
-                   
-                   <p><em>Demo video showcases the framework's CLI commands, automated test execution, and comprehensive HTML reporting system in action.</em></p>
-                   
-                   <p><em>This project demonstrates required skills in software architecture conception, test automation, and SDK development for large-scale systems.</em></p>"
-                   data-tech="Python,PyTest,HTML/CSS,Web Services,SDK Development,Test Automation,Git,Packaging,CI/CD,REST APIs"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-company="Dassault Systèmes"
-                   data-company-logo="images/3ds_logo_simple.png">
-                    <img src="images/3ds_logo.png" alt="Dassault Systèmes Framework Screenshot">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag professional">Professional</span>
-                            </div>
-                            <div class="company-logo">
-                                <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[QA & Software Testing] - Custom Framework & SDK Development</h3>
-                        <p>Enterprise-scale modular testing framework with significant maintenance reduction and speed improvement.</p>
-                    </div>
-                </a>
-
-                <!-- Professional Experience 1b: Dassault Systèmes - AI Agent -->
-                <a href="#" class="project-card" 
-                   data-category="professional"
-                   data-title="QA Engineer - AI-Adaptive Agent for Self-Healing GUI Test Framework"
-                   data-youtube-id="PpEoGfGhyz0"
-                   data-video-description="Note: The demo video shows a partial test of the agent's structure. This breakthrough solution revolutionizes GUI testing by maintaining stability across multiple application versions in rapidly evolving software environments."
-                   data-images="images/DS_self_healing.png,https://via.placeholder.com/800x500/0066CC/FFFFFF?text=SikuliX+Integration"
-                   data-description="<p><strong>Ongoing Project:</strong> Pioneered development of an AI-adaptive agent utilizing decision tree algorithms to implement self-healing on a SikuliX GUI testing framework at Dassault Systèmes.</p>
-                   
-                   <p><strong>Revolutionary Achievements:</strong><br>
-                   • Self-learning knowledge base from previous adaptations</p>         
-                   • Component-based encyclopedia</p>
-                   • Processing of False Negatives or Errors given by the existing framework</p>
-                   • Incremental SikuliX parameters tuning</p>
-                   • Training of two YOLO Models (V8N and V11)</p>
-                   • Creation and population of a dataset for model training from CATIA Tutorials from YouTube</p>
-                   • Selection of 5 component classes</p>
-                   • Referencing the component encyclopedia</p>
-                   • Utilization of contextual elements</p>
-                   • Continuous performance improvement</p>
-                   
-                   <p><strong>AI Agent Features:</strong><br>
-                   • Intelligent element recognition using computer vision<br>
-                   • Dynamic test script adaptation through decision tree logic<br>
-                   • Automatic fallback mechanisms for real-time UI changes<br>
-
-                   
-                   <p><strong>Technical Innovation:</strong><br>
-                   • Advanced image-based detection and machine learning<br>
-                   • Seamless integration with existing test suites<br>
-                   • Continuous test execution without manual intervention</p>
-                   <p><em>Note: The demo video shows a partial test of the agent's structure. This breakthrough solution revolutionizes GUI testing by maintaining stability across multiple application versions in rapidly evolving software environments.</em></p>"
-                   
-                   data-tech="Python,SikuliX,Machine Learning,Computer Vision,Decision Trees,GUI Testing,AI Agents,Image Processing,OpenCV,Selenium"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-company="Dassault Systèmes"
-                   data-company-logo="images/3ds_logo_simple.png">
-                    <img src="images/3ds_logo.png" alt="AI Self-Healing Tests Screenshot">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag professional">Professional</span>
-                            </div>
-                            <div class="company-logo">
-                                <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[QA & Software Testing] - AI-Adaptive Self-Healing GUI Tests</h3>
-                        <p> AI Agent with intelligent UI adaptation and automated test maintenance capabilities.</p>
-                    </div>
-                </a>
-
-                <!-- Academic Project 1: AI Flight Delay Prediction -->
-                <a href="#" class="project-card"
-                   data-category="school"
-                   data-title="Sky Denied Web Application: Novel AI Model for Multi-Airport Flight Delay Prediction"
-                   data-youtube-ids="FdRefPmquR0,JB5f4Kh03jk"
-                   data-youtube-titles="Sky Denied - Demo, Teaser"
-                   data-video-descriptions="The full demo showcases real-time flight delay predictions and interactive web interface., Teaser video introduces the project concept"
-                   data-images="images/sky_denied_logo_final.png, images/sky_denied_screenshot.png, images/sky_denied_infrastructure.png,images/sky_denied_training.png,images/sky_denied_f1.png,images/sky_denied_loss.png"
-                   data-description="<p>Collaborative group project at Cranfield University developing an intelligent flight delay prediction system accessible through a web application.</p>
-                   
-                   <p><strong>My Core Responsibilities:</strong><br>
-                   • Data Pre-Processing: Flight data cleaning and preparation after scraping and before handing it out to the model<br>
-                   • Full-Stack Development: web platform architecture based on Laravel and Angular<br>
-                   • DevOps Engineering: Managed the implementation and linkage of components, Azure Cloud deployment of the website</p>
-                   
-                   <p><strong>Technical Deliverables:</strong><br>
-                   • Real-time prediction web application<br>
-                   • Interactive data visualization dashboards<br>
-                   • Research on model transferability between airspaces</p>
-                   
-                   <p><strong>AI Model Development:</strong><br>
-                    My Data Scientists colleagues developed the novel QTSimAM (Queueing Theory-SimAM-CNN-LSTM) model and published their research findings. Their academic paper is currently in the pre-print stage and is available on ResearchGate: <a href='https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction'>Link to the pre-print</a>.</p>
-                    <br><p><em>This project demonstrates successful integration of advanced AI research with practical web development and cloud deployment.</em></p>"
-                   
-                  
-                   
-                   data-tech="Python,Deep Learning,LSTM,CNN,Queueing Theory,SimAM,Azure Cloud,Angular,TypeScript,PHP,PostgreSQL,Docker,Machine Learning Research"
-                   data-live-url="#"
-                   data-repo-url="https://github.com/thatgirlAm/sky_denied_WEB_APP"
-                   data-paper-url="https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction"
-                   data-school="Cranfield University"
-                   data-school-logo="images/cranfield_logo.png">
-                    <img src="images/sky_denied_thumbnail.jpg" alt="Sky Denied AI Model Logo">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag school">Academic Research</span>
-                            </div>
-                            <div class="school-logo">
-                                <img src="images/cranfield_logo.png" alt="Cranfield University Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[Machine Learning - Full-Stack Dev] - Sky Denied Web Application</h3>
-                        <p>Novel queueing theory-integrated deep learning model for intelligent flight delay prediction available to any user through a robust Web Application.</p>
-                    </div>
-                </a>
-
-                <!-- Professional Experience 2: Orange Finance Mobile -->
-                <a href="#" class="project-card"
-                   data-category="professional"
-                   data-title="Full-Stack Developer & Data Analyst - FinTech Banking Reconciliation Platform"
-                   data-youtube-id="cITKmPQY9gs"
-                   data-video-description="Demo video demonstrates the complete reconciliation workflow, dashboard analytics, and automated discrepancy detection in real-time."
-                   data-images="images/daily_logo.png,images/daily_logoofms.png"
-                   data-description="<p>4-month internship at Orange Finances Mobiles in Dakar, leading development of a comprehensive FinTech solution to address critical transactional data discrepancies.</p>
-                   
-                   <p><strong>Business Impact:</strong><br>
-                   • Monitoring preventing future data losses<br>
-                   • Automation of former time-consuming manual tasks</p>
-
-                   <p><strong>Technical Architecture:</strong><br>
-                   • End-to-end data engineering pipeline with automated extraction<br>
-                   • Data validation and cleansing processes<br>
-                   • Reconciliation algorithms for transaction matching<br>
-                   • Automated pre-analysis for potential discrepancies causes</p>
-                   
-                   <p><strong>Platform Features:</strong><br>
-                   • Ergonomic web dashboard with monitoring and data visualisation features<br>
-                   • Detailed analytics and reporting capabilities<br>
-                   • Seamless integration with existing banking infrastructure</p>
-                   
-                   
-                   <p><em>This solution contributed to financial reconciliation processes while providing actionable insights for strategic business decision-making and discrepancies justification.</em></p>"
-                   data-tech="Python,SQL,Data Engineering,Pandas,NumPy, Angular, Typescript, HTML/CSS, PHP, Laravel"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-company="Orange Finances Mobiles"
-                   data-company-logo="images/daily_logoofms.png">
-                    <img src="images/daily_logo.png" alt="Daily FinTech Solution Screenshot">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag professional">Professional</span>
-                            </div>
-                            <div class="company-logo">
-                                <img src="images/daily_logoofms.png" alt="Orange Finances Mobiles Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[Full-Stack Dev] - FinTech Banking Reconciliation Platform</h3>
-                        <p>Enterprise solution with automated reconciliation and significant discrepancy analysis.</p>
-                    </div>
-                </a>
-
-                <!-- Academic Project 4: Piloustia - Automatic Pill Dispenser -->
-                <a href="#" class="project-card"
-                   data-category="school"
-                   data-title="Piloustia - Automatic Pill Dispenser IoT System"
-                   data-youtube-id="_E-y-EULsg0"
-                   data-video-description="Demo video shows the complete prototype in action, from mobile app control to automated pill dispensing and security features."
-                   data-images="images/piloustia/prototype1.png, images/piloustia/prototype2.png, images/piloustia/CAO+.png,images/piloustia/CAO.png,images/piloustia/digicode.png"
-                   data-description="<p>Collaborative group project developing an innovative IoT-enabled automatic pill dispenser system for healthcare applications.</p>
-                   
-                   <p><strong>My Technical Responsibilities:</strong><br>
-                   • Structural Design: Inner components and 3D CAD modeling<br>
-                   • Prototype Development: Complete 3D printing and fabrication<br>
-                   • Electrical Engineering: Circuit design and wiring assembly<br>
-                   • Programming: Complete Arduino C++ development for hardware control</p>
-                   
-                   <p><strong>System Features:</strong><br>
-                   • Automated medication dispensing with servo motor control<br>
-                   • Android mobile app (MIT App Inventor) for user interface<br>
-                   • Bluetooth wireless communication and security keypad<br>
-                   • Real-time medication tracking and missed dose alerts</p>
-                   
-                   <p><strong>Technical Implementation:</strong><br>
-                   • Arduino-based microcontroller system with sensor integration<br>
-                   • Precise dispensing mechanisms and alarm systems<br>
-                   • Patient medication history tracking and compliance monitoring</p>
-                   
-                   
-                   <p><em>This project required skills in mechanical design, embedded programming, electrical engineering, and healthcare technology through hands-on prototype development.</em></p>"
-                   data-tech="Arduino,C++,3D Printing,CAD Design,Circuit Design,MIT App Inventor,Android Development,IoT,Bluetooth,Servo Motors,Healthcare Technology,Embedded Systems,Electrical Engineering"
-                   data-live-url="#"
-                   data-repo-url="https://github.com/thatgirlAm/Arduino-project-automatic-pill-dispenser"
-                   data-school="ESTIA"
-                   data-school-logo="images/estia_logo.png">
-                    <img src="images/piloustia/logo.png" alt="Piloustia Automatic Pill Dispenser">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag school">Academic Project</span>
-                            </div>
-                            <div class="school-logo">
-                                <img src="images/estia_logo.png" alt="ESTIA Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[IoT] - Piloustia - Automatic Pill Dispenser</h3>
-                        <p>IoT-enabled medical device for autonomous medication management with 3D printed prototype and Arduino control.</p>
-                    </div>
-                </a>
-
-                <!-- Academic Project 3: Dassault UAV Challenge -->
-                <a href="#" class="project-card"
-                   data-category="school"
-                   data-title="Dassault Aviation UAV Challenge - Autonomous Drone Control System"
-                   data-images="images/UAV_scr3_ the_team.jpeg,images/UAV_scr1_body_of_the_drone.jpeg, images/UAV_scr2_assembling_the_drone.jpeg"
-                   data-description="<p>Prestigious Dassault Aviation UAV Challenge where our team achieved <strong>4th place</strong> among all participating universities and engineering schools.</p>
-                   
-                   <p><strong>My Key Responsibilities:</strong><br>
-                   • Simulation Management: Complex Gazebo robotic simulations<br>
-                   • Ground Control Optimization Proposal: Autonomous drone operations for payload unloading<br>
-                   
-                   <p><strong>Technical Stack:</strong><br>
-                   • ROS (Robot Operating System) for drone communication<br>
-                   • PX4 flight stack for autonomous flight control<br>
-                   • QGround Control for real-time monitoring and mission planning<br>
-                   • Advanced path planning and payload unloading features</p>
-                   
-                   
-                   <p><em>This project required skills in autonomous systems monitoring, and competitive problem-solving in cutting-edge UAV technology.</em></p>"
-                   data-tech="Gazebo,Qt, C++,QGround Control,PX4, Simulation,Autonomous Systems"
-                   data-live-url="#"
-                   data-repo-url="https://github.com/thatgirlAm/SITL-controling-your-autonomous-drone-with-dronekit"
-                   data-company="Dassault Aviation"
-                   data-company-logo="images/logo dassault aviation.png"
-                   data-school="ESTIA"
-                   data-school-logo="images/estia_logo.png">
-                    <img src="images/UAV_scr3_ the_team.jpeg" alt="Dassault UAV Challenge Team Photo">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag school">Competition</span>
-                            </div>
-                            <div class="dual-logos uav-project">
-                                <div class="company-logo">
-                                    <img src="images/logo dassault aviation.png" alt="Dassault Aviation Logo" class="logo-img">
-                                </div>
-                                <div class="school-logo">
-                                    <img src="images/estia_logo.png" alt="ESTIA Logo" class="logo-img">
-                                </div>
-                            </div>
-                        </div>
-                        <h3>[Simulation & Drone] - Dassault Aviation UAV Challenge - Autonomous Drone Control System</h3>
-                        <p>Great ranking in prestigious Dassault UAV Challenge with advanced autonomous flight and simulation systems.</p>
-                    </div>
-                </a>
-
-                <!-- Academic Project 2: IELTS Automation -->
-                <a href="#" class="project-card"
-                   data-category="school"
-                   data-title="IELTS Smart De-anonymization Automation Solution"
-                   data-images="images/python_logo.png"
-                   data-description="I designed and developed a comprehensive desktop application in Python to optimize the IELTS examination de-anonymization process for ESTIA. This solution addressed the time-consuming and error-prone manual administrative tasks that were previously handled by staff members. The application features: intelligent data parsing from multiple Excel formats, automated student identification and matching algorithms, bulk processing capabilities for large examination batches, comprehensive error handling and validation systems, and intuitive GUI interface for non-technical users. Key technical implementations include advanced Excel manipulation using openpyxl and pandas, robust data validation algorithms, automated backup and recovery systems, and detailed logging for audit trails. 
-                   The solution made the process go from hours to minutes while allowing complete elimination of manual transcription errors, improved data accuracy and consistency, and enhanced workflow efficiency for academic administrators."
-                   data-tech="Python,Tkinter,openpyxl,pandas,Excel Automation,GUI Development,Data Processing,File Management,Error Handling"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-school="ESTIA"
-                   data-school-logo="images/estia_logo.png">
-                    <img src="images/python_logo.png" alt="IELTS Automation Screenshot">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag school">Academic Project</span>
-                            </div>
-                            <div class="school-logo">
-                                <img src="images/estia_logo.png" alt="ESTIA Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[Task Automation] - IELTS Smart Automation Solution</h3>
-                        <p>Intelligent desktop application with significant time reduction in IELTS processing and error elimination.</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- ==== PROJECT MODAL ==== -->
-    <div id="project-modal" class="modal-container hidden">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-header">
-                <h2 id="modal-title">Project Title</h2>
-                <div class="modal-meta">
-                    <span id="modal-category-tag" class="category-tag"></span>
-                    <div id="modal-organization-info" class="organization-info">
-                        <img id="modal-organization-logo" src="" alt="" class="logo-img">
-                        <span id="modal-organization-name"></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-gallery">
-                <div id="modal-media-container">
-                    <img src="https://via.placeholder.com/800x500" alt="Project Screenshot" id="modal-image">
-                    <div id="modal-youtube-container" class="youtube-container">
-                        <iframe id="modal-youtube-iframe" src="" frameborder="0" allowfullscreen title="Project Demo Video"></iframe>
-                    </div>
-                </div>
-                <div id="video-description" class="video-description hidden">
-                    <p id="video-description-text"></p>
-                </div>
-                <div id="video-sub-tabs" class="video-sub-tabs">
-                    <!-- Video sub-tabs will be generated by JS -->
-                </div>
-                <button id="prev-btn" class="gallery-nav prev">&lt;</button>
-                <button id="next-btn" class="gallery-nav next">&gt;</button>
-                <div id="media-tabs" class="media-tabs">
-                    <button id="video-tab" class="media-tab">📹 Videos</button>
-                    <button id="images-tab" class="media-tab active">🖼️ Images</button>
-                </div>
-            </div>
-            
-            <h3>About this project</h3>
-            <p id="modal-description">Project description goes here...</p>
-            
-            <h3>Technologies Used</h3>
-            <div id="modal-tech" class="tech-tags">
-                <!-- Tech tags will be generated by JS -->
-            </div>
-            
-            <div id="modal-links" class="modal-links">
-                <!-- Links will be generated by JS -->
-            </div>
-        </div>
     </div>
-    <!-- ==== END PROJECT MODAL ==== -->
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Amaëlle DIOP. All Rights Reserved.</p>
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--border)] bg-white/95 backdrop-blur-md px-6 py-5 flex flex-col gap-3 text-sm font-medium">
+      <a href="index.html#accueil" class="py-2 text-[var(--muted)] hover:text-[var(--bordeaux)] border-b border-[var(--border-light)]" data-i18n="nav-home">Accueil</a>
+      <a href="index.html#talk" class="py-2 text-[var(--muted)] hover:text-[var(--bordeaux)] border-b border-[var(--border-light)]" data-i18n="nav-talk">Le Talk</a>
+      <a href="projects.html" class="py-2 text-[var(--bordeaux)] font-bold border-b border-[var(--border-light)]" data-i18n="nav-projects">Projets (actif)</a>
+      <a href="index.html#evenements" class="py-2 text-[var(--muted)] hover:text-[var(--bordeaux)] border-b border-[var(--border-light)]" data-i18n="nav-events">Événements</a>
+      <a href="index.html#contact" class="py-2 text-[var(--muted)] hover:text-[var(--bordeaux)] border-b border-[var(--border-light)]" data-i18n="nav-contact">Contact</a>
+      <div class="pt-2">
+        <p class="text-[11px] font-bold text-[var(--bordeaux)] uppercase tracking-wider mb-2">Télécharger mon CV :</p>
+        <div class="flex flex-col gap-1.5 pl-2 text-xs">
+          <a href="CV/fr-cv-single-page.html" target="_blank" class="text-[var(--text)] hover:text-[var(--bordeaux)]">📄 FR · Synthétique (1 page) ↗</a>
+          <a href="CV/fr-cv-index.html" target="_blank" class="text-[var(--text)] hover:text-[var(--bordeaux)]">📑 FR · Complet détaillé ↗</a>
+          <a href="CV/cv_index_en.html" target="_blank" class="text-[var(--text)] hover:text-[var(--bordeaux)]">🇬🇧 EN · Full Detailed Resume ↗</a>
         </div>
-    </footer>
+      </div>
+      <a href="index.html#contact" class="pill-btn pill-btn-primary !py-2.5 justify-center mt-3 text-xs" data-i18n="nav-cta">Me contacter</a>
+    </div>
+  </header>
 
-    <script src="js/script.js"></script>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-12">
+
+    <!-- Back to home breadcrumb -->
+    <div class="reveal">
+      <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-[var(--muted)] hover:text-[var(--bordeaux)] transition">
+        <span>←</span>
+        <span data-i18n="back-to-home">Retour à l'accueil</span>
+      </a>
+    </div>
+
+    <!-- ================= PAGE HEADER ================= -->
+    <section class="reveal space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[var(--border)] text-xs text-[var(--bordeaux)] font-medium shadow-xs">
+        <span class="w-2 h-2 rounded-full bg-[var(--bordeaux)]"></span>
+        <span data-i18n="page-badge">✦ Répertoire Complet</span>
+      </div>
+
+      <h1 class="serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[var(--text)]" data-i18n="page-title">
+        Projets & Expériences
+      </h1>
+
+      <p class="serif italic text-lg sm:text-xl text-[var(--muted)] max-w-2xl leading-relaxed" data-i18n="page-desc">
+        Explorez l'ensemble de mes travaux en R&D logicielle, automatisation de test, modèles d'intelligence artificielle, robotique et développement full-stack.
+      </p>
+
+      <!-- Quick stats badges -->
+      <div class="flex flex-wrap gap-3 pt-2 text-xs text-[var(--muted)] font-medium">
+        <div class="px-3.5 py-1.5 rounded-xl bg-white border border-[var(--border)] shadow-2xs flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--bordeaux)]"></span>
+          <span data-i18n="stat-projects">8 Projets documentés</span>
+        </div>
+        <div class="px-3.5 py-1.5 rounded-xl bg-white border border-[var(--border)] shadow-2xs flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+          <span data-i18n="stat-videos">5 Démos vidéo interactives</span>
+        </div>
+        <div class="px-3.5 py-1.5 rounded-xl bg-white border border-[var(--border)] shadow-2xs flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          <span data-i18n="stat-research">1 Article de recherche pré-publié</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FILTER PILLS ================= -->
+    <div class="reveal flex flex-wrap items-center gap-2.5 pt-2 border-b border-[var(--border-light)] pb-6">
+      <button class="filter-pill active" data-filter="all">
+        <span data-i18n="filter-all">Tous les projets (8)</span>
+      </button>
+      <button class="filter-pill" data-filter="professional">
+        <span data-i18n="filter-pro">Expériences Professionnelles (4)</span>
+      </button>
+      <button class="filter-pill" data-filter="school">
+        <span data-i18n="filter-academic">Recherche & Académique (4)</span>
+      </button>
+    </div>
+
+
+    <!-- ================= PROJECTS GRID (8 PROJECTS) ================= -->
+    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+      <!-- ================= PROJECT 1: 3DS - R&D Software Engineer CDI ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="professional"
+               data-title="R&D Automation Software Engineer - Performance & AI-Driven Test Automation"
+               data-images="images/3ds_logo.png"
+               data-description="<p>En poste en CDI en tant que <strong>R&D Automation Software Engineer</strong> chez <strong>Dassault Systèmes</strong>, je poursuis le travail initié lors de mon stage de fin d'études pour concevoir des solutions d'automatisation de test haute performance et augmentées par l'IA.</p>
+               <br>
+               <p><strong>Missions principales :</strong><br>
+               • <strong>Performance Engineering :</strong> Conception d'architectures optimisées pour accélérer l'exécution des tests automatisés à grande échelle.<br>
+               • <strong>Développement Full-Stack :</strong> Conception et maintenance d'outils internes front-end et back-end pour les équipes QA mondiales.<br>
+               • <strong>Intégration d'IA générative :</strong> Intégration de solutions IA au cœur des applications existantes, incluant l'évaluation automatisée via <em>LLM-as-a-Judge</em>.<br>
+               • <strong>Assistants IA spécialisés :</strong> Création d'agents conversationnels et d'outils intelligents traduisant les besoins métiers en solutions techniques concrètes.<br>
+               • <strong>Développement de SDKs :</strong> Conception de kits de développement modulaires pour standardiser l'adoption des outils internes.</p>
+               <br>
+               <p><strong>Stack technique principale :</strong><br>
+               • Python & Microsoft Playwright pour l'automatisation de pointe.<br>
+               • TypeScript, JavaScript & Node.js pour l'outillage interne.<br>
+               • GitLab CI/CD & Jenkins pour les pipelines d'intégration continue.<br>
+               • Algorithmes d'IA & architectures cloud.</p>"
+               data-tech="Python,Microsoft Playwright,TypeScript,JavaScript,Node.js,GitLab CI/CD,Jenkins,SDK Development,LLM-as-a-Judge,AI Assistants,QA Automation,Full-Stack"
+               data-live-url="#"
+               data-repo-url="#"
+               data-company="Dassault Systèmes"
+               data-company-logo="images/3ds_logo_simple.png">
+        
+        <div>
+          <!-- Card Header / Meta -->
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-[var(--bordeaux-subtle)] text-[var(--bordeaux)] text-[11px] font-semibold tracking-wide">
+              CDI · 2026 - Présent
+            </span>
+            <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes" class="h-6 w-auto object-contain">
+          </div>
+
+          <!-- Thumbnail -->
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4">
+            <img src="images/3ds_logo.png" alt="Dassault Systèmes R&D Automation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+
+          <!-- Card Title & Subtitle -->
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            R&D Automation Software Engineer
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">Dassault Systèmes · Vélizy-Villacoublay</p>
+
+          <!-- Short description -->
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Conception d'outils d'automatisation de test performants et augmentés par l'IA (LLM-as-a-Judge, assistants métiers, SDKs modulaires, Playwright).
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <!-- Tech pills preview -->
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">Python</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">LLM-as-a-Judge</span>
+            <span class="tag">+6</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ================= PROJECT 2: 3DS - Custom Framework & SDK ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="professional"
+               data-title="[QA Engineering] - Custom Framework & SDK for Web Services Test Automation"
+               data-youtube-id="WV1XZkva-oI"
+               data-video-description="La vidéo de démonstration illustre l'exécution des commandes CLI, le lancement automatisé des suites de tests et le système complet de reporting HTML interactif en conditions réelles."
+               data-images="images/framework_structure.png"
+               data-description="<p>Stage de fin d'études de 6 mois chez <strong>Dassault Systèmes</strong> : conception et déploiement d'un framework modulaire d'automatisation et d'un SDK pour les services web à l'échelle de l'entreprise.</p>
+               <br>
+               <p><strong>Réalisations clés :</strong><br>
+               • <strong>Architecture modulaire :</strong> Création d'un framework complet basé sur PyTest, hautement extensible pour les services web.<br>
+               • <strong>Décentralisation de l'authentification :</strong> Développement d'un SDK Session Manager avec cache de sessions multi-environnements.<br>
+               • <strong>CLI interactive & ergonomique :</strong> Commandes simplifiées pour la création, l'exécution et le suivi des campagnes de tests.<br>
+               • <strong>Reporting HTML dynamique :</strong> Génération automatique de dashboards interactifs pour visualiser les anomalies.<br>
+               • <strong>Intégration CI/CD GitLab :</strong> Pipelines automatisés avec exécution conteneurisée.</p>
+               <br>
+               <p><strong>Impact mesurable :</strong><br>
+               Réduction substantielle du temps de maintenance des tests et adoption accélérée par les équipes techniques et non-techniques.</p>"
+               data-tech="Python,PyTest,HTML/CSS,Web Services,SDK Development,Test Automation,GitLab CI/CD,Packaging,REST APIs"
+               data-live-url="#"
+               data-repo-url="#"
+               data-company="Dassault Systèmes"
+               data-company-logo="images/3ds_logo_simple.png">
+        
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold tracking-wide">
+              R&D · Stage Fin d'Études
+            </span>
+            <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes" class="h-6 w-auto object-contain">
+          </div>
+
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4">
+            <img src="images/framework_structure.png" alt="Framework Structure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] font-medium backdrop-blur-xs flex items-center gap-1">
+              <span>📹</span> <span>Démo Vidéo</span>
+            </span>
+          </div>
+
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            Framework & SDK Web Services
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">Dassault Systèmes</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Framework de test modulaire d'entreprise avec gestionnaire de sessions décentralisé, CLI et reporting HTML dynamique.
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">Python</span>
+            <span class="tag">PyTest</span>
+            <span class="tag">SDK</span>
+            <span class="tag">CI/CD</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ================= PROJECT 3: 3DS - AI Self Healing GUI ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="professional"
+               data-title="QA Engineer - AI-Adaptive Agent for Self-Healing GUI Test Framework"
+               data-youtube-id="PpEoGfGhyz0"
+               data-video-description="Note : La vidéo de démonstration présente un test partiel de la structure décisionnelle de l'agent. Cette solution innovante fiabilise les tests d'interfaces graphiques (GUI) complexes en s'adaptant dynamiquement aux évolutions logicielles."
+               data-images="images/DS_self_healing.png"
+               data-description="<p>Conception et recherche appliquée autour d'un <strong>agent adaptatif autonome basé sur l'IA</strong>, exploitant des arbres de décision et la vision par ordinateur pour implémenter l'auto-réparation (<em>self-healing</em>) d'un framework de tests GUI SikuliX chez Dassault Systèmes.</p>
+               <br>
+               <p><strong>Innovations majeures :</strong><br>
+               • <strong>Apprentissage continu :</strong> Base de connaissances auto-évolutive mémorisant les adaptations réussies précédentes.<br>
+               • <strong>Détection par Vision :</strong> Entraînement de deux modèles YOLO (V8N et V11) sur un dataset propriétaire construit à partir de tutoriels CATIA.<br>
+               • <strong>Gestion des faux négatifs :</strong> Détection automatique et correction à la volée des erreurs d'identification d'éléments visuels.<br>
+               • <strong>Ajustement paramétrique dynamique :</strong> Réajustement incrémental des seuils de reconnaissance visuelle SikuliX sans interruption de la campagne de tests.</p>"
+               data-tech="Python,SikuliX,YOLO V8/V11,Computer Vision,Machine Learning,Decision Trees,OpenCV,GUI Automation"
+               data-live-url="#"
+               data-repo-url="#"
+               data-company="Dassault Systèmes"
+               data-company-logo="images/3ds_logo_simple.png">
+        
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-800 text-[11px] font-semibold tracking-wide">
+              IA & Vision · Recherche R&D
+            </span>
+            <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes" class="h-6 w-auto object-contain">
+          </div>
+
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4">
+            <img src="images/DS_self_healing.png" alt="Self-Healing GUI Architecture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] font-medium backdrop-blur-xs flex items-center gap-1">
+              <span>📹</span> <span>Démo Vidéo</span>
+            </span>
+          </div>
+
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            Agent IA Self-Healing pour Tests GUI
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">Dassault Systèmes</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Agent intelligent utilisant la vision par ordinateur (YOLO) et des arbres de décision pour l'auto-réparation automatique des tests graphiques.
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">YOLO V8/V11</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Python</span>
+            <span class="tag">SikuliX</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ================= PROJECT 4: Cranfield - Sky Denied ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="school"
+               data-title="Sky Denied Web Application: Novel AI Model for Multi-Airport Flight Delay Prediction"
+               data-youtube-ids="FdRefPmquR0,JB5f4Kh03jk"
+               data-youtube-titles="Démo Complète, Teaser Projet"
+               data-video-descriptions="La démonstration complète met en valeur les prédictions en temps réel des retards de vol et l'interface utilisateur interactive., Le teaser présente le concept global et les objectifs d'impact dans l'aviation."
+               data-images="images/sky_denied_thumbnail.jpg, images/sky_denied_logo_final.png, images/sky_denied_screenshot.png, images/sky_denied_infrastructure.png, images/sky_denied_training.png, images/sky_denied_f1.png, images/sky_denied_loss.png"
+               data-description="<p>Projet de groupe de Master of Science à <strong>Cranfield University</strong> : conception et déploiement cloud d'une plateforme web intelligente de prédiction des retards de vols basée sur un modèle de Deep Learning inédit combiné à la théorie des files d'attente (<em>Queueing Theory</em>).</p>
+               <br>
+               <p><strong>Mes responsabilités clés :</strong><br>
+               • <strong>Prétraitement des données massives :</strong> Nettoyage, normalisation et pipeline d'ingestion de millions de relevés de vols.<br>
+               • <strong>Architecture Full-Stack Web :</strong> Développement de la plateforme sous Laravel et Angular avec dashboards réactifs.<br>
+               • <strong>DevOps & Déploiement Azure :</strong> Conteneurisation Docker, mise en réseau et hébergement sécurisé sur Microsoft Azure Cloud.</p>
+               <br>
+               <p><strong>Publication scientifique :</strong><br>
+               Ce travail a fait l'objet d'un article de recherche scientifique co-rédigé par l'équipe, disponible en pré-print sur ResearchGate : <a href='https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction' target='_blank' class='text-[var(--bordeaux)] underline font-medium'>Lire le papier sur ResearchGate ↗</a>.</p>"
+               data-tech="Python,Deep Learning,LSTM,CNN,Queueing Theory,Azure Cloud,Angular,TypeScript,PHP,Laravel,PostgreSQL,Docker"
+               data-live-url="#"
+               data-repo-url="https://github.com/thatgirlAm/sky_denied_WEB_APP"
+               data-paper-url="https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction"
+               data-school="Cranfield University"
+               data-school-logo="images/cranfield_logo_cropped.png">
+        
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 text-[11px] font-semibold tracking-wide">
+              MSc Research · Cranfield University
+            </span>
+            <img src="images/cranfield_logo_cropped.png" alt="Cranfield University" class="h-6 w-auto object-contain">
+          </div>
+
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4">
+            <img src="images/sky_denied_thumbnail.jpg" alt="Sky Denied Web Application" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] font-medium backdrop-blur-xs flex items-center gap-1">
+              <span>📹</span> <span>2 Vidéos</span>
+            </span>
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded-md bg-white/90 text-[var(--bordeaux)] text-[10px] font-bold shadow-xs">
+              📄 Paper ResearchGate
+            </span>
+          </div>
+
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            Sky Denied Web App & IA
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">Cranfield University · MSc Group Project</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Prédiction temps réel des retards de vol par Deep Learning et files d'attente, application web Full-Stack et cloud Azure.
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Azure</span>
+            <span class="tag">Angular</span>
+            <span class="tag">Laravel</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ================= PROJECT 5: Orange - FinTech Reconciliation ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="professional"
+               data-title="Full-Stack Developer & Data Analyst - FinTech Banking Reconciliation Platform"
+               data-youtube-id="cITKmPQY9gs"
+               data-video-description="La vidéo de démonstration présente l'intégralité du workflow de réconciliation financière, les tableaux de bord analytiques et la détection automatisée d'écarts transactionnels en direct."
+               data-images="images/daily_logo.png, images/daily_logoofms_cropped.png"
+               data-description="<p>Stage de 4 mois chez <strong>Orange Finances Mobiles</strong> à Dakar : pilotage du développement d'une solution FinTech d'envergure pour automatiser la détection et la réconciliation d'écarts de données transactionnelles critiques.</p>
+               <br>
+               <p><strong>Impact opérationnel :</strong><br>
+               • <strong>Pipeline de données automatisé :</strong> Extraction, validation et transformation automatique des flux financiers.<br>
+               • <strong>Algorithmes de matching transactionnel :</strong> Rapprochement intelligent des opérations bancaires complexes.<br>
+               • <strong>Dashboard web ergonomique :</strong> Interface visuelle claire offrant aux équipes financières des métriques actionnables et la justification automatisée des écarts.<br>
+               • <strong>Gain de temps considérable :</strong> Suppression des processus manuels chronophages et prévention des pertes financières.</p>"
+               data-tech="Python,SQL,Data Engineering,Pandas,NumPy,Angular,TypeScript,HTML/CSS,PHP,Laravel"
+               data-live-url="#"
+               data-repo-url="#"
+               data-company="Orange Finances Mobiles"
+               data-company-logo="images/daily_logoofms_cropped.png">
+        
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-800 text-[11px] font-semibold tracking-wide">
+              FinTech · Orange Finances Mobiles
+            </span>
+            <img src="images/daily_logoofms_cropped.png" alt="Orange Finances Mobiles" class="h-6 w-auto object-contain">
+          </div>
+
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4">
+            <img src="images/daily_logo.png" alt="Orange Reconciliation Solution" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] font-medium backdrop-blur-xs flex items-center gap-1">
+              <span>📹</span> <span>Démo Vidéo</span>
+            </span>
+          </div>
+
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            Réconciliation Bancaire FinTech
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">Orange Finances Mobiles · Dakar</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Pipeline de données automatisé et tableau de bord ergonomique pour la réconciliation et la justification d'écarts transactionnels.
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Angular</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ================= PROJECT 6: ESTIA - Piloustia IoT Dispenser ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="school"
+               data-title="Piloustia - Automatic Pill Dispenser IoT System"
+               data-youtube-id="_E-y-EULsg0"
+               data-video-description="La vidéo de démonstration montre le prototype fonctionnel complet : contrôle via l'application mobile Android, distribution automatique par servomoteurs et mécanismes de sécurité."
+               data-images="images/piloustia/prototype1.png, images/piloustia/prototype2.png, images/piloustia/CAO+.png, images/piloustia/CAO.png, images/piloustia/digicode.png"
+               data-description="<p>Projet collaboratif à l'<strong>ESTIA</strong> : conception intégrale d'un distributeur automatique de médicaments connecté (IoT) dédié à l'amélioration de l'observance thérapeutique des patients.</p>
+               <br>
+               <p><strong>Mes contributions techniques :</strong><br>
+               • <strong>Conception mécanique CAO & 3D :</strong> Modélisation 3D complète des mécanismes internes et fabrication par impression 3D.<br>
+               • <strong>Génie électrique :</strong> Conception du circuit, routage et soudure de l'électronique de commande.<br>
+               • <strong>Programmation embarquée :</strong> Développement C++ Arduino pour le pilotage précis des servomoteurs et capteurs.<br>
+               • <strong>Application mobile Android :</strong> Interface de commande Bluetooth pour la programmation des rappels et le suivi des prises.</p>"
+               data-tech="Arduino,C++,3D Printing,CAD Design,Circuit Design,MIT App Inventor,Android,IoT,Bluetooth,Servo Motors,Healthcare Tech"
+               data-live-url="#"
+               data-repo-url="https://github.com/thatgirlAm/Arduino-project-automatic-pill-dispenser"
+               data-school="ESTIA"
+               data-school-logo="images/estia_logo.png">
+        
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-800 text-[11px] font-semibold tracking-wide">
+              IoT & Santé · ESTIA
+            </span>
+            <img src="images/estia_logo.png" alt="ESTIA" class="h-6 w-auto object-contain">
+          </div>
+
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4">
+            <img src="images/piloustia/logo.png" alt="Piloustia IoT Dispenser" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] font-medium backdrop-blur-xs flex items-center gap-1">
+              <span>📹</span> <span>Démo Vidéo</span>
+            </span>
+            <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md bg-white/90 text-[var(--muted)] text-[10px] font-medium shadow-xs">
+              🖼️ 5 Photos CAO
+            </span>
+          </div>
+
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            Piloustia : Distributeur IoT
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">ESTIA Institute of Technology</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Dispositif médical connecté IoT pour l'observance thérapeutique avec prototype imprimé en 3D, Arduino et appli mobile.
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">Arduino</span>
+            <span class="tag">C++</span>
+            <span class="tag">Impression 3D</span>
+            <span class="tag">IoT</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ================= PROJECT 7: Dassault Aviation UAV Challenge ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="school"
+               data-title="Dassault Aviation UAV Challenge - Autonomous Drone Control System"
+               data-images="images/UAV_scr3_ the_team.jpeg, images/UAV_scr1_body_of_the_drone.jpeg, images/UAV_scr2_assembling_the_drone.jpeg"
+               data-description="<p>Participation au challenge national prestigieux <strong>Dassault Aviation UAV Challenge</strong> où notre équipe a décroché la <strong>4e place</strong> parmi les meilleures écoles d'ingénieurs et universités participantes.</p>
+               <br>
+               <p><strong>Missions réalisées :</strong><br>
+               • <strong>Simulations robotiques complexes :</strong> Prise en main et exécution d'environnements de simulation sous Gazebo.<br>
+               • <strong>Contrôle au sol autonome :</strong> Optimisation des protocoles d'opération autonome du drone pour les phases critiques de largage de charge utile.<br>
+               • <strong>Stack technique UAV :</strong> Intégration de ROS (Robot Operating System), PX4 Autopilot et QGround Control pour la planification de trajectoires en temps réel.</p>"
+               data-tech="Gazebo,Qt,C++,QGround Control,PX4,ROS,Drone Robotics,Simulation,Autonomous Systems"
+               data-live-url="#"
+               data-repo-url="https://github.com/thatgirlAm/SITL-controling-your-autonomous-drone-with-dronekit"
+               data-company="Dassault Aviation"
+               data-company-logo="images/logo dassault aviation.png"
+               data-school="ESTIA"
+               data-school-logo="images/estia_logo.png">
+        
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 text-[11px] font-semibold tracking-wide">
+              Compétition · 4e Place Nationale
+            </span>
+            <div class="flex items-center gap-1.5">
+              <img src="images/logo dassault aviation.png" alt="Dassault Aviation" class="h-5 w-auto object-contain">
+              <img src="images/estia_logo.png" alt="ESTIA" class="h-5 w-auto object-contain">
+            </div>
+          </div>
+
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4">
+            <img src="images/UAV_scr3_ the_team.jpeg" alt="UAV Challenge Team" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md bg-white/90 text-[var(--muted)] text-[10px] font-medium shadow-xs">
+              🖼️ 3 Photos
+            </span>
+          </div>
+
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            Dassault UAV Drone Challenge
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">Dassault Aviation & ESTIA</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Système de contrôle autonome de drone avec simulation Gazebo, ROS, PX4 et largage de charge utile (4e place nationale).
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">ROS</span>
+            <span class="tag">PX4</span>
+            <span class="tag">Gazebo</span>
+            <span class="tag">C++</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ================= PROJECT 8: ESTIA - IELTS Automation ================= -->
+      <article class="project-card interactive-card p-6 flex flex-col justify-between cursor-pointer group"
+               data-category="school"
+               data-title="IELTS Smart De-anonymization Automation Solution"
+               data-images="images/python_logo.png"
+               data-description="<p>Conception et développement d'une <strong>application bureautique moderne en Python</strong> pour automatiser le processus de désanonymisation des épreuves d'examen de l'IELTS pour l'administration de l'ESTIA.</p>
+               <br>
+               <p><strong>Bénéfices majeurs :</strong><br>
+               • <strong>Traitement intelligent de données :</strong> Parsing automatisé multi-formats Excel via <code>openpyxl</code> et <code>pandas</code>.<br>
+               • <strong>Algorithmes de réconciliation :</strong> Identification et correspondance automatique des étudiants, réduisant le traitement de plusieurs heures à quelques minutes.<br>
+               • <strong>Élimination des erreurs humaines :</strong> 100% de fiabilité sur la transcription des données et reporting d'audit complet.<br>
+               • <strong>Interface graphique Tkinter :</strong> Prise en main immédiate et autonome par les équipes administratives non-techniques.</p>"
+               data-tech="Python,Tkinter,openpyxl,pandas,Excel Automation,GUI Development,Data Processing"
+               data-live-url="#"
+               data-repo-url="#"
+               data-school="ESTIA"
+               data-school-logo="images/estia_logo.png">
+        
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-stone-100 text-stone-800 text-[11px] font-semibold tracking-wide">
+              Automatisation · Outil Interne ESTIA
+            </span>
+            <img src="images/estia_logo.png" alt="ESTIA" class="h-6 w-auto object-contain">
+          </div>
+
+          <div class="relative h-44 rounded-2xl overflow-hidden bg-stone-100 border border-[var(--border-light)] mb-4 flex items-center justify-center p-4">
+            <img src="images/python_logo.png" alt="Python IELTS Solution" class="max-h-28 w-auto object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+
+          <h2 class="serif text-lg font-semibold text-[var(--text)] group-hover:text-[var(--bordeaux)] transition-colors leading-snug mb-1.5">
+            Automatisation IELTS Smart Solution
+          </h2>
+          <p class="text-xs font-medium text-[var(--bordeaux)] mb-3">ESTIA Institute of Technology</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+            Application bureautique Python optimisant la désanonymisation des examens IELTS avec suppression totale des erreurs administratives.
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] mt-4">
+          <div class="flex flex-wrap gap-1 mb-3">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Tkinter</span>
+            <span class="tag">Excel</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs font-semibold text-[var(--bordeaux)]">
+            <span data-i18n="card-details">Détails & Galerie →</span>
+            <span class="w-6 h-6 rounded-full bg-[var(--bordeaux-light)] flex items-center justify-center group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Empty state for filters (hidden by default) -->
+    <div id="no-projects" class="hidden text-center py-16 bg-white border border-[var(--border)] rounded-3xl p-8">
+      <p class="serif text-xl font-medium text-[var(--muted)]">Aucun projet ne correspond à cette sélection.</p>
+    </div>
+
+  </main>
+
+
+  <!-- ================= PROJECT MODAL ================= -->
+  <div id="project-modal" class="modal-container" role="dialog" aria-modal="true">
+    <div id="modal-overlay" class="modal-overlay"></div>
+    
+    <div class="modal-content-box p-6 sm:p-8">
+      <!-- Close Button -->
+      <button id="close-modal-btn" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-[var(--text)] flex items-center justify-center transition cursor-pointer z-20" aria-label="Fermer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="pr-12 mb-6">
+        <div class="flex flex-wrap items-center gap-2.5 mb-2">
+          <span id="modal-category-tag" class="px-2.5 py-1 rounded-full bg-[var(--bordeaux-subtle)] text-[var(--bordeaux)] text-xs font-semibold tracking-wide"></span>
+          <div id="modal-organization-info" class="flex items-center gap-1.5 text-xs text-[var(--muted)] font-medium">
+            <img id="modal-organization-logo" src="" alt="" class="h-4 w-auto object-contain">
+            <span id="modal-organization-name"></span>
+          </div>
+        </div>
+        <h2 id="modal-title" class="serif text-2xl sm:text-3xl font-medium text-[var(--text)] leading-tight"></h2>
+      </div>
+
+      <!-- Media Section (Videos + Gallery) -->
+      <div id="modal-gallery" class="mb-6 rounded-2xl overflow-hidden border border-[var(--border)] bg-stone-900">
+        
+        <!-- Media Type Selector Tabs (Video vs Images) -->
+        <div id="media-tabs" class="flex items-center gap-2 p-3 bg-stone-800/90 border-b border-stone-700 text-xs">
+          <button id="video-tab" class="px-3.5 py-1.5 rounded-full font-medium transition cursor-pointer bg-white text-stone-900 shadow-xs" data-i18n="modal-tab-video">
+            📹 Démo Vidéo
+          </button>
+          <button id="images-tab" class="px-3.5 py-1.5 rounded-full font-medium transition cursor-pointer text-stone-300 hover:text-white hover:bg-stone-700/60" data-i18n="modal-tab-images">
+            🖼️ Galerie Photos
+          </button>
+        </div>
+
+        <!-- Video Player Sub-tabs (e.g. Demo vs Teaser) -->
+        <div id="video-sub-tabs" class="hidden flex items-center gap-2 p-2 bg-stone-900 border-b border-stone-800 text-xs overflow-x-auto"></div>
+
+        <!-- YouTube Video Container -->
+        <div id="modal-youtube-container" class="relative aspect-video bg-black">
+          <iframe id="modal-youtube-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video description caption -->
+        <div id="video-description" class="hidden p-3.5 bg-stone-800/80 border-t border-stone-700 text-xs text-stone-300 leading-relaxed">
+          <p id="video-description-text"></p>
+        </div>
+
+        <!-- Images Carousel Container -->
+        <div id="modal-image-container" class="hidden relative aspect-video bg-stone-950 flex items-center justify-center">
+          <img id="modal-image" src="" alt="" class="max-h-full max-w-full object-contain cursor-zoom-in">
+          
+          <!-- Prev / Next Navigation Buttons -->
+          <button id="prev-btn" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-xs transition cursor-pointer" aria-label="Précédent">‹</button>
+          <button id="next-btn" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-xs transition cursor-pointer" aria-label="Suivant">›</button>
+
+          <!-- Image Counter -->
+          <span id="image-counter" class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/70 text-white text-[11px] font-medium backdrop-blur-xs">1 / 1</span>
+
+          <!-- Zoom in lightbox helper -->
+          <button id="modal-image-zoom-btn" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-black/70 hover:bg-black/90 text-white text-[11px] font-medium backdrop-blur-xs flex items-center gap-1.5 transition cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            <span>Agrandir</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Description Content -->
+      <div class="space-y-4 mb-6">
+        <h3 class="serif text-lg font-semibold text-[var(--text)]" data-i18n="modal-about">À propos de ce projet</h3>
+        <div id="modal-description" class="text-xs sm:text-sm text-[var(--muted)] leading-relaxed space-y-2"></div>
+      </div>
+
+      <!-- Technologies -->
+      <div class="space-y-2 mb-6">
+        <h3 class="serif text-lg font-semibold text-[var(--text)]" data-i18n="modal-tech-title">Technologies & Outils</h3>
+        <div id="modal-tech" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <!-- External Links / Action buttons -->
+      <div id="modal-links" class="flex flex-wrap items-center gap-3 pt-4 border-t border-[var(--border)]"></div>
+
+    </div>
+  </div>
+
+
+  <!-- ================= IMAGE LIGHTBOX ================= -->
+  <div id="image-lightbox" class="lightbox-container" role="dialog" aria-modal="true">
+    <div id="lightbox-overlay" class="lightbox-overlay"></div>
+    <div class="relative z-10 max-w-5xl max-h-[92vh] w-full flex flex-col items-center p-2">
+      <button id="lightbox-close" class="absolute -top-3 -right-3 sm:top-2 sm:right-2 w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition cursor-pointer z-20" aria-label="Fermer l'agrandissement">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-black flex items-center justify-center max-h-[80vh] w-full">
+        <img id="lightbox-img" src="" alt="" class="max-h-[80vh] max-w-full object-contain">
+      </div>
+      <div class="mt-3 text-center text-white/90 text-xs sm:text-sm font-medium flex items-center gap-2">
+        <span id="lightbox-tag" class="px-2 py-0.5 rounded-full bg-white/20 text-[10px] uppercase tracking-wider font-semibold"></span>
+        <span id="lightbox-caption"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================= SUBTLE DIVIDER ================= -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-4 py-6">
+      <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
+      <div class="flex items-center gap-2 opacity-40 text-[var(--bordeaux)]">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+        <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+      </div>
+      <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
+    </div>
+  </div>
+
+
+  <!-- ================= CLASSY FOOTER ================= -->
+  <footer class="border-t border-[var(--border)] bg-white/60 py-12 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex flex-col items-center md:items-start gap-1">
+        <span class="serif font-semibold text-lg text-[var(--text)]">[Amaëlle DIOP]</span>
+        <p class="text-xs text-[var(--muted)] italic">
+          « L'excellence technique prend toute sa valeur lorsqu'elle sert l'éthique et la transmission. »
+        </p>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-[var(--muted)] font-medium">
+        <a href="index.html#accueil" class="hover:text-[var(--bordeaux)] transition">Accueil</a>
+        <a href="index.html#talk" class="hover:text-[var(--bordeaux)] transition">Le Talk</a>
+        <a href="projects.html" class="text-[var(--bordeaux)] font-semibold">Projets</a>
+        <a href="index.html#evenements" class="hover:text-[var(--bordeaux)] transition">Événements</a>
+        <a href="index.html#contact" class="hover:text-[var(--bordeaux)] transition">Contact</a>
+      </div>
+
+      <div class="text-xs text-[var(--muted)]">
+        © <span id="year">2026</span> Amaëlle DIOP · Tous droits réservés
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // ================= 1. Translations Dictionary =================
+    const translations = {
+      fr: {
+        "nav-home": "Accueil",
+        "nav-talk": "Le Talk",
+        "nav-projects": "Projets",
+        "nav-events": "Événements",
+        "nav-contact": "Contact",
+        "nav-cv": "Mon CV",
+        "nav-cta": "Me contacter",
+        "cv-fr-short": "Format Synthétique (1 page)",
+        "cv-fr-full": "Format Complet Détaillé",
+        "cv-en-full": "Full Detailed Resume",
+        "back-to-home": "← Retour à l'accueil",
+        "page-badge": "✦ Répertoire Complet",
+        "page-title": "Projets & Expériences",
+        "page-desc": "Explorez l'ensemble de mes travaux en R&D logicielle, automatisation de test, modèles d'intelligence artificielle, robotique et développement full-stack.",
+        "stat-projects": "8 Projets documentés",
+        "stat-videos": "5 Démos vidéo interactives",
+        "stat-research": "1 Article de recherche pré-publié",
+        "filter-all": "Tous les projets (8)",
+        "filter-pro": "Expériences Professionnelles (4)",
+        "filter-academic": "Recherche & Académique (4)",
+        "card-details": "Détails & Galerie →",
+        "modal-tab-video": "📹 Démo Vidéo",
+        "modal-tab-images": "🖼️ Galerie Photos",
+        "modal-about": "À propos de ce projet",
+        "modal-tech-title": "Technologies & Outils"
+      },
+      en: {
+        "nav-home": "Home",
+        "nav-talk": "The Talk",
+        "nav-projects": "Projects",
+        "nav-events": "Events",
+        "nav-contact": "Contact",
+        "nav-cv": "My Resume",
+        "nav-cta": "Get in touch",
+        "cv-fr-short": "Summary Resume (1 page)",
+        "cv-fr-full": "Comprehensive CV (FR)",
+        "cv-en-full": "Full Detailed Resume (EN)",
+        "back-to-home": "← Back to Home",
+        "page-badge": "✦ Full Portfolio",
+        "page-title": "Projects & Experience",
+        "page-desc": "Explore all my work in software R&D, test automation, applied AI models, robotics, and full-stack development.",
+        "stat-projects": "8 Documented projects",
+        "stat-videos": "5 Interactive video demos",
+        "stat-research": "1 Pre-print research paper",
+        "filter-all": "All Projects (8)",
+        "filter-pro": "Professional (4)",
+        "filter-academic": "Academic & Research (4)",
+        "card-details": "Details & Gallery →",
+        "modal-tab-video": "📹 Demo Video",
+        "modal-tab-images": "🖼️ Photo Gallery",
+        "modal-about": "About this project",
+        "modal-tech-title": "Technologies & Tools"
+      }
+    };
+
+    let currentLang = localStorage.getItem('preferred_lang') || 'fr';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('preferred_lang', lang);
+      document.documentElement.lang = lang;
+
+      const flag = document.getElementById('lang-flag');
+      const label = document.getElementById('lang-label');
+      const mobileBtn = document.getElementById('mobile-lang-btn');
+
+      if (lang === 'en') {
+        if (flag) flag.textContent = '🇫🇷';
+        if (label) label.textContent = 'FR';
+        if (mobileBtn) mobileBtn.textContent = 'FR';
+      } else {
+        if (flag) flag.textContent = '🇬🇧';
+        if (label) label.textContent = 'EN';
+        if (mobileBtn) mobileBtn.textContent = 'EN';
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    const langBtn = document.getElementById('lang-switch-btn');
+    const mobileLangBtn = document.getElementById('mobile-lang-btn');
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        setLanguage(currentLang === 'fr' ? 'en' : 'fr');
+      });
+    }
+    if (mobileLangBtn) {
+      mobileLangBtn.addEventListener('click', () => {
+        setLanguage(currentLang === 'fr' ? 'en' : 'fr');
+      });
+    }
+
+    // Set initial language
+    setLanguage(currentLang);
+
+
+    // ================= 2. Scroll Progress =================
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
+      if (progressBar) progressBar.style.width = progress + '%';
+    });
+
+
+    // ================= 3. Scroll Reveal Animations =================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+    // ================= 4. Mobile Menu Toggle =================
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+
+    // ================= 5. CV Dropdown Click Toggle & Outside Click =================
+    document.querySelectorAll('.cv-dropdown-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const menu = btn.closest('.group\\/cv')?.querySelector('.cv-dropdown-menu');
+        if (menu) menu.classList.toggle('is-open');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.group\\/cv')) {
+        document.querySelectorAll('.cv-dropdown-menu').forEach(m => m.classList.remove('is-open'));
+      }
+    });
+
+
+    // ================= 6. Card Mouse Sheen Tracking =================
+    document.querySelectorAll('.interactive-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+
+    // ================= 7. Filter Tabs Logic =================
+    const filterBtns = document.querySelectorAll('.filter-pill');
+    const projectCards = document.querySelectorAll('.project-card');
+    const noProjectsState = document.getElementById('no-projects');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (noProjectsState) {
+          if (visibleCount === 0) {
+            noProjectsState.classList.remove('hidden');
+          } else {
+            noProjectsState.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+
+    // ================= 8. Modal & Media Gallery Logic =================
+    const modal = document.getElementById('project-modal');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalTech = document.getElementById('modal-tech');
+    const modalLinks = document.getElementById('modal-links');
+    const modalImage = document.getElementById('modal-image');
+    const modalImageContainer = document.getElementById('modal-image-container');
+    const modalYoutubeContainer = document.getElementById('modal-youtube-container');
+    const modalYoutubeIframe = document.getElementById('modal-youtube-iframe');
+    const videoDescription = document.getElementById('video-description');
+    const videoDescriptionText = document.getElementById('video-description-text');
+    const videoSubTabs = document.getElementById('video-sub-tabs');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const mediaTabs = document.getElementById('media-tabs');
+    const videoTab = document.getElementById('video-tab');
+    const imagesTab = document.getElementById('images-tab');
+    const imageCounter = document.getElementById('image-counter');
+
+    let currentImages = [];
+    let currentIndex = 0;
+    let currentYouTubeIds = [];
+    let currentYouTubeTitles = [];
+    let currentVideoDescriptions = [];
+    let currentVideoIndex = 0;
+    let currentMediaType = 'video';
+
+    function showVideo() {
+      currentMediaType = 'video';
+      if (modalImageContainer) modalImageContainer.classList.add('hidden');
+      if (modalYoutubeContainer) modalYoutubeContainer.classList.remove('hidden');
+      
+      if (videoTab) {
+        videoTab.className = 'px-3.5 py-1.5 rounded-full font-medium transition cursor-pointer bg-white text-stone-900 shadow-xs';
+      }
+      if (imagesTab) {
+        imagesTab.className = 'px-3.5 py-1.5 rounded-full font-medium transition cursor-pointer text-stone-300 hover:text-white hover:bg-stone-700/60';
+      }
+
+      if (currentYouTubeIds.length > 0) {
+        modalYoutubeIframe.src = `https://www.youtube.com/embed/${currentYouTubeIds[currentVideoIndex]}?enablejsapi=1&rel=0`;
+        if (currentVideoDescriptions[currentVideoIndex]) {
+          videoDescriptionText.textContent = currentVideoDescriptions[currentVideoIndex];
+          videoDescription.classList.remove('hidden');
+        } else {
+          videoDescription.classList.add('hidden');
+        }
+      }
+    }
+
+    function showImages() {
+      currentMediaType = 'images';
+      if (modalYoutubeContainer) modalYoutubeContainer.classList.add('hidden');
+      if (modalImageContainer) modalImageContainer.classList.remove('hidden');
+      if (modalYoutubeIframe) modalYoutubeIframe.src = '';
+      if (videoDescription) videoDescription.classList.add('hidden');
+
+      if (imagesTab) {
+        imagesTab.className = 'px-3.5 py-1.5 rounded-full font-medium transition cursor-pointer bg-white text-stone-900 shadow-xs';
+      }
+      if (videoTab) {
+        videoTab.className = 'px-3.5 py-1.5 rounded-full font-medium transition cursor-pointer text-stone-300 hover:text-white hover:bg-stone-700/60';
+      }
+
+      if (currentImages.length > 0) {
+        modalImage.src = currentImages[currentIndex].trim();
+        modalImage.alt = modalTitle.textContent || 'Projet';
+        if (imageCounter) {
+          imageCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+          imageCounter.classList.toggle('hidden', currentImages.length <= 1);
+        }
+        if (prevBtn) prevBtn.classList.toggle('hidden', currentImages.length <= 1);
+        if (nextBtn) nextBtn.classList.toggle('hidden', currentImages.length <= 1);
+      }
+    }
+
+    function createVideoSubTabs() {
+      if (!videoSubTabs) return;
+      videoSubTabs.innerHTML = '';
+      if (currentYouTubeIds.length > 1) {
+        videoSubTabs.classList.remove('hidden');
+        currentYouTubeIds.forEach((id, index) => {
+          const tab = document.createElement('button');
+          tab.className = `px-3 py-1 rounded-full text-xs font-medium transition cursor-pointer ${
+            index === currentVideoIndex ? 'bg-white text-stone-900' : 'text-stone-400 hover:text-white'
+          }`;
+          tab.textContent = currentYouTubeTitles[index] || `Vidéo ${index + 1}`;
+          tab.addEventListener('click', () => {
+            currentVideoIndex = index;
+            createVideoSubTabs();
+            showVideo();
+          });
+          videoSubTabs.appendChild(tab);
+        });
+      } else {
+        videoSubTabs.classList.add('hidden');
+      }
+    }
+
+    function showNextImage() {
+      if (currentMediaType === 'images' && currentImages.length > 1) {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        modalImage.src = currentImages[currentIndex].trim();
+        imageCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+      }
+    }
+
+    function showPrevImage() {
+      if (currentMediaType === 'images' && currentImages.length > 1) {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        modalImage.src = currentImages[currentIndex].trim();
+        imageCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+      }
+    }
+
+    function openModal(data) {
+      modalTitle.textContent = data.title || 'Projet';
+      modalDescription.innerHTML = data.description || '';
+
+      // Category tag
+      const categoryTag = document.getElementById('modal-category-tag');
+      if (categoryTag) {
+        const isPro = data.category === 'professional';
+        if (currentLang === 'en') {
+          categoryTag.textContent = isPro ? 'Professional Experience' : 'Academic Research';
+        } else {
+          categoryTag.textContent = isPro ? 'Expérience Professionnelle' : 'Recherche Académique';
+        }
+      }
+
+      // Organization info
+      const orgInfo = document.getElementById('modal-organization-info');
+      const orgLogo = document.getElementById('modal-organization-logo');
+      const orgName = document.getElementById('modal-organization-name');
+      const orgTitle = data.company || data.school;
+      const orgImg = data.companyLogo || data.schoolLogo;
+
+      if (orgInfo && orgTitle) {
+        orgName.textContent = orgTitle;
+        if (orgImg) {
+          orgLogo.src = orgImg;
+          orgLogo.alt = orgTitle;
+          orgLogo.classList.remove('hidden');
+        } else {
+          orgLogo.classList.add('hidden');
+        }
+        orgInfo.classList.remove('hidden');
+      } else if (orgInfo) {
+        orgInfo.classList.add('hidden');
+      }
+
+      // Tech tags
+      modalTech.innerHTML = '';
+      if (data.tech) {
+        data.tech.split(',').forEach(tag => {
+          const span = document.createElement('span');
+          span.className = 'tag';
+          span.textContent = tag.trim();
+          modalTech.appendChild(span);
+        });
+      }
+
+      // Action links
+      modalLinks.innerHTML = '';
+      const liveText = currentLang === 'en' ? 'View Live Project' : 'Voir le projet en ligne';
+      const repoText = currentLang === 'en' ? 'Source Code' : 'Code source GitHub';
+      const paperText = currentLang === 'en' ? 'Research Paper (Pre-print)' : 'Article de Recherche (Pre-print)';
+
+      if (data.liveUrl && data.liveUrl !== '#') {
+        const a = document.createElement('a');
+        a.href = data.liveUrl;
+        a.target = '_blank';
+        a.className = 'pill-btn pill-btn-primary text-xs !py-2 !px-4';
+        a.innerHTML = `<span>${liveText}</span> ↗`;
+        modalLinks.appendChild(a);
+      }
+      if (data.repoUrl && data.repoUrl !== '#') {
+        const a = document.createElement('a');
+        a.href = data.repoUrl;
+        a.target = '_blank';
+        a.className = 'pill-btn pill-btn-secondary text-xs !py-2 !px-4';
+        a.innerHTML = `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> <span>${repoText}</span> ↗`;
+        modalLinks.appendChild(a);
+      }
+      if (data.paperUrl && data.paperUrl !== '#') {
+        const a = document.createElement('a');
+        a.href = data.paperUrl;
+        a.target = '_blank';
+        a.className = 'pill-btn pill-btn-secondary text-xs !py-2 !px-4';
+        a.innerHTML = `<span>${paperText}</span> ↗`;
+        modalLinks.appendChild(a);
+      }
+
+      // Close button inside modal links for convenience
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'pill-btn pill-btn-secondary text-xs !py-2 !px-4 ml-auto cursor-pointer';
+      closeBtn.textContent = currentLang === 'en' ? 'Close' : 'Fermer';
+      closeBtn.addEventListener('click', closeModal);
+      modalLinks.appendChild(closeBtn);
+
+      // Media parsing
+      currentImages = data.images ? data.images.split(',').map(s => s.trim()).filter(Boolean) : [];
+      if (data.youtubeIds) {
+        currentYouTubeIds = data.youtubeIds.split(',').map(s => s.trim()).filter(Boolean);
+        currentYouTubeTitles = data.youtubeTitles ? data.youtubeTitles.split(',').map(s => s.trim()).filter(Boolean) : currentYouTubeIds.map((_, i) => `Vidéo ${i + 1}`);
+        currentVideoDescriptions = data.videoDescriptions ? data.videoDescriptions.split(',').map(s => s.trim()).filter(Boolean) : [];
+      } else if (data.youtubeId) {
+        currentYouTubeIds = [data.youtubeId.trim()];
+        currentYouTubeTitles = ['Démo'];
+        currentVideoDescriptions = data.videoDescription ? [data.videoDescription] : [];
+      } else {
+        currentYouTubeIds = [];
+        currentYouTubeTitles = [];
+        currentVideoDescriptions = [];
+      }
+
+      currentVideoIndex = 0;
+      currentIndex = 0;
+      createVideoSubTabs();
+
+      const galleryContainer = document.getElementById('modal-gallery');
+      if (currentYouTubeIds.length > 0 && currentImages.length > 0) {
+        galleryContainer.classList.remove('hidden');
+        mediaTabs.classList.remove('hidden');
+        videoTab.classList.remove('hidden');
+        imagesTab.classList.remove('hidden');
+        showVideo();
+      } else if (currentYouTubeIds.length > 0) {
+        galleryContainer.classList.remove('hidden');
+        mediaTabs.classList.add('hidden');
+        showVideo();
+      } else if (currentImages.length > 0) {
+        galleryContainer.classList.remove('hidden');
+        mediaTabs.classList.add('hidden');
+        showImages();
+      } else {
+        galleryContainer.classList.add('hidden');
+      }
+
+      modal.classList.add('active');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.classList.remove('overflow-hidden');
+      if (modalYoutubeIframe) modalYoutubeIframe.src = '';
+    }
+
+    // Attach click listeners to cards
+    projectCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(card.dataset);
+      });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      } else if (e.key === 'ArrowRight' && modal.classList.contains('active')) {
+        showNextImage();
+      } else if (e.key === 'ArrowLeft' && modal.classList.contains('active')) {
+        showPrevImage();
+      }
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevImage(); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNextImage(); });
+    if (videoTab) videoTab.addEventListener('click', showVideo);
+    if (imagesTab) imagesTab.addEventListener('click', showImages);
+
+
+    // ================= 9. Fullscreen Lightbox Logic =================
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxOverlay = document.getElementById('lightbox-overlay');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxTag = document.getElementById('lightbox-tag');
+
+    function openLightbox(src, caption, tag) {
+      if (!lightbox || !lightboxImg || !src) return;
+      lightboxImg.src = src;
+      lightboxImg.alt = caption || 'Photo agrandie';
+      lightboxCaption.textContent = caption || '';
+      if (tag) {
+        lightboxTag.textContent = tag;
+        lightboxTag.classList.remove('hidden');
+      } else {
+        lightboxTag.classList.add('hidden');
+      }
+      lightbox.classList.add('active');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.remove('active');
+      if (!modal || !modal.classList.contains('active')) {
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+
+    const modalZoomBtn = document.getElementById('modal-image-zoom-btn');
+    if (modalImage) {
+      modalImage.addEventListener('click', () => {
+        if (modalImage.src) {
+          const title = modalTitle.textContent || 'Projet';
+          const counter = imageCounter && !imageCounter.classList.contains('hidden') ? ` (${imageCounter.textContent})` : '';
+          openLightbox(modalImage.src, `${title}${counter}`, 'Galerie Projet');
+        }
+      });
+    }
+    if (modalZoomBtn) {
+      modalZoomBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (modalImage && modalImage.src) {
+          const title = modalTitle.textContent || 'Projet';
+          const counter = imageCounter && !imageCounter.classList.contains('hidden') ? ` (${imageCounter.textContent})` : '';
+          openLightbox(modalImage.src, `${title}${counter}`, 'Galerie Projet');
+        }
+      });
+    }
+
+    // Dynamic Year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>

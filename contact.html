@@ -1,88 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - [Amaëlle DIOP]</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact · [Amaëlle DIOP] · Software Engineer</title>
+  <meta http-equiv="refresh" content="0; url=index.html#contact">
+  <link rel="canonical" href="index.html#contact">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google Fonts: Fraunces (serif) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,50..100;1,9..144,300..700,50..100&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --bordeaux: #6E1F2B;
+      --bordeaux-dark: #52151F;
+      --bordeaux-light: #F4EBEA;
+      --text: #242220;
+      --muted: #6B665E;
+      --border: #E8E2D8;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+    }
+    .serif { font-family: var(--serif); }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center p-6 text-center">
 
-    <header class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="CV/profile.png" alt="Amaëlle DIOP" class="profile-pic">
-                <span>[Amaëlle DIOP]</span>
-            </a>
-            
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                   <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">CV <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu cv-vertical">
-                            <li class="language-header">🇫🇷 French</li>
-                            <li><a href="CV/fr-cv-single-page.html" target="_blank">Short Version</a></li>
-                            <li><a href="CV/fr-cv-index.html" target="_blank">Full Version</a></li>
-                            <li class="language-header">🇺🇸 English</li>
-                            <li><a href="CV/cv_index_en.html" target="_blank">Full Version</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <div class="max-w-md bg-white border border-[var(--border)] rounded-3xl p-8 shadow-xl">
+    <div class="w-16 h-16 mx-auto rounded-full overflow-hidden border-2 border-[var(--bordeaux)] mb-4 shadow-sm">
+      <img src="images/picture-self.jpeg" alt="Amaëlle Diop" class="w-full h-full object-cover">
+    </div>
+    <h1 class="serif text-2xl font-semibold text-[var(--text)] mb-2">Prendre Contact</h1>
+    <p class="text-sm text-[var(--muted)] mb-6">
+      Redirection automatique vers la section Contact du portfolio...
+    </p>
+    <a href="index.html#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--bordeaux)] text-white text-sm font-medium hover:bg-[var(--bordeaux-dark)] transition shadow-md">
+      <span>Accéder au formulaire de contact</span>
+      <span>→</span>
+    </a>
+  </div>
 
-    <main>
-        <section id="contact" class="container">
-            <h1 class="section-title fade-in">Get In Touch</h1>
-            <p class="contact-intro fade-in">I'm currently open to new opportunities. Feel free to send me a message!</p>
-            
-            <div id="success-message" class="success-message" style="display: none;">
-                <p>✅ Thank you! Your message has been sent successfully. I'll get back to you soon!</p>
-            </div>
-            
-            <form action="https://formspree.io/f/xovkkavp" method="POST" class="contact-form fade-in">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="_replyto" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
-                </div>
-                <input type="hidden" name="_subject" value="New contact form submission">
-                <input type="hidden" name="_next" value="https://thatgirlam.github.io/contact.html?success=1">
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 [Amaëlle DIOP]. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+  <script>
+    window.location.replace("index.html#contact");
+  </script>
 </body>
 </html>
