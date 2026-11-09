@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Amaëlle DIOP - CV]</title>
     <link rel="stylesheet" href="style-fr.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Floating action bar for PDF download and return to site (hidden on print) -->
+    <div class="no-print" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.2);padding:6px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border:1px solid #E5E0D8;border-radius:9999px;">
+        <button type="button" onclick="window.print()" style="background:#6E1F2B;color:#FFFFFF;border:none;padding:10px 20px;border-radius:9999px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:system-ui,-apple-system,sans-serif;transition:all 0.2s ease;box-shadow:0 2px 8px rgba(110,31,43,0.35);">
+            <span>🖨️ Download as PDF / Print</span>
+        </button>
+        <a href="../index.html" style="background:#EADBCE;color:#1C1917;border:1px solid #E5E0D8;padding:10px 16px;border-radius:9999px;font-size:13px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:system-ui,-apple-system,sans-serif;transition:all 0.2s ease;">
+            <span>← Back to Portfolio</span>
+        </a>
+    </div>
+    <style>
+    @media print {
+        .no-print { display: none !important; }
+    }
+    </style>
+
     <div class="cv-container">
         <!-- ===== HEADER HORIZONTAL (PHOTO + CONTACT) ===== -->
         <header class="cv-header">
             <div class="profile-section">
-                <!-- <img src="profile.png" alt="Photo of Amaëlle DIOP" class="profile-picture"> -->
+                <img src="picture-self.jpeg" alt="Photo of Amaëlle DIOP" class="profile-picture">
                 <div class="profile-info">
                     <h1 class="name">[Amaëlle DIOP]</h1>
-                    <h2 class="title">Junior Software Engineer</h2>
+                    <h2 class="title">Software Engineer</h2>
                 </div>
             </div>
             
@@ -183,11 +201,11 @@
                 <h3 class="footer-title">Skills</h3>
                 <ul>
                     <li><strong>Languages:</strong> Python, JavaScript, HTML/CSS, SQL, PHP, TypeScript, Java, C++</li>
-                    <li><strong>Frameworks:</strong> Angular, PyTest, Laravel, React, Laravel</li>
-                    <li><strong>Tools:</strong> Git, Docker, Qt Creator, Arduino</li>
+                    <li><strong>Frameworks:</strong> Angular, PyTest, Laravel, React, Node.js, Playwright</li>
+                    <li><strong>Tools:</strong> Git, GitLab CI/CD, Jenkins, Docker, Qt Creator, Arduino</li>
                     <li><strong>Databases:</strong> PostgreSQL, MySQL, SQL</li>
                     <li><strong>Cloud:</strong> AWS, Azure Cloud, Google Cloud</li>
-                    <li><strong>Methods:</strong> Agile, Machine Learning, Computer Vision, Automation</li>
+                    <li><strong>Methods:</strong> Agile, Machine Learning, Computer Vision, LLM as a Judge, AI Assistants, Automation</li>
                 </ul>
             </div>
 

@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Amaëlle DIOP - CV Compact]</title>
     <link rel="stylesheet" href="style-compact.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Floating action bar for PDF download and return to site (hidden on print) -->
+    <div class="no-print" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.2);padding:6px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border:1px solid #E5E0D8;border-radius:9999px;">
+        <button type="button" onclick="window.print()" style="background:#6E1F2B;color:#FFFFFF;border:none;padding:10px 20px;border-radius:9999px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:system-ui,-apple-system,sans-serif;transition:all 0.2s ease;box-shadow:0 2px 8px rgba(110,31,43,0.35);">
+            <span>🖨️ Télécharger en PDF / Imprimer</span>
+        </button>
+        <a href="../index.html" style="background:#EADBCE;color:#1C1917;border:1px solid #E5E0D8;padding:10px 16px;border-radius:9999px;font-size:13px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:system-ui,-apple-system,sans-serif;transition:all 0.2s ease;">
+            <span>← Retour au site</span>
+        </a>
+    </div>
+    <style>
+    @media print {
+        .no-print { display: none !important; }
+    }
+    </style>
+
     <div class="cv-container">
         <!-- HEADER COMPACT -->
         <header class="cv-header">
             <div class="profile-section">
-                <img src="profile.png" alt="Photo de Amaëlle DIOP" class="profile-picture">
+                <img src="picture-self.jpeg" alt="Photo de Amaëlle DIOP" class="profile-picture">
                 <div class="profile-info">
                     <h1 class="name">[Amaëlle DIOP]</h1>
-                    <h2 class="title">Ingénieure Logiciel Junior</h2>
+                    <h2 class="title">Ingénieure Logiciel</h2>
                 </div>
             </div>
             
@@ -29,6 +47,7 @@
                     <div><strong>Portfolio:</strong> <a href="https://thatgirlam.github.io">thatgirlam.github.io</a></div>
                     <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/amaellediop/">linkedin.com/in/amaellediop</a></div>
                     <div><strong>GitHub:</strong> <a href="https://github.com/thatgirlAm">github.com/thatgirlAm</a></div>
+                    <div><strong>CV complet:</strong> <a href="https://thatgirlam.github.io/CV/fr-cv-index.html" target="_blank">Version détaillée</a></div>
                 </div>
             </div>
         </header>
@@ -67,7 +86,9 @@
                                 <li>React</li>
                                 <li>Angular</li>
                                 <li>Laravel</li>
+                                <li>Node.js</li>
                                 <li>PyTest</li>
+                                <li>Playwright</li>
                             </ul>
                         </div>
                         <div class="skill-category">
@@ -76,8 +97,9 @@
                                 <li>AWS</li>
                                 <li>Azure</li>
                                 <li>Docker</li>
-                                <li>CI/CD</li>
                                 <li>Git</li>
+                                <li>GitLab CI/CD</li>
+                                <li>Jenkins</li>
                             </ul>
                         </div>
                         <div class="skill-category">
@@ -88,6 +110,7 @@
                                 <li>PyTorch</li>
                                 <li>PostgreSQL</li>
                                 <li>MySQL</li>
+                                <li>LLM as a Judge</li>
                             </ul>
                         </div>
                     </div>
@@ -145,24 +168,18 @@
                         <h4>[CDI] - Ingénieure R&D Automatisation Logicielle</h4>
                         <h5>Dassault Systèmes | Février 2026 - Aujourd'hui</h5>
                         <ul class="description">
-                            <li><strong>Performance :</strong> Conception de solutions pour l'amélioration de la performance des tests et outils internes</li>
-                            <li><strong>Full-Stack :</strong> Développement Backend et Frontend, Assistance QA</li>
-                            <li><strong>IA :</strong> LLM as a Judge, création d'Assistants IA spécialisés pour besoins métier</li>
-                            <li><strong>SDK :</strong> Création de SDKs pour les outils internes</li>
+                            <li><strong>Performance :</strong> Conception de solutions pour l'amélioration de la performance des tests et outils internes, Full-Stack, Assistance QA</li>
+                            <li><strong>IA :</strong> LLM as a Judge, création d'Assistants IA spécialisés et de SDKs pour besoins métier</li>
                         </ul>
-                        <p class="tech"><strong>Technologie:</strong> Python, Microsoft Playwright, TypeScript, JavaScript, Node.js, GitLab CI/CD, Jenkins, SDK, LLM as a Judge, Assistants IA</p>
+                        <p class="tech"><strong>Technologie:</strong> Python, Microsoft Playwright, TypeScript, Node.js, GitLab CI/CD, LLM as a Judge</p>
                     </div>
 
                     <div class="entry">
                         <h4>[Stage] -Ingénieure QA - Développement de Solutions d'Automatisation pour Tests sur GUI</h4>
                         <h5>Dassault Systèmes | Mai 2025 - Nov 2025</h5>
                         <ul class="description">
-                            <li><strong>Mission :</strong> Revisiter les tests d'interfaces graphiques de la <strong>3DExperience</strong> le contexte des transitions Cloud avec 2 solutions proposées :</li>
-                            <ul>
-                                <li><strong>Innovation Technique:</strong> Framework Custom et SDK pour une automatisation modulaire tests web services</li>
-                                <li><strong>IA Auto-adaptative:</strong> Agent intelligent basé sur un arbre de décisions pour le self-healing d'un Framework de tests GUI sur SikuliX sur Applications Cloud/Widgets/Apps Natives</li>
-                            </ul>
-                            <li><strong>Méthodologie:</strong> Intégration d'une équipe EuroWest, Agile (daily, sprints optimisés)</li>
+                            <li><strong>Innovation Technique :</strong> Framework Custom et SDK pour l'automatisation modulaire des tests web services</li>
+                            <li><strong>IA Auto-adaptative :</strong> Agent intelligent (arbre de décisions) pour le self-healing d'un Framework SikuliX</li>
                         </ul>
                         <p class="tech"><strong>Technologie:</strong> Python, PyTest, ML, Computer Vision, SikuliX, Git, SDK</p>
                     </div>
@@ -171,9 +188,8 @@
                         <h4>[Stage] - Data Engineer & Full-Stack Developer - Solution FinTech Bancaire</h4>
                         <h5>Orange Finances Mobiles | Dakar, Sénégal | Mai 2024 - Août 2024</h5>
                         <ul class="description">
-                            <li><strong>Data Engineering:</strong> Pipeline complet pour récupération et réconciliation des données transactionnelles des systèmes internes et partenaires</li>
-                            <li><strong>Reconciliation Engine:</strong> Algorithmes automatisés détection discordances + notifications équipes opérationnelles</li>
-                            <li><strong>Interface Web:</strong> Application Full-Stack pour visualisation et gestion des réconciliations journalières</li>
+                            <li><strong>Data Engineering :</strong> Pipeline complet pour récupération et réconciliation des données transactionnelles, détection automatisée des discordances</li>
+                            <li><strong>Interface Web :</strong> Application Full-Stack pour visualisation et gestion des réconciliations journalières</li>
                         </ul>
                         <p class="tech"><strong>Technologie:</strong> Python, Angular, Laravel, TypeScript, MySQL, PHP</p>
                     </div>
@@ -182,8 +198,7 @@
                         <h4>[Stage] - Développeuse VBA & Assistante Optimisation Industrielle</h4>
                         <h5>Peyre |  France | Fév 2023 - Avril 2023</h5>
                         <ul class="description">
-                            <li><strong>Digitalisation:</strong> Application Excel/VBA automatisation parc machines, maintenances, plannings production</li>
-                            <li><strong>Terrain:</strong> Documentation technique, plans atelier, maîtrise machines, support opérateurs</li>
+                            <li><strong>Digitalisation :</strong> Application Excel/VBA pour l'automatisation du parc machines, maintenances, plannings production</li>
                         </ul>
                         <p class="tech"><strong>Technologie:</strong> Excel, VBA, C++</p>
                     </div>
@@ -198,10 +213,9 @@
                         <h5>Projet de Groupe Académique de Recherche | 2025</h5>
                         <ul class="description">
                             <li><strong>Leadership multi-casquettes :</strong> Data Pre-Processing, Full-Stack Developer, DevOps Engineer</li>
-                            <li><strong>Innovation IA :</strong> Recherche sur la transférabilité des modèles d'apprentissage profond entre espaces aériens</li>
-                            <li><strong>Architecture Cloud :</strong> Plateforme web scalable avec modèles LSTM et GNN pour prédiction temps réel</li>
+                            <li><strong>Architecture Cloud :</strong> Plateforme web scalable avec modèles LSTM/GNN, recherche sur la transférabilité entre espaces aériens</li>
                         </ul>
-                        <p class="tech"><strong>Technologies :</strong> HTML/CSS/SCSS, TypeScript, PHP, PostgreSQL, Python, Docker, Angular, Laravel, Azure Cloud, SQL, Deep Learning, LSTM, GNN</p>
+                        <p class="tech"><strong>Technologies :</strong> Python, Angular, Laravel, Azure Cloud, Deep Learning, LSTM</p>
                     </div>
 
                     <!-- <div class="entry">
@@ -217,9 +231,8 @@
                         <h4>Solution Automation - Désanonymisation Intelligente IELTS</h4>
                         <h5>Développement sur Mesure pour l'ESTIA | 2024</h5>
                         <ul class="description">
-                            <li><strong>Problématique administrative :</strong> Élimination des tâches répétitives chronophages de l'administration académique</li>
-                            <li><strong>Solution clé-en-main :</strong> Application desktop Python pour l'automatisation complète du processus de levée d'anonymat des examinations IELTS</li>
-                            <li><strong>Impact :</strong> Réduction drastique du temps de traitement et élimination des erreurs manuelles</li>
+                            <li><strong>Solution :</strong> Application desktop Python pour l'automatisation complète de la levée d'anonymat IELTS</li>
+                            <li><strong>Impact :</strong> Réduction drastique du temps de traitement</li>
                         </ul>
                         <p class="tech"><strong>Technologies :</strong> Python, Excel, Automation</p>
                     </div>
@@ -228,9 +241,7 @@
                         <h4>Compétition Dassault Aviation - Système de Contrôle Drone Autonome</h4>
                         <h5>Dassault UAV Challenge | 2023 | 4ème Place</h5>
                         <ul class="description">
-                            <li><strong>Contribution technique :</strong> Gestion des simulations Gazebo et optimisation de la station de contrôle au sol</li>
-                            <li><strong>Développement sur mesure :</strong> Adaptation et amélioration de l'application C++ pour répondre aux spécifications techniques de l'équipe</li>
-                            <li><strong>Pilotage autonome :</strong> Configuration et gestion avancée des trajectoires drone via QGround Control</li>
+                            <li><strong>Contribution technique :</strong> Simulations Gazebo, station de contrôle au sol, pilotage autonome via QGround Control</li>
                             <li><strong>Performance :</strong> Classement 4ème sur l'ensemble des équipes participantes</li>
                         </ul>
                         <p class="tech"><strong>Technologies :</strong> C++, Gazebo, Qt, QGround Control, Simulation Robotique</p>
@@ -245,9 +256,8 @@
                         <h4>Master's Computational and Software Techniques in Engineering</h4>
                         <h5>Cranfield University, UK | 2024-2025</h5>
                         <ul class="description">
-                            <li>Acquisition de compétences en gestion de projets logiciels (documentation des exigences, tests)</li>
-                            <li>Spécialisation en calcul haute performance (MPI, OpenMP, CUDA) et méthodes computationnelles</li>
-                            <li>Maîtrise des outils de visualisation (Qt Creator, WebGL) et de Cloud Computing (AWS)</li>
+                            <li>Calcul haute performance (MPI, OpenMP, CUDA) et méthodes computationnelles</li>
+                            <li>Gestion de projets logiciels, Cloud Computing (AWS)</li>
                         </ul>
                     </div>
 
@@ -255,11 +265,8 @@
                         <h4>Diplôme d'Ingénieur Généraliste</h4>
                         <h5>ESTIA, France | 2022-2025</h5>
                         <ul class="description">
-                            <li>Développement web statique et dynamique (HTML/CSS/Javascript, MVC)</li>
-                            <li>Gestion de bases de données (SQL)</li>
-                            <li>Développement Full-Stack (React, Node.js, Angular, Laravel, Principes de l'architecture logicielle IHM)</li>
-                            <li>Programmation orientée objet (Principes de la POO, Java)</li>
-                            <li>Electronique (Automatisme Industriel)</li>
+                            <li>Développement Full-Stack (React, Node.js, Angular, Laravel, MVC, SQL)</li>
+                            <li>Programmation orientée objet (Java), Electronique (Automatisme Industriel)</li>
                         </ul>
                     </div>
 

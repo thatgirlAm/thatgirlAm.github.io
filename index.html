@@ -1,294 +1,1955 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#a05fa4">
-    <meta name="description" content="Amaëlle DIOP - Junior Software Engineer passionate about building clean, efficient, and user-friendly web applications.">
-    <title>[Amaëlle DIOP] - Junior Software Engineer</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Amaëlle DIOP] - Software Engineer</title>
+<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..600,80;1,9..144,400..600,80&family=DM+Sans:opsz,wght@9..40,300..600&family=JetBrains+Mono:wght@400;500&display=swap">
+<script src="js/qr_matrix.js"></script>
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --card: #FFFFFF;
+    --border: #EADBCE;
+    --border-light: #F2EBE2;
+    --text: #1C1917;
+    --muted: #736B63;
+    --bordeaux: #6E1F2B;
+    --bordeaux-dark: #561722;
+    --bordeaux-light: #F4EBEA;
+    --bordeaux-subtle: rgba(110, 31, 43, 0.07);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  
+  .serif {
+    font-family: var(--serif);
+    font-variation-settings: "SOFT" 80, "opsz" 72;
+    letter-spacing: -0.015em;
+  }
+  .mono { font-family: var(--mono); }
+
+  /* --- Scroll Progress Bar --- */
+  #scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bordeaux), #A83244);
+    width: 0%;
+    z-index: 100;
+    transition: width 0.1s linear;
+  }
+
+  /* --- Classy Scroll Reveal (Blur + Glide) --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px) scale(0.985);
+    filter: blur(6px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+
+  /* --- Tilt & Spotlight Card Effect --- */
+  .interactive-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s;
+    box-shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.04);
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-6px);
+    border-color: #D6C2B4;
+    box-shadow: 0 24px 44px -12px rgba(110, 31, 43, 0.14),
+                0 4px 12px -2px rgba(28, 25, 23, 0.04);
+  }
+
+  /* Spotlight cursor sheen */
+  .interactive-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(110, 31, 43, 0.06), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .interactive-card:hover::before {
+    opacity: 1;
+  }
+
+  .pill-btn {
+    border-radius: 9999px;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.925rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pill-btn-primary {
+    background-color: var(--bordeaux);
+    color: #FFFFFF;
+  }
+
+  .pill-btn-primary:hover {
+    background-color: var(--bordeaux-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -4px rgba(110, 31, 43, 0.35);
+  }
+
+  .pill-btn-secondary {
+    background-color: #FFFFFF;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .pill-btn-secondary:hover {
+    background-color: var(--bordeaux-light);
+    border-color: var(--bordeaux);
+    color: var(--bordeaux);
+    transform: translateY(-2px);
+  }
+
+  .tag {
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: var(--bordeaux-subtle);
+    color: var(--bordeaux);
+    transition: all 0.2s ease;
+  }
+
+  .tag:hover {
+    background-color: var(--bordeaux);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+  }
+
+  /* Parallax portrait */
+  #hero-portrait {
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+
+  /* --- Typewriter Effect Cursor --- */
+  .typewriter-cursor {
+    display: inline-block;
+    color: var(--bordeaux);
+    font-weight: 300;
+    margin-left: 2px;
+    animation: typewriter-blink 0.9s infinite;
+  }
+  @keyframes typewriter-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* --- Explicit Opaque CV Dropdown Menu --- */
+  .cv-dropdown-menu {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(6px);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .group:hover .cv-dropdown-menu,
+  .group:focus-within .cv-dropdown-menu,
+  .cv-dropdown-menu.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Toast notification */
+  #toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+  }
+  #toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* --- Image Lightbox Overlay Styles --- */
+  #image-lightbox {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #image-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #image-lightbox .lightbox-content {
+    transform: scale(0.94) translateY(8px);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #image-lightbox.active .lightbox-content {
+    transform: scale(1) translateY(0);
+  }
+  .zoomable-image, [data-lightbox-src] {
+    cursor: zoom-in;
+  }
+
+  /* --- Project Modal Styles --- */
+  #project-modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #project-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #project-modal .modal-dialog {
+    transform: scale(0.95) translateY(12px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #project-modal.active .modal-dialog {
+    transform: scale(1) translateY(0);
+  }
+  .media-tab-btn {
+    padding: 0.45rem 1.1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    background: #FFFFFF;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .media-tab-btn.active {
+    background: var(--bordeaux);
+    border-color: var(--bordeaux);
+    color: #FFFFFF;
+  }
+  .video-sub-tab {
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    background: #FFFFFF;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .video-sub-tab.active {
+    background: var(--bordeaux);
+    border-color: var(--bordeaux);
+    color: #FFFFFF;
+  }
+</style>
 </head>
-<body>
+<body class="p-4 md:p-8">
 
-    <header class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="CV/profile.png" alt="Amaëlle DIOP" class="profile-pic">
-                <span>[Amaëlle DIOP]</span>
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- Toast for interactive actions -->
+<div id="toast" class="bg-white border border-[var(--border)] rounded-full px-5 py-3 shadow-2xl flex items-center gap-3 text-xs font-medium text-[var(--text)]">
+  <span class="w-2 h-2 rounded-full bg-[var(--bordeaux)]"></span>
+  <span id="toast-text">Lien copié dans le presse-papier !</span>
+</div>
+
+<div class="max-w-5xl mx-auto space-y-16">
+
+  <!-- ================= TOP NAVBAR ================= -->
+  <header class="sticky top-4 z-40">
+    <div id="main-nav" class="bg-white/85 backdrop-blur-md border border-[var(--border)] rounded-full px-4 py-2.5 flex items-center justify-between shadow-sm transition-all duration-300">
+      
+      <a href="#accueil" class="flex items-center gap-3 pl-1 group">
+        <div class="relative">
+          <img src="images/picture-self.jpeg" alt="Amaëlle Diop" class="w-10 h-10 rounded-full object-cover object-top border border-[var(--border)] transition group-hover:scale-105">
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+        </div>
+        <div>
+          <span class="font-semibold text-sm tracking-tight block leading-tight group-hover:text-[var(--bordeaux)] transition">[Amaëlle DIOP]</span>
+          <span class="text-[11px] text-[var(--muted)] leading-none" data-i18n="nav-role">Software Engineer</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links with Scroll Spy -->
+      <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-[var(--muted)]">
+        <a href="#accueil" class="nav-link px-3.5 py-1.5 rounded-full text-[var(--bordeaux)] bg-[var(--bordeaux-light)] font-semibold transition" data-section="accueil" data-i18n="nav-home">Accueil</a>
+        <a href="#talk" class="nav-link px-3.5 py-1.5 rounded-full hover:text-[var(--text)] transition" data-section="talk" data-i18n="nav-talk">Le Talk</a>
+        <a href="#projets" class="nav-link px-3.5 py-1.5 rounded-full hover:text-[var(--text)] transition" data-section="projets" data-i18n="nav-projects">Projets</a>
+        <a href="#evenements" class="nav-link px-3.5 py-1.5 rounded-full hover:text-[var(--text)] transition" data-section="evenements" data-i18n="nav-events">Événements</a>
+        <a href="#contact" class="nav-link px-3.5 py-1.5 rounded-full hover:text-[var(--text)] transition" data-section="contact" data-i18n="nav-contact">Contact</a>
+        <!-- CV Dropdown -->
+        <div class="relative group" id="nav-cv-dropdown">
+          <button type="button" class="cv-dropdown-toggle nav-link px-3.5 py-1.5 rounded-full hover:text-[var(--text)] transition inline-flex items-center gap-1 cursor-pointer" aria-expanded="false">
+            <span data-i18n="nav-cv">CV</span>
+            <svg class="w-3 h-3 text-[var(--muted)] group-hover:text-[var(--text)] group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="cv-dropdown-menu absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 border border-[var(--border)] rounded-2xl p-2 shadow-2xl z-50 text-xs" style="background: #FFFFFF !important; background-color: #FFFFFF !important;">
+            <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--bordeaux)] border-b border-[var(--border-light)] pb-1 mb-1">
+              🇫🇷 Version Française
+            </div>
+            <a href="CV/fr-cv-single-page.html" target="_blank" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-[var(--bg)] text-[var(--text)] transition font-medium">
+              <span data-i18n="cv-fr-short">Format Synthétique (1 page)</span>
+              <span class="text-[var(--bordeaux)]">↗</span>
             </a>
-            
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">CV <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu cv-vertical">
-                            <li class="language-header">🇫🇷 French</li>
-                            <li><a href="CV/fr-cv-single-page.html" target="_blank">Short Version</a></li>
-                            <li><a href="CV/fr-cv-index.html" target="_blank">Full Version</a></li>
-                            <li class="language-header">🇺🇸 English</li>
-                            <li><a href="CV/cv_index_en.html" target="_blank">Full Version</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+            <a href="CV/fr-cv-index.html" target="_blank" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-[var(--bg)] text-[var(--text)] transition font-medium">
+              <span data-i18n="cv-fr-full">Format Complet Détaillé</span>
+              <span class="text-[var(--bordeaux)]">↗</span>
+            </a>
+            <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--bordeaux)] border-t border-[var(--border-light)] pt-1.5 mt-1 mb-1">
+              🇬🇧 English Version
+            </div>
+            <a href="CV/cv_index_en.html" target="_blank" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-[var(--bg)] text-[var(--text)] transition font-medium">
+              <span data-i18n="cv-en-full">Full Detailed Resume</span>
+              <span class="text-[var(--bordeaux)]">↗</span>
+            </a>
+          </div>
         </div>
-    </header>
+      </nav>
 
-    <main>
-        <section id="hero" class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">Hi, I'm <span id="typewriter">[Amaëlle DIOP]</span></h1>
-                <p class="fade-in">A passionate Junior Software Engineer focused on building clean, efficient, and user-friendly software solutions.</p>
-                <a href="projects.html" class="btn fade-in">View My Work</a>
-            </div>
-        </section>
-
-        <section id="featured-projects" class="container">
-            <h2 class="section-title fade-in">My Projects & Experience</h2>
-            <div class="project-grid fade-in">
-                <!-- Professional Experience 0: Dassault Systèmes - R&D Automation Software Engineer -->
-                <a href="#" class="project-card"
-                   data-category="professional"
-                   data-title="R&D Automation Software Engineer - Performance & AI-Driven Test Automation"
-                   data-images="images/3ds_logo.png"
-                   data-description="<p style='text-align:justify;'>Full-time R&D Automation Software Engineer at Dassault Systèmes, building on my QA Engineering internship to design performance-driven and AI-augmented test automation solutions.</p>
-                   <p style='text-align:justify;'><strong>Key Responsibilities:</strong><br>
-                   • <strong>Performance Engineering:</strong> Designing solutions to enhance the performance of automated testing processes<br>
-                   • <strong>Full-Stack Development:</strong> Backend and Front-End development for internal tooling<br>
-                   • <strong>QA Assistance:</strong> Supporting QA teams across testing workflows<br>
-                   • <strong>AI Integration:</strong> Integrating AI solutions into existing applications, including automated evaluation using LLM-as-a-Judge<br>
-                   • <strong>AI Assistants:</strong> Building specialized AI assistants to translate specific business needs into technical solutions<br>
-                   • <strong>SDK Development:</strong> Creating SDKs to streamline adoption of internal tools</p><br>
-                   <p style='text-align:justify;'><strong>Technical Stack:</strong><br>
-                   • Python and Microsoft Playwright for test automation<br>
-                   • TypeScript, JavaScript and Node.js for front-end and back-end tooling development<br>
-                   • GitLab, GitLab CI/CD and Jenkins for version control and pipeline automation</p>"
-                   data-tech="Python,Microsoft Playwright,TypeScript,JavaScript,Node.js,GitLab,GitLab CI/CD,Jenkins,SDK Development,LLM-as-a-Judge,AI Assistants,AI Integration,Backend Development,Frontend Development,QA Automation"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-company="Dassault Systèmes"
-                   data-company-logo="images/3ds_logo_simple.png">
-                    <img src="images/3ds_logo.png" alt="Dassault Systèmes R&D Automation">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag professional">Professional</span>
-                            </div>
-                            <div class="company-logo">
-                                <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[R&D] - Automation Software Engineer</h3>
-                        <p style='text-align:justify;'>Performance-driven and AI-augmented test automation solutions with Backend, Front-End, and QA contributions.</p>
-                    </div>
-                </a>
-
-                <!-- Professional Experience 1a: Dassault Systèmes - Custom Framework -->
-                <a href="#" class="project-card" 
-                   data-category="professional"
-                   data-title="[QA Engineering] - Custom Framework & SDK for Web Services Test Automation"
-                   data-youtube-id="WV1XZkva-oI"
-                   data-video-description="Demo video showcases the framework's CLI commands, automated test execution, and comprehensive HTML reporting system in action."
-                   data-images="images/framework_structure.png"
-                   data-description="<p style='text-align:justify;'>6-month internship at Dassault Systèmes developing a custom testing framework and SDK for enterprise-scale web services automation.</p>
-                   <p style='text-align:justify;'><strong>Key Achievements:</strong><br>
-                   • <strong>CI/CD Integration</strong> in ItGit/Gitlab<br>
-                   • <strong>HTML Reporting System</strong><br>
-                   • <strong>Decentralization of the login process</strong> with a custom Session Manager SDK<br>
-                   • <strong>CLI Commands</strong><br>
-                   • <strong>CLI/Physical Documentation</strong><br>
-                   • <strong>Reusable test components</strong> accelerating development cycles</p><br>
-                   <p style='text-align:justify;'><strong>Framework Features:</strong><br>
-                   • Modular architecture for scalable automated testing workflows<br>
-                   • Advanced dependency management and dynamic configuration<br>
-                   • Comprehensive reporting and CI/CD pipeline integration<br>
-                   • Intuitive CLI commands for test creation and monitoring</p><br>
-                   <p style='text-align:justify;'><strong>Technical Impact:</strong><br>
-                   • Company-scale testing solution for cloud transition contexts<br>
-                   • Accessible automated testing for technical and non-technical teams<br>
-                   • Seamless integration with existing development workflows</p>
-                   <p style='text-align:justify;'><em>Demo video showcases the framework's CLI commands, automated test execution, and comprehensive HTML reporting system in action.</em></p>
-                   <p style='text-align:justify;'><em>This project demonstrates required skills in software architecture conception, test automation, and SDK development for large-scale systems.</em></p>"
-                   data-tech="Python,PyTest,HTML/CSS,Web Services,SDK Development,Test Automation,Git,Packaging,CI/CD,REST APIs"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-company="Dassault Systèmes"
-                   data-company-logo="images/3ds_logo_simple.png">
-                    <img src="images/3ds_logo.png" alt="Dassault Systèmes Framework Screenshot">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag professional">Professional</span>
-                            </div>
-                            <div class="company-logo">
-                                <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[QA & Software Testing] - Custom Framework & SDK Development</h3>
-                        <p style='text-align:justify;'>Enterprise-scale modular testing framework with significant maintenance reduction and speed improvement.</p>
-                    </div>
-                </a>
-               
-                <!-- Academic Project 1: AI Flight Delay Prediction -->
-                <a href="#" class="project-card"
-                   data-category="school"
-                   data-title="Sky Denied Web Application: Novel AI Model for Multi-Airport Flight Delay Prediction"
-                   data-youtube-ids="FdRefPmquR0,JB5f4Kh03jk"
-                   data-youtube-titles="Sky Denied - Demo, Teaser"
-                   data-video-descriptions="The full demo showcases real-time flight delay predictions and interactive web interface., Teaser video introduces the project concept"
-                   data-images="images/sky_denied_logo_final.png, images/sky_denied_screenshot.png, images/sky_denied_infrastructure.png,images/sky_denied_training.png,images/sky_denied_f1.png,images/sky_denied_loss.png"
-                   data-description="<p style='text-align:justify;'>Collaborative group project at Cranfield University developing an intelligent flight delay prediction system accessible through a web application.</p>
-                   <p style='text-align:justify;'><strong>My Core Responsibilities:</strong><br>
-                   • Data Pre-Processing: Flight data cleaning and preparation after scraping and before handing it out to the model<br>
-                   • Full-Stack Development: web platform architecture based on Laravel and Angular<br>
-                   • DevOps Engineering: Managed the implementation and linkage of components, Azure Cloud deployment of the website</p>
-                   <p style='text-align:justify;'><strong>Technical Deliverables:</strong><br>
-                   • Real-time prediction web application<br>
-                   • Interactive data visualization dashboards<br>
-                   • Research on model transferability between airspaces</p>
-                   <p style='text-align:justify;'><strong>AI Model Development:</strong><br>
-                    My Data Scientists colleagues developed the novel QTSimAM (Queueing Theory-SimAM-CNN-LSTM) model and published their research findings. Their academic paper is currently in the pre-print stage and is available on ResearchGate: <a href='https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction'>Link to the pre-print</a>.</p>
-                    <br><p style='text-align:justify;'><em>This project demonstrates successful integration of advanced AI research with practical web development and cloud deployment.</em></p>"
-                   data-tech="Python,Deep Learning,LSTM,CNN,Queueing Theory,SimAM,Azure Cloud,Angular,TypeScript,PHP,PostgreSQL,Docker,Machine Learning Research"
-                   data-live-url="#"
-                   data-repo-url="https://github.com/thatgirlAm/sky_denied_WEB_APP"
-                   data-paper-url="https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction"
-                   data-school="Cranfield University"
-                   data-school-logo="images/cranfield_logo.png">
-                    <img src="images/sky_denied_thumbnail.jpg" alt="Sky Denied AI Model Logo">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag school">Academic Research</span>
-                            </div>
-                            <div class="school-logo">
-                                <img src="images/cranfield_logo.png" alt="Cranfield University Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[Machine Learning - Full-Stack Dev] - Sky Denied Web Application</h3>
-                        <p style='text-align:justify;'>Novel queueing theory-integrated deep learning model for intelligent flight delay prediction available to any user through a robust Web Application.</p>
-                    </div>
-                </a>
-                <!-- Professional Experience 2: Orange Finance Mobile -->
-                <a href="#" class="project-card"
-                   data-category="professional"
-                   data-title="Full-Stack Developer & Data Analyst - FinTech Banking Reconciliation Platform"
-                   data-youtube-id="cITKmPQY9gs"
-                   data-video-description="Demo video demonstrates the complete reconciliation workflow, dashboard analytics, and automated discrepancy detection in real-time."
-                   data-images="images/daily_logo.png,images/daily_logoofms.png"
-                   data-description="<p style='text-align:justify;'>4-month internship at Orange Finances Mobiles in Dakar, leading development of a comprehensive FinTech solution to address critical transactional data discrepancies.</p>
-                   <p style='text-align:justify;'><strong>Business Impact:</strong><br>
-                   • Monitoring preventing future data losses<br>
-                   • Automation of former time-consuming manual tasks</p>
-                   <p style='text-align:justify;'><strong>Technical Architecture:</strong><br>
-                   • End-to-end data engineering pipeline with automated extraction<br>
-                   • Data validation and cleansing processes<br>
-                   • Reconciliation algorithms for transaction matching<br>
-                   • Automated pre-analysis for potential discrepancies causes</p>
-                   <p style='text-align:justify;'><strong>Platform Features:</strong><br>
-                   • Ergonomic web dashboard with monitoring and data visualisation features<br>
-                   • Detailed analytics and reporting capabilities<br>
-                   • Seamless integration with existing banking infrastructure</p>
-                   <p style='text-align:justify;'><em>This solution contributed to financial reconciliation processes while providing actionable insights for strategic business decision-making and discrepancies justification.</em></p>"
-                   data-tech="Python,SQL,Data Engineering,Pandas,NumPy, Angular, Typescript, HTML/CSS, PHP, Laravel"
-                   data-live-url="#"
-                   data-repo-url="#"
-                   data-company="Orange Finances Mobiles"
-                   data-company-logo="images/daily_logoofms.png">
-                    <img src="images/daily_logo.png" alt="Daily FinTech Solution Screenshot">
-                    <div class="project-info">
-                        <div class="project-header">
-                            <div class="project-tags">
-                                <span class="category-tag professional">Professional</span>
-                            </div>
-                            <div class="company-logo">
-                                <img src="images/daily_logoofms.png" alt="Orange Finances Mobiles Logo" class="logo-img">
-                            </div>
-                        </div>
-                        <h3>[Full-Stack Dev] - FinTech Banking Reconciliation Platform</h3>
-                        <p style='text-align:justify;'>Enterprise solution with automated reconciliation and significant discrepancy analysis.</p>
-                    </div>
-                </a>
-               
-            </div>
-        </section>
-        <div class="view-all-container">
-            <a href="projects.html" class="btn">View All Projects</a>
+      <!-- Language Switcher & CTA -->
+      <div class="flex items-center gap-2">
+        <div class="bg-[var(--bg)] border border-[var(--border)] rounded-full p-0.5 flex text-xs font-semibold">
+          <button id="lang-fr" class="px-2.5 py-1 rounded-full bg-white text-[var(--bordeaux)] shadow-sm transition">FR</button>
+          <button id="lang-en" class="px-2.5 py-1 rounded-full text-[var(--muted)] hover:text-[var(--text)] transition">EN</button>
         </div>
-        </section>
-    </main>
+        <a href="#contact" class="hidden sm:inline-flex pill-btn pill-btn-primary !py-2 !px-4 text-xs" data-i18n="nav-cta">
+          Me contacter
+        </a>
+      </div>
 
-    <!-- ==== PROJECT MODAL ==== -->
-    <div id="project-modal" class="modal-container hidden">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-header">
-                <h2 id="modal-title">Project Title</h2>
-                <div class="modal-meta">
-                    <span id="modal-category-tag" class="category-tag"></span>
-                    <div id="modal-organization-info" class="organization-info">
-                        <img id="modal-organization-logo" src="" alt="" class="logo-img">
-                        <span id="modal-organization-name"></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-gallery">
-                <div id="modal-media-container">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0IEltYWdlPC90ZXh0Pjwvc3ZnPg==" alt="Project Screenshot" id="modal-image">
-                    <div id="modal-youtube-container" class="youtube-container">
-                        <iframe id="modal-youtube-iframe" src="" frameborder="0" allowfullscreen title="Project Demo Video"></iframe>
-                    </div>
-                </div>
-                <div id="video-description" class="video-description hidden">
-                    <p id="video-description-text"></p>
-                </div>
-                <div id="video-sub-tabs" class="video-sub-tabs">
-                    <!-- Video sub-tabs will be generated by JS -->
-                </div>
-                <button id="prev-btn" class="gallery-nav prev">&lt;</button>
-                <button id="next-btn" class="gallery-nav next">&gt;</button>
-                <div id="media-tabs" class="media-tabs">
-                    <button id="video-tab" class="media-tab">📹 Videos</button>
-                    <button id="images-tab" class="media-tab active">🖼️ Images</button>
-                </div>
-            </div>
-            
-            <h3>About this project</h3>
-            <p id="modal-description" style="text-align:justify;">Project description goes here...</p>
-            
-            <h3>Technologies Used</h3>
-            <div id="modal-tech" class="tech-tags">
-                <!-- Tech tags will be generated by JS -->
-            </div>
-            
-            <div id="modal-links" class="modal-links">
-                <!-- Links will be generated by JS -->
-            </div>
-        </div>
     </div>
-    <!-- ==== END PROJECT MODAL ==== -->
+  </header>
 
-    <footer>
-        <div class="container">
-            <p> 2025 [Amaëlle DIOP]. All Rights Reserved.</p>
-            <!-- Add social media links here if you want -->
+  <!-- ================= HERO SECTION ================= -->
+  <section id="accueil" class="pt-6 pb-8 min-h-[75vh] flex flex-col justify-center">
+    <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+      
+      <!-- Text content (Left on desktop, 2nd on mobile) -->
+      <div class="md:col-span-7 space-y-6 order-last md:order-first">
+        
+        <!-- Discreet Malian motif header badge -->
+        <div class="reveal inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[var(--border)] text-xs font-medium shadow-sm">
+          <svg class="w-3.5 h-3.5 text-[var(--bordeaux)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 15 12 9 20 15"></polyline>
+          </svg>
+          <span class="text-[var(--bordeaux)] font-semibold">Speaker TEDxESTIA 2026</span>
+          <span class="text-[var(--muted)]">·</span>
+          <span class="text-[var(--muted)]">R&D Software Engineer</span>
         </div>
-    </footer>
 
-    <script src="js/script.js"></script>
+        <h1 class="reveal reveal-delay-1 serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.12] tracking-tight text-[var(--text)]">
+          <span data-i18n="hero-greeting">Bonjour, je suis</span><br>
+          <span class="text-[var(--bordeaux)] inline-flex items-center">
+            <span id="typewriter">[Amaëlle DIOP]</span><span class="typewriter-cursor">|</span>
+          </span>
+        </h1>
+
+        <p class="reveal reveal-delay-2 serif text-lg sm:text-xl text-[var(--text)] font-normal italic leading-snug" data-i18n="hero-subtitle">
+          Ingénieure logiciel passionnée par mon métier, tout autant que par la scène musicale, les conférences et l'engagement citoyen.
+        </p>
+
+        <!-- Passions tags: Tech & Outside activities -->
+        <div class="reveal reveal-delay-2 flex flex-wrap gap-2 pt-0.5 text-xs font-medium">
+          <span class="px-3 py-1 rounded-full bg-white border border-[var(--border)] text-[var(--text)] flex items-center gap-1.5 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-[var(--bordeaux)]"></span>
+            <span data-i18n="hero-tag-1">Software & IA</span>
+          </span>
+          <span class="px-3 py-1 rounded-full bg-white border border-[var(--border)] text-[var(--text)] flex items-center gap-1.5 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+            <span data-i18n="hero-tag-2">Musique & Scène</span>
+          </span>
+          <span class="px-3 py-1 rounded-full bg-white border border-[var(--border)] text-[var(--text)] flex items-center gap-1.5 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-rose-600"></span>
+            <span data-i18n="hero-tag-3">Speaker TEDx</span>
+          </span>
+          <span class="px-3 py-1 rounded-full bg-white border border-[var(--border)] text-[var(--text)] flex items-center gap-1.5 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            <span data-i18n="hero-tag-4">Mentorat & Mixité</span>
+          </span>
+        </div>
+
+        <p class="reveal reveal-delay-2 text-[var(--muted)] text-base sm:text-lg leading-relaxed max-w-xl font-light" data-i18n="hero-desc">
+          En poste chez <strong>Dassault Systèmes</strong>, je développe des solutions d'automatisation de test performantes et augmentées par l'IA. Diplômée de l'ESTIA et de Cranfield University, je trouve mon équilibre entre rigueur d'ingénierie et passions humaines : chant et performances en live, conférences TEDx et engagement pour la mixité dans la tech.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="reveal reveal-delay-3 flex flex-wrap gap-2.5 sm:gap-3 pt-1 items-center">
+          <a href="#talk" class="pill-btn pill-btn-primary !py-2.5 !px-4 text-xs sm:text-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span data-i18n="hero-btn-talk">Regarder mon TEDx</span>
+          </a>
+          <a href="#projets" class="pill-btn pill-btn-secondary !py-2.5 !px-4 text-xs sm:text-sm">
+            <span data-i18n="hero-btn-work">Explorer mes projets</span>
+            <span class="text-[var(--muted)]">↓</span>
+          </a>
+          <!-- CV Download Button in Hero CTA -->
+
+        </div>
+
+      </div>
+
+      <!-- Portrait with refined geometry & scroll parallax (Right on desktop, 1st on mobile) -->
+      <div class="md:col-span-5 flex justify-center md:justify-end order-first md:order-last mb-4 md:mb-0">
+        <div id="hero-portrait" class="reveal reveal-delay-2 relative">
+          
+          <div class="absolute -inset-2 rounded-[38px] bg-gradient-to-tr from-[var(--bordeaux-light)] to-transparent -rotate-1 opacity-70"></div>
+          
+          <div class="relative bg-white p-2.5 rounded-[36px] border border-[var(--border)] shadow-md">
+            <div class="w-64 sm:w-72 md:w-80 h-72 sm:h-80 md:h-96 rounded-[30px] overflow-hidden bg-[var(--bg)] cursor-zoom-in relative group" data-lightbox-src="images/picture-self.jpeg" data-lightbox-caption="Amaëlle Diop · Software Engineer chez Dassault Systèmes" data-lightbox-tag="Portrait">
+              <img src="images/picture-self.jpeg" alt="Amaëlle Diop" class="w-full h-full object-cover object-top filter contrast-[1.02] group-hover:scale-105 transition-transform duration-700 zoomable-image">
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                <span class="px-3 py-1.5 rounded-full bg-black/70 text-white text-xs backdrop-blur-xs flex items-center gap-1.5 shadow-md">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>Agrandir</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Discreet corner badge: Malian geometric watermark -->
+            <div class="absolute -bottom-3 -left-3 bg-white border border-[var(--border)] rounded-2xl p-2.5 flex items-center gap-2.5 shadow-md">
+              <svg class="w-6 h-6 text-[var(--bordeaux)]" viewBox="0 0 40 40" fill="none">
+                <polygon points="20,4 36,20 20,36 4,20" stroke="currentColor" stroke-width="2.5"/>
+                <polygon points="20,12 28,20 20,28 12,20" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="20" cy="20" r="2.5" fill="currentColor"/>
+              </svg>
+              <div class="pr-1 text-left">
+                <span class="block text-[11px] font-semibold text-[var(--text)] leading-tight">Amaëlle Diop</span>
+                <span class="block text-[10px] text-[var(--muted)] leading-tight">Paris · France</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Subtle trust credentials (Full width anchor below both columns) -->
+    <div class="reveal reveal-delay-3 pt-6 mt-6 flex flex-wrap items-center justify-center md:justify-start gap-6 border-t border-[var(--border-light)] text-xs text-[var(--muted)] w-full">
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--bordeaux)]"></span>
+        <span>Dassault Systèmes</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--bordeaux)]"></span>
+        <span>Cranfield University</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--bordeaux)]"></span>
+        <span>ESTIA</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= SUBTLE GEOMETRIC DIVIDER ================= -->
+  <div class="flex items-center gap-4 py-2">
+    <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
+    <div class="flex items-center gap-2 opacity-40 text-[var(--bordeaux)]">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+      <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+    </div>
+    <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
+  </div>
+
+  <!-- ================= TEDx FEATURED SECTION ================= -->
+  <section id="talk" class="scroll-mt-24">
+    <div class="bg-white border border-[var(--border)] rounded-[32px] p-6 sm:p-8 lg:p-10 card-shadow">
+      
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[var(--bordeaux)]">
+            <span>Conférence</span>
+            <span class="text-[var(--border)]">/</span>
+            <span>TEDxESTIA 2026</span>
+          </div>
+          <h2 class="serif text-2xl sm:text-3xl lg:text-4xl font-medium mt-1.5 text-[var(--text)]">
+            « Le serment que les ingénieurs n'ont jamais prêté »
+          </h2>
+        </div>
+        <a href="https://youtu.be/68WNLA8F6LI" target="_blank" class="pill-btn pill-btn-secondary text-xs !py-2 !px-4">
+          Ouvrir sur YouTube ↗
+        </a>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <!-- Video Player / Embed -->
+        <div class="lg:col-span-8">
+          <div class="relative aspect-video rounded-[24px] overflow-hidden bg-stone-900 border border-[var(--border)] shadow-inner group">
+            <iframe 
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/68WNLA8F6LI" 
+              title="Le serment que les ingénieurs n’ont jamais prêté | Amaëlle Diop | TEDxESTIA" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Talk Details + Scannable QR Card -->
+        <div class="lg:col-span-4 space-y-6">
+          <p class="text-sm text-[var(--muted)] leading-relaxed">
+            Un talk questionnant la responsabilité éthique et sociétale des ingénieurs face aux technologies critiques, à l'intelligence artificielle et aux choix architecturaux d'aujourd'hui.
+          </p>
+
+          <!-- Scannable QR Code Card (toned-down, clean, elegant) -->
+          <div class="bg-[var(--bg)] border border-[var(--border)] rounded-[24px] p-4 flex items-center gap-4">
+            <div id="qr-mount" class="w-20 h-20 bg-white rounded-xl p-1 border border-[var(--border)] shrink-0 flex items-center justify-center">
+              <svg id="qr-svg" class="w-full h-full" role="img" aria-label="QR Code TEDx"></svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-[var(--bordeaux)]">Scanner le QR</p>
+              <p class="text-xs text-[var(--text)] font-medium mt-0.5 leading-snug">Accès direct sur mobile</p>
+              <p class="text-[11px] text-[var(--muted)] mt-1 mono">youtu.be/68WNLA8F6LI</p>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <span class="inline-block text-xs font-medium text-[var(--muted)]">Thèmes abordés :</span>
+            <div class="flex flex-wrap gap-1.5 mt-2">
+              <span class="tag">Éthique</span>
+              <span class="tag">Ingénierie</span>
+              <span class="tag">Responsabilité IA</span>
+              <span class="tag">Futur tech</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS SECTION ================= -->
+  <section id="projets" class="scroll-mt-28 space-y-6">
+    
+    <div class="reveal flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <div class="text-xs font-semibold tracking-wider uppercase text-[var(--bordeaux)]" data-i18n="projects-badge">Sélection de réalisations</div>
+        <h2 class="serif text-3xl sm:text-4xl font-medium mt-1" data-i18n="projects-title">Projets & Expériences</h2>
+      </div>
+      <a href="projects.html" class="pill-btn pill-btn-secondary text-xs !py-2 !px-4">
+        <span data-i18n="projects-all">Voir tous les projets (6)</span> →
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      
+      <!-- Card 1: Dassault Systèmes -->
+      <article class="reveal reveal-delay-1 project-card interactive-card p-6 sm:p-7 flex flex-col justify-between cursor-pointer group"
+               data-category="professional"
+               data-title="R&D Automation Software Engineer - Performance & AI-Driven Test Automation"
+               data-company="Dassault Systèmes"
+               data-company-logo="images/3ds_logo_simple.png"
+               data-images="images/3ds_logo.png,images/framework_structure.png"
+               data-description="<p>Full-time R&D Automation Software Engineer chez <strong>Dassault Systèmes</strong>, faisant suite à mon stage de fin d'études en QA Engineering pour concevoir des solutions d'automatisation de test axées sur la performance et augmentées par l'intelligence artificielle.</p><br><p><strong>Responsabilités Clés :</strong><br>• <strong>Performance Engineering :</strong> Conception de solutions avancées pour optimiser les performances des processus de tests automatisés à grande échelle.<br>• <strong>Développement Full-Stack :</strong> Développement Backend et Frontend outillage interne (Node.js, TypeScript, Python).<br>• <strong>Assistance QA :</strong> Accompagnement technique des équipes qualité sur l'ensemble des workflows de test.<br>• <strong>Intégration IA & LLM-as-a-Judge :</strong> Intégration de solutions IA dans les applications existantes, incluant l'évaluation automatisée de réponses de modèles via LLM-as-a-Judge.<br>• <strong>Assistants IA Spécialisés :</strong> Création d'assistants IA contextualisés pour traduire des besoins métiers complexes en solutions logicielles concrètes.<br>• <strong>Développement SDK :</strong> Conception de SDKs modulaires facilitant l'adoption fluide des outils internes par les équipes R&D.</p><br><p><strong>Stack Technique :</strong><br>• Python, Microsoft Playwright, PyTest pour l'automatisation des tests<br>• TypeScript, JavaScript et Node.js pour le développement d'outils<br>• GitLab, GitLab CI/CD et Jenkins pour l'automatisation de pipelines et le versioning</p>"
+               data-tech="Python,Microsoft Playwright,TypeScript,JavaScript,Node.js,GitLab CI/CD,Jenkins,SDK Development,LLM-as-a-Judge,AI Assistants,Backend,Frontend,QA Automation">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <div class="h-16 min-w-[64px] px-3 rounded-2xl bg-white border border-[var(--border)] flex items-center justify-center shadow-sm">
+              <img src="images/3ds_logo_simple.png" alt="Dassault Systèmes" class="h-11 w-11 object-contain">
+            </div>
+            <span class="tag">CDI · 2026 - Présent</span>
+          </div>
+
+          <h3 class="serif text-xl font-medium text-[var(--text)] leading-snug group-hover:text-[var(--bordeaux)] transition-colors">
+            R&D Automation Software Engineer
+          </h3>
+          <p class="text-xs text-[var(--bordeaux)] font-medium mt-1">Dassault Systèmes · Vélizy</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed mt-3" data-i18n="p1-desc">
+            Conception d'outils d'automatisation de test performants et augmentés par l'IA (LLM-as-a-Judge, assistants spécialisés, SDKs internes).
+          </p>
+        </div>
+
+        <div class="pt-5 mt-5 border-t border-[var(--border-light)] flex items-center justify-between">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Python</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Playwright</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">TypeScript</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">LLM-as-a-Judge</span>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-[var(--bordeaux)] group-hover:translate-x-1 transition-transform ml-2 shrink-0">
+            Détails →
+          </span>
+        </div>
+      </article>
+
+      <!-- Card 2: Sky Denied -->
+      <article class="reveal reveal-delay-2 project-card interactive-card p-6 sm:p-7 flex flex-col justify-between cursor-pointer group"
+               data-category="school"
+               data-title="Sky Denied Web Application: Novel AI Model for Multi-Airport Flight Delay Prediction"
+               data-school="Cranfield University"
+               data-school-logo="images/cranfield_logo_cropped.png"
+               data-youtube-ids="FdRefPmquR0,JB5f4Kh03jk"
+               data-youtube-titles="Démo Complète,Teaser"
+               data-video-descriptions="La démonstration complète met en valeur les prédictions en temps réel et l'interface utilisateur interactive.,Vidéo teaser introduisant le concept et les enjeux de la prédiction multi-aéroports."
+               data-images="images/graduation_cranfield.jpg,images/sky_denied_logo_final.png,images/sky_denied_screenshot.png,images/sky_denied_infrastructure.png,images/sky_denied_training.png,images/sky_denied_f1.png,images/sky_denied_loss.png"
+               data-description="<p>Projet de groupe de recherche à <strong>Cranfield University</strong> portant sur la conception d'un système intelligent de prédiction des retards de vol, accessible via une plateforme web cloud haute disponibilité.</p><br><p><strong>Mes Responsabilités Clés :</strong><br>• <strong>Data Pre-Processing :</strong> Nettoyage, préparation et structuration des volumétries massives de données de vols après scraping avant injection dans les modèles de deep learning.<br>• <strong>Full-Stack Architecture :</strong> Conception et développement complet de la plateforme web moderne basée sur Laravel (API backend) et Angular (interface dynamique).<br>• <strong>DevOps & Cloud :</strong> Déploiement et orchestration cloud sur Microsoft Azure, conteneurisation Docker et automatisation des déploiements.</p><br><p><strong>Livrables & Recherche :</strong><br>• Application web prédictive temps réel intuitive<br>• Dashboards interactifs de visualisation de données de vol<br>• Recherche publiée en pré-print sur ResearchGate : <em>« Queue up for takeoff: a transferable deep learning framework for flight delay prediction »</em>.</p>"
+               data-tech="Python,Deep Learning,LSTM,CNN,Queueing Theory,Azure Cloud,Angular,TypeScript,PHP,Laravel,PostgreSQL,Docker"
+               data-repo-url="https://github.com/thatgirlAm/sky_denied_WEB_APP"
+               data-paper-url="https://www.researchgate.net/publication/393685922_Queue_up_for_takeoff_a_transferable_deep_learning_framework_for_flight_delay_prediction">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <div class="h-16 min-w-[64px] px-3 rounded-2xl bg-white border border-[var(--border)] flex items-center justify-center shadow-sm">
+              <img src="images/cranfield_logo_cropped.png" alt="Cranfield University" class="h-12 w-12 object-contain">
+            </div>
+            <span class="tag">Recherche · 2025</span>
+          </div>
+
+          <h3 class="serif text-xl font-medium text-[var(--text)] leading-snug group-hover:text-[var(--bordeaux)] transition-colors">
+            Sky Denied Web Application
+          </h3>
+          <p class="text-xs text-[var(--bordeaux)] font-medium mt-1">Cranfield University · MSc Project</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed mt-3" data-i18n="p2-desc">
+            Application web de prédiction des retards de vols par Deep Learning intégrée à la théorie des files d'attente, déployée sur Azure Cloud.
+          </p>
+        </div>
+
+        <div class="pt-5 mt-5 border-t border-[var(--border-light)] flex items-center justify-between">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Deep Learning</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Angular</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Azure</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Python</span>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-[var(--bordeaux)] group-hover:translate-x-1 transition-transform ml-2 shrink-0">
+            Détails →
+          </span>
+        </div>
+      </article>
+
+      <!-- Card 3: Orange Finances Mobiles -->
+      <article class="reveal reveal-delay-3 project-card interactive-card p-6 sm:p-7 flex flex-col justify-between cursor-pointer group"
+               data-category="professional"
+               data-title="Full-Stack Developer & Data Analyst - FinTech Banking Reconciliation Platform"
+               data-company="Orange Finances Mobiles"
+               data-company-logo="images/daily_logoofms_cropped.png"
+               data-youtube-id="cITKmPQY9gs"
+               data-video-description="La vidéo de démonstration illustre le workflow complet de réconciliation bancaire, les analyses en tableau de bord et la détection automatisée d'écarts en temps réel."
+               data-images="images/daily_logo.png,images/daily_logoofms_cropped.png"
+               data-description="<p>Stage de 4 mois chez <strong>Orange Finances Mobiles</strong> à Dakar, menant le développement d'une solution FinTech d'entreprise pour résoudre des anomalies et discordances critiques de données transactionnelles entre systèmes internes et banques partenaires.</p><br><p><strong>Impact Business :</strong><br>• Mise en place d'un monitoring préventif bloquant de futures pertes de données financières.<br>• Automatisation complète de processus de conciliation manuels extrêmement chronophages.</p><br><p><strong>Architecture Technique & Pipeline :</strong><br>• Pipeline data engineering end-to-end avec extraction et ingestion automatisées.<br>• Algorithmes de réconciliation transactionnelle et pré-analyse intelligente des causes de discordance.<br>• Dashboard web ergonomique offrant une vue analytique claire en temps réel pour la direction financière.</p>"
+               data-tech="Python,SQL,Data Engineering,Pandas,NumPy,Angular,TypeScript,HTML/CSS,PHP,Laravel">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <div class="h-16 px-4 rounded-2xl bg-[#0D0B0A] border border-[#2B2420] flex items-center justify-center shadow-sm">
+              <img src="images/daily_logoofms_cropped.png" alt="Orange Finances Mobiles" class="h-11 w-auto max-w-[96px] object-contain">
+            </div>
+            <span class="tag">FinTech · 2024</span>
+          </div>
+
+          <h3 class="serif text-xl font-medium text-[var(--text)] leading-snug group-hover:text-[var(--bordeaux)] transition-colors">
+            Plateforme de Réconciliation Bancaire
+          </h3>
+          <p class="text-xs text-[var(--bordeaux)] font-medium mt-1">Orange Finances Mobiles · Dakar</p>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed mt-3" data-i18n="p3-desc">
+            Pipeline complet de données et tableau de bord ergonomique pour l'analyse et la réconciliation automatisée de discordances transactionnelles.
+          </p>
+        </div>
+
+        <div class="pt-5 mt-5 border-t border-[var(--border-light)] flex items-center justify-between">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Laravel</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Angular</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">Data Engineering</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]">SQL</span>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-[var(--bordeaux)] group-hover:translate-x-1 transition-transform ml-2 shrink-0">
+            Détails →
+          </span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= SUBTLE GEOMETRIC DIVIDER ================= -->
+  <div class="reveal flex items-center gap-4 py-2">
+    <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
+    <div class="flex items-center gap-2 opacity-35 text-[var(--bordeaux)]">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+      <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><polygon points="10,2 18,10 10,18 2,10"/></svg>
+    </div>
+    <div class="h-[1px] flex-1 bg-[var(--border)]"></div>
+  </div>
+
+  <!-- ================= EVENEMENTS SECTION ================= -->
+  <section id="evenements" class="scroll-mt-28 space-y-6">
+    <div class="reveal flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <div class="text-xs font-semibold tracking-wider uppercase text-[var(--bordeaux)]" data-i18n="events-badge">Engagements & Prises de parole</div>
+        <h2 class="serif text-3xl sm:text-4xl font-medium mt-1" data-i18n="events-title">Événements & Initiatives</h2>
+      </div>
+      <p class="text-xs text-[var(--muted)] max-w-sm" data-i18n="events-desc">
+        Des prises de parole, des hackathons d'innovation et des projets collectifs qui me tiennent à cœur pour partager, transmettre et créer.
+      </p>
+    </div>
+
+    <!-- Grid of 4 Events -->
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Event 1: Journée Filles & Sciences (ESTIA) with Photo & LinkedIn Embed -->
+      <article class="reveal reveal-delay-1 interactive-card p-6 sm:p-7 flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between gap-3">
+            <span class="tag" data-i18n="ev1-tag">Speaker & Rôle Modèle · 2024</span>
+            <span class="text-xs text-[var(--muted)] font-mono">ESTIA</span>
+          </div>
+
+          <div>
+            <h3 class="serif text-2xl font-medium text-[var(--text)] leading-snug" data-i18n="ev1-title">
+              Journée « Filles & Sciences »
+            </h3>
+            <p class="text-xs text-[var(--bordeaux)] font-medium mt-1" data-i18n="ev1-sub">ESTIA Institute of Technology · Ingénierie au Féminin</p>
+          </div>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed" data-i18n="ev1-desc">
+            J'ai eu la chance d'intervenir comme marraine et rôle modèle auprès de plus de 145 collégiennes et lycéennes au Pays Basque. À travers mon parcours et des échanges en ateliers, j'ai voulu leur transmettre ma passion pour les sciences, briser les stéréotypes de genre dans la tech et leur montrer qu'elles ont toute leur place en ingénierie.
+          </p>
+
+          <!-- Media Tabs: Photo / LinkedIn Post -->
+          <div class="space-y-3 pt-1">
+            <div class="flex items-center gap-2">
+              <button type="button" id="ev1-tab-photo" class="media-tab-btn active text-xs !py-1 !px-3" data-i18n="ev1-tab-photo">📷 Photo d'intervention</button>
+              <button type="button" id="ev1-tab-linkedin" class="media-tab-btn text-xs !py-1 !px-3" data-i18n="ev1-tab-linkedin">💼 Post LinkedIn</button>
+            </div>
+
+            <!-- View 1: High-res Photo with zoom lightbox -->
+            <div id="ev1-view-photo" class="rounded-2xl overflow-hidden border border-[var(--border)] bg-stone-100 h-64 sm:h-72 relative group cursor-zoom-in" data-lightbox-src="images/intervention_filles.jpeg" data-lightbox-caption="Conférence & Échanges · Journée « Filles & Sciences » à l'ESTIA devant 145+ élèves" data-lightbox-tag="Filles & Sciences">
+              <img src="images/intervention_filles.jpeg" alt="Intervention Journée Filles et Sciences ESTIA" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 zoomable-image">
+              <span class="absolute bottom-2 left-2 text-[10px] font-medium bg-black/70 text-white px-2.5 py-1 rounded-full backdrop-blur-xs" data-i18n="ev1-img-label">Conférence · 145+ participantes</span>
+              <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/60 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 backdrop-blur-xs shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <span data-i18n="btn-zoom">Agrandir</span>
+              </span>
+            </div>
+
+            <!-- View 2: LinkedIn Embed -->
+            <div id="ev1-view-linkedin" class="relative w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-stone-50 shadow-inner hidden">
+              <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7184448767524245504" height="420" class="w-full" frameborder="0" allowfullscreen="" title="Post LinkedIn - Journée Filles et Sciences ESTIA"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev1-b1">Speaker</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev1-b2">Mixité Tech</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev1-b3">Mentorat</span>
+          </div>
+          <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7184448767524245504" target="_blank" class="text-xs font-semibold text-[var(--bordeaux)] hover:underline inline-flex items-center gap-1">
+            <span data-i18n="ev1-link">Voir sur LinkedIn</span> ↗
+          </a>
+        </div>
+      </article>
+
+      <!-- Event 2: Chanel Circularity Hackathon -->
+      <article class="reveal reveal-delay-2 interactive-card p-6 sm:p-7 flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between gap-3">
+            <span class="tag" data-i18n="ev2-tag">Hackathon Européen · 2024</span>
+            <span class="text-xs text-[var(--muted)] font-mono">CHANEL</span>
+          </div>
+
+          <div>
+            <h3 class="serif text-2xl font-medium text-[var(--text)] leading-snug">
+              Chanel Circularity Hackathon
+            </h3>
+            <p class="text-xs text-[var(--bordeaux)] font-medium mt-1" data-i18n="ev2-sub">Maison CHANEL · Circularité & Luxe Durable</p>
+          </div>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed" data-i18n="ev2-desc">
+            J'ai fait partie des <strong>8 étudiants ingénieurs européens sélectionnés</strong> pour participer au hackathon Chanel sur l'économie circulaire en 2024. Au sein d'une équipe pluridisciplinaire, nous avons conçu et prototypé le <strong>Hembag</strong>, un sac éco-responsable aujourd'hui utilisé par les équipes Chanel pour acheminer les tenues et le matériel de leurs collaborateurs.
+          </p>
+
+          <!-- Dual photos: Hembag + Team with Lightbox -->
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <div class="rounded-2xl overflow-hidden border border-[var(--border)] bg-stone-100 h-44 relative group cursor-zoom-in" data-lightbox-src="images/chanel_hembag.jpg" data-lightbox-caption="Création et design du Hembag Chanel · Utilisé pour le transport de tenues et matériel pour les collaborateurs Chanel" data-lightbox-tag="Chanel Hackathon">
+              <img src="images/chanel_hembag.jpg" alt="Création et design du Hembag Chanel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 zoomable-image">
+              <span class="absolute bottom-2 left-2 text-[10px] font-medium bg-black/70 text-white px-2 py-0.5 rounded-full backdrop-blur-xs" data-i18n="ev2-img1-label">Le Hembag Chanel</span>
+              <span class="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-xs shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-[var(--border)] bg-stone-100 h-44 relative group cursor-zoom-in" data-lightbox-src="images/hackthon_Chanel.jpg" data-lightbox-caption="Équipe du Hackathon Circularité Chanel 2024 · Parmi les 8 étudiants ingénieurs européens invités" data-lightbox-tag="Chanel Hackathon">
+              <img src="images/hackthon_Chanel.jpg" alt="Hackathon Chanel 2024" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 zoomable-image">
+              <span class="absolute bottom-2 left-2 text-[10px] font-medium bg-black/70 text-white px-2 py-0.5 rounded-full backdrop-blur-xs" data-i18n="ev2-img2-label">Équipe 2024</span>
+              <span class="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-xs shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev2-b1">Design du Hembag</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev2-b2">Économie Circulaire</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev2-b3">8 Invités Européens</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 3: AfrikaEguna ESTIA -->
+      <article class="reveal reveal-delay-3 interactive-card p-6 sm:p-7 flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between gap-3">
+            <span class="tag" data-i18n="ev3-tag">Animatrice & Égérie · 2022 & 2023</span>
+            <span class="text-xs text-[var(--muted)] font-mono">ESTIA</span>
+          </div>
+
+          <div>
+            <h3 class="serif text-2xl font-medium text-[var(--text)] leading-snug">
+              AfrikaEguna ESTIA
+            </h3>
+            <p class="text-xs text-[var(--bordeaux)] font-medium mt-1" data-i18n="ev3-sub">ESTIA · Célébration des cultures, dialogue & leadership</p>
+          </div>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed" data-i18n="ev3-desc">
+            Durant deux éditions consécutives (2022 et 2023), j'ai eu la chance d'être l'égérie de l'AfrikaEguna et d'animer les tables rondes phares. J'y ai modéré des échanges enrichissants entre étudiants, chercheurs et entrepreneurs, célébrant la richesse des cultures, l'innovation technologique et le rôle moteur des diasporas.
+          </p>
+
+          <!-- Photo from AfrikaEguna with Lightbox -->
+          <div class="rounded-2xl overflow-hidden border border-[var(--border)] bg-stone-100 h-64 relative group cursor-zoom-in" data-lightbox-src="images/AfrikaEguna.JPG" data-lightbox-caption="AfrikaEguna ESTIA · Égérie & Animatrice de table ronde (Éditions 2022 & 2023)" data-lightbox-tag="AfrikaEguna">
+            <img src="images/AfrikaEguna.JPG" alt="Amaëlle Diop à l'AfrikaEguna ESTIA" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 zoomable-image">
+            <span class="absolute bottom-2 left-2 text-[10px] font-medium bg-black/70 text-white px-2.5 py-1 rounded-full backdrop-blur-xs" data-i18n="ev3-img-label">AfrikaEguna · Égérie & Animatrice</span>
+            <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/60 text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 backdrop-blur-xs shadow-sm">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              <span>Agrandir</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev3-b1">Modération de Table Ronde</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev3-b2">Égérie</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev3-b3">Dialogue Culturel</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 4: Gala ESTIA (Organisation 2023 & Artiste 2022, 2023, 2025) -->
+      <article class="reveal reveal-delay-3 interactive-card p-6 sm:p-7 flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between gap-3">
+            <span class="tag" data-i18n="ev4-tag">Organisation & Scène · 2022, 2023, 2025</span>
+            <span class="text-xs text-[var(--muted)] font-mono">ESTIA</span>
+          </div>
+
+          <div>
+            <h3 class="serif text-2xl font-medium text-[var(--text)] leading-snug">
+              Gala de l'ESTIA
+            </h3>
+            <p class="text-xs text-[var(--bordeaux)] font-medium mt-1" data-i18n="ev4-sub">Organisatrice (2023) · Artiste & Performeuse (2022, 2023, 2025)</p>
+          </div>
+
+          <p class="text-xs text-[var(--muted)] leading-relaxed" data-i18n="ev4-desc">
+            Ce gala réunit deux facettes qui me passionnent : coordonner des évènements et la scène. En 2023, j'ai participé à l'organisation globale de l'événement à travers ma position dans le Bureau des Etudiants (coordination de l'évènement et accueil de centaines de convives). Côté artistique, j'ai eu le bonheur de monter sur scène comme chanteuse et musicienne lors de trois éditions (2022, 2023 et 2025) pour partager ma musique avec toute la promotion.
+          </p>
+
+          <!-- Concert Photo + Video Player + Dual Highlights (Organisation + Art) -->
+          <div class="space-y-3 pt-1">
+            <div id="concert-video-wrapper" class="rounded-2xl overflow-hidden border border-[var(--border)] bg-stone-900 aspect-video relative group cursor-pointer shadow-inner">
+              <!-- Thumbnail with Play Button -->
+              <div id="concert-placeholder" class="absolute inset-0 flex items-center justify-center bg-cover bg-center transition-all duration-300" style="background-image: url('images/concert.jpg');">
+                <div class="absolute inset-0 bg-black/45 group-hover:bg-black/30 transition-colors"></div>
+                <div class="relative w-12 h-12 rounded-full bg-white/95 text-[var(--bordeaux)] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+                <span class="absolute bottom-2 left-2 text-[10px] font-medium bg-black/75 text-white px-2.5 py-1 rounded-full backdrop-blur-xs flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                  <span data-i18n="ev4-live-label">Prestation live · Gala ESTIA</span>
+                </span>
+                <span class="absolute bottom-2 right-2 text-[10px] font-medium bg-black/75 text-white px-2 py-0.5 rounded-full">
+                  <span data-i18n="ev4-play-label">▶ Cliquer pour écouter</span>
+                </span>
+
+                <!-- Zoom Photo Button on top right (opens lightbox without triggering video) -->
+                <button type="button" id="concert-zoom-btn" class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/65 hover:bg-black/90 text-white text-[11px] font-medium backdrop-blur-xs flex items-center gap-1.5 transition shadow-sm border border-white/10 z-10 cursor-pointer" data-lightbox-src="images/concert.jpg" data-lightbox-caption="Prestation scénique live au Gala ESTIA · Amaëlle Diop sur scène" data-lightbox-tag="Gala ESTIA" title="Agrandir la photo de scène">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span data-i18n="ev4-zoom-label">Agrandir la photo</span>
+                </button>
+              </div>
+              <iframe id="concert-iframe" class="w-full h-full hidden" data-src="https://www.youtube.com/embed/ZsEbONQk5tI?autoplay=1" title="Prestation Live Amaëlle Diop - Gala ESTIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-xl bg-[var(--bg)] border border-[var(--border)] p-3 text-left">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--bordeaux)] block" data-i18n="ev4-h1-title">Organisatrice 2023</span>
+                <p class="text-[11px] text-[var(--text)] font-medium mt-0.5 leading-snug" data-i18n="ev4-h1-desc">Pilotage global de l'événement, coordination logistique & accueil de centaines de convives.</p>
+              </div>
+              <div class="rounded-xl bg-[var(--bg)] border border-[var(--border)] p-3 text-left">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--bordeaux)] block" data-i18n="ev4-h2-title">Artiste 2022, '23, '25</span>
+                <p class="text-[11px] text-[var(--text)] font-medium mt-0.5 leading-snug" data-i18n="ev4-h2-desc">Performances scéniques live et partage de ma passion musicale avec la promotion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-[var(--border-light)] flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev4-b1">Gestion de Projet</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev4-b2">Sens de l'Organisation</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-[var(--bg)] text-[var(--muted)]" data-i18n="ev4-b3">Pratique Musicale</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=ZsEbONQk5tI" target="_blank" class="text-xs font-semibold text-[var(--bordeaux)] hover:underline inline-flex items-center gap-1">
+            <span data-i18n="ev4-link">Voir sur YouTube</span> ↗
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACT CTA SECTION ================= -->
+  <section id="contact" class="scroll-mt-28">
+    <div class="reveal interactive-card p-8 sm:p-12 text-center space-y-5 bg-gradient-to-b from-white to-[var(--bg)]">
+      <span class="tag">Échangeons</span>
+      <h2 class="serif text-3xl sm:text-4xl font-medium text-[var(--text)]" data-i18n="contact-title">
+        Un projet, une question ou une opportunité ?
+      </h2>
+      <p class="text-sm text-[var(--muted)] max-w-md mx-auto leading-relaxed" data-i18n="contact-desc">
+        Disponible pour échanger autour de l'ingénierie logicielle, de l'automatisation de test et de l'intelligence artificielle.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 pt-2">
+        <a href="mailto:amaellediop.02@gmail.com" class="pill-btn pill-btn-primary">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span data-i18n="contact-email">M'écrire par email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/amaellediop/" target="_blank" class="pill-btn pill-btn-secondary">
+          <span>LinkedIn ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+    <!-- ================= PROJECT MODAL ================= -->
+  <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-all duration-300" role="dialog" aria-modal="true">
+    <!-- Backdrop overlay -->
+    <div id="modal-overlay" class="absolute inset-0 bg-stone-950/65 backdrop-blur-sm transition-opacity duration-300 cursor-pointer"></div>
+
+    <!-- Modal Dialog Window -->
+    <div class="modal-dialog relative bg-white border border-[var(--border)] rounded-[32px] w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 lg:p-10 shadow-2xl z-10 space-y-6">
+      
+      <!-- Close Button -->
+      <button id="modal-close" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-[var(--bg)] border border-[var(--border)] text-[var(--muted)] hover:text-[var(--text)] hover:border-[var(--bordeaux)] flex items-center justify-center text-lg transition shadow-sm z-20 cursor-pointer" aria-label="Fermer le modal">
+        ✕
+      </button>
+
+      <!-- Modal Header -->
+      <div class="space-y-3 pr-10">
+        <div class="flex flex-wrap items-center gap-3">
+          <span id="modal-category-tag" class="tag"></span>
+          <div id="modal-organization-info" class="flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg)] border border-[var(--border)] text-xs font-medium text-[var(--text)]">
+            <img id="modal-organization-logo" src="" alt="" class="w-5 h-5 object-contain">
+            <span id="modal-organization-name"></span>
+          </div>
+        </div>
+
+        <h2 id="modal-title" class="serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[var(--text)] leading-tight"></h2>
+      </div>
+
+      <!-- Media Gallery Container -->
+      <div id="modal-gallery" class="space-y-3">
+        <!-- Media Type Tabs (Videos / Images) -->
+        <div id="media-tabs" class="flex items-center gap-2">
+          <button id="video-tab" class="media-tab-btn active">📹 Démo Vidéo</button>
+          <button id="images-tab" class="media-tab-btn">🖼️ Galerie Images</button>
+        </div>
+
+        <!-- Video Sub-Tabs if multiple videos -->
+        <div id="video-sub-tabs" class="flex flex-wrap gap-2 pt-1 hidden"></div>
+
+        <!-- Main Media Frame -->
+        <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900 border border-[var(--border)] flex items-center justify-center">
+          <img id="modal-image" src="" alt="Capture du projet" class="w-full h-full object-contain hidden cursor-zoom-in" title="Cliquer pour agrandir en plein écran">
+          <div id="modal-youtube-container" class="w-full h-full">
+            <iframe id="modal-youtube-iframe" src="" class="w-full h-full" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+
+          <!-- Fullscreen Zoom Button for Modal Images -->
+          <button type="button" id="modal-image-zoom-btn" class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/65 hover:bg-black/90 text-white text-[11px] font-medium backdrop-blur-xs flex items-center gap-1.5 transition shadow-sm border border-white/10 hidden z-10 cursor-pointer" title="Agrandir en plein écran">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            <span>Plein écran</span>
+          </button>
+
+          <!-- Gallery Navigation Buttons (Images only) -->
+          <button id="prev-btn" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xl transition shadow-md hidden cursor-pointer" aria-label="Image précédente">‹</button>
+          <button id="next-btn" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xl transition shadow-md hidden cursor-pointer" aria-label="Image suivante">›</button>
+
+          <!-- Image counter -->
+          <span id="image-counter" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-black/75 text-white text-[11px] font-mono hidden"></span>
+        </div>
+
+        <!-- Video Description if available -->
+        <div id="video-description" class="hidden text-xs text-[var(--muted)] italic pt-1 leading-relaxed">
+          <p id="video-description-text"></p>
+        </div>
+      </div>
+
+      <!-- Project Description -->
+      <div class="space-y-2 pt-2 border-t border-[var(--border-light)]">
+        <h3 class="serif text-xl font-medium text-[var(--text)]">À propos du projet</h3>
+        <div id="modal-description" class="text-sm text-[var(--muted)] leading-relaxed space-y-2"></div>
+      </div>
+
+      <!-- Tech Tags -->
+      <div class="space-y-2 pt-2 border-t border-[var(--border-light)]">
+        <h3 class="serif text-xl font-medium text-[var(--text)]">Technologies utilisées</h3>
+        <div id="modal-tech" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- Action Links -->
+      <div id="modal-links" class="pt-4 border-t border-[var(--border-light)] flex flex-wrap gap-3"></div>
+
+    </div>
+  </div>
+
+  <!-- ================= IMAGE LIGHTBOX MODAL ================= -->
+  <div id="image-lightbox" class="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-all duration-300" role="dialog" aria-modal="true" aria-label="Photo agrandie">
+    <!-- Backdrop overlay -->
+    <div id="lightbox-overlay" class="absolute inset-0 bg-stone-950/85 backdrop-blur-md cursor-zoom-out transition-opacity duration-300"></div>
+
+    <!-- Close Button -->
+    <button id="lightbox-close" class="absolute top-5 right-5 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center text-xl transition border border-white/20 shadow-xl z-30 cursor-pointer" aria-label="Fermer la photo">
+      ✕
+    </button>
+
+    <!-- Lightbox Main Content -->
+    <div class="lightbox-content relative z-20 max-w-[94vw] max-h-[92vh] flex flex-col items-center select-none space-y-3">
+      <div class="relative rounded-2xl overflow-hidden border border-white/15 bg-black/60 shadow-2xl flex items-center justify-center">
+        <img id="lightbox-img" src="" alt="Photo agrandie" class="max-w-[92vw] max-h-[76vh] object-contain transition-transform duration-300">
+      </div>
+
+      <!-- Caption bar -->
+      <div id="lightbox-caption-bar" class="px-4 py-2 rounded-full bg-stone-900/90 border border-white/15 backdrop-blur-md text-white text-xs sm:text-sm font-medium flex items-center gap-2.5 max-w-2xl text-center shadow-lg">
+        <span id="lightbox-tag" class="hidden text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--bordeaux)] text-white shrink-0"></span>
+        <span id="lightbox-caption" class="leading-snug"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="pt-8 pb-12 border-t border-[var(--border)]">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
+      <div class="flex items-center gap-3">
+        <span class="serif text-lg font-medium text-[var(--text)]">[Amaëlle DIOP]</span>
+        <span>·</span>
+        <span>Software Engineer</span>
+      </div>
+      <div>
+        © <span id="year">2026</span> Amaëlle Diop. Tous droits réservés.
+      </div>
+      <div class="flex items-center gap-4 text-[var(--text)] font-medium">
+        <a href="CV/fr-cv-single-page.html" target="_blank" class="hover:text-[var(--bordeaux)] transition">CV (FR) ↗</a>
+        <a href="CV/cv_index_en.html" target="_blank" class="hover:text-[var(--bordeaux)] transition">CV (EN) ↗</a>
+        <a href="https://www.linkedin.com/in/amaellediop/" target="_blank" class="hover:text-[var(--bordeaux)] transition">LinkedIn ↗</a>
+        <a href="https://github.com/thatgirlAm" target="_blank" class="hover:text-[var(--bordeaux)] transition">GitHub ↗</a>
+        <a href="https://youtu.be/68WNLA8F6LI" target="_blank" class="hover:text-[var(--bordeaux)] transition">TEDx ↗</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 0. Typewriter Effect for Hero Title
+  const typewriterElement = document.getElementById('typewriter');
+  if (typewriterElement) {
+    const originalText = '[Amaëlle DIOP]';
+    let currentText = '';
+    let index = 0;
+    let isDeleting = false;
+
+    function typeWriter() {
+      if (!isDeleting && index < originalText.length) {
+        currentText += originalText.charAt(index);
+        index++;
+      } else if (isDeleting && index > 0) {
+        currentText = currentText.slice(0, -1);
+        index--;
+      }
+
+      typewriterElement.textContent = currentText;
+
+      let speed = isDeleting ? 45 : 95;
+
+      if (!isDeleting && index === originalText.length) {
+        speed = 2400; // Pause at end so name is read clearly
+        isDeleting = true;
+      } else if (isDeleting && index === 0) {
+        isDeleting = false;
+        speed = 600; // Pause before restarting
+      }
+
+      setTimeout(typeWriter, speed);
+    }
+
+    // Start typing after initial load
+    setTimeout(typeWriter, 500);
+  }
+
+  // 1. Scroll Progress Bar
+  window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (window.scrollY / totalHeight) * 100;
+    document.getElementById('scroll-progress').style.width = `${progress}%`;
+  });
+
+  // 2. Classy Scroll Reveal with Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // 3. Scroll Spy Navigation Highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPos = window.scrollY + 180;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      const target = link.getAttribute('data-section');
+      if (target === current) {
+        link.classList.add('text-[var(--bordeaux)]', 'bg-[var(--bordeaux-light)]', 'font-semibold');
+        link.classList.remove('hover:text-[var(--text)]');
+      } else {
+        link.classList.remove('text-[var(--bordeaux)]', 'bg-[var(--bordeaux-light)]', 'font-semibold');
+        link.classList.add('hover:text-[var(--text)]');
+      }
+    });
+  });
+
+  // 4. Parallax Portrait on Hero Scroll (Desktop only)
+  const portrait = document.getElementById('hero-portrait');
+  window.addEventListener('scroll', () => {
+    if (window.innerWidth >= 768 && window.scrollY < 600 && portrait) {
+      portrait.style.transform = `translateY(${window.scrollY * 0.08}px)`;
+    } else if (portrait) {
+      portrait.style.transform = 'none';
+    }
+  });
+
+  // 4b. CV Dropdown Toggle on Click
+  document.querySelectorAll('.cv-dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const menu = btn.parentElement.querySelector('.cv-dropdown-menu');
+      if (menu) menu.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.cv-dropdown-menu.active').forEach(m => m.classList.remove('active'));
+  });
+
+  // 5. Interactive Card Mouse Sheen / Spotlight
+  document.querySelectorAll('.interactive-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // 6. Interactive Video Click to Play (TEDx & Concert)
+  const videoWrapper = document.getElementById('video-wrapper');
+  const videoPlaceholder = document.getElementById('video-placeholder');
+  const iframe = document.getElementById('tedx-iframe');
+  
+  if (videoWrapper && videoPlaceholder && iframe) {
+    videoWrapper.addEventListener('click', () => {
+      videoPlaceholder.classList.add('hidden');
+      iframe.classList.remove('hidden');
+      iframe.src = iframe.getAttribute('data-src');
+    });
+  }
+
+  const concertWrapper = document.getElementById('concert-video-wrapper');
+  const concertPlaceholder = document.getElementById('concert-placeholder');
+  const concertIframe = document.getElementById('concert-iframe');
+  if (concertWrapper && concertPlaceholder && concertIframe) {
+    concertWrapper.addEventListener('click', () => {
+      concertPlaceholder.classList.add('hidden');
+      concertIframe.classList.remove('hidden');
+      concertIframe.src = concertIframe.getAttribute('data-src');
+    });
+  }
+
+  // 7. Copy Talk Link + Toast Notification
+  const copyBtn = document.getElementById('copy-talk-link');
+  const toast = document.getElementById('toast');
+  if (copyBtn && toast) {
+    copyBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navigator.clipboard.writeText('https://youtu.be/68WNLA8F6LI').then(() => {
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2600);
+      });
+    });
+  }
+
+  // 8. Render clean scannable QR Code
+  (function() {
+    const m = window.QR_MATRIX;
+    const el = document.getElementById('qr-svg');
+    if (!m || !el) return;
+    const n = m.length;
+    const pad = 2;
+    const size = n + pad * 2;
+    el.setAttribute('viewBox', `0 0 ${size} ${size}`);
+    
+    const isFinder = (r, c) => (r < 7 && c < 7) || (r < 7 && c >= n - 7) || (r >= n - 7 && c < 7);
+    
+    let svg = `<rect width="${size}" height="${size}" rx="2" fill="#FFFFFF"/>`;
+    for (let r = 0; r < n; r++) {
+      for (let c = 0; c < n; c++) {
+        if (!m[r][c] || isFinder(r, c)) continue;
+        svg += `<rect x="${c + pad + 0.05}" y="${r + pad + 0.05}" width="0.9" height="0.9" rx="0.25" fill="#1C1917"/>`;
+      }
+    }
+    const finders = [[0, 0], [0, n - 7], [n - 7, 0]];
+    finders.forEach(([r, c]) => {
+      const x = c + pad;
+      const y = r + pad;
+      svg += `<rect x="${x + 0.5}" y="${y + 0.5}" width="6" height="6" rx="1.5" fill="none" stroke="#6E1F2B" stroke-width="1"/>`;
+      svg += `<rect x="${x + 2}" y="${y + 2}" width="3" height="3" rx="0.75" fill="#6E1F2B"/>`;
+    });
+    el.innerHTML = svg;
+  })();
+
+  // ================= 8b. Event 1 Media Tab Switcher =================
+  const ev1TabPhoto = document.getElementById('ev1-tab-photo');
+  const ev1TabLinkedin = document.getElementById('ev1-tab-linkedin');
+  const ev1ViewPhoto = document.getElementById('ev1-view-photo');
+  const ev1ViewLinkedin = document.getElementById('ev1-view-linkedin');
+
+  if (ev1TabPhoto && ev1TabLinkedin && ev1ViewPhoto && ev1ViewLinkedin) {
+    ev1TabPhoto.addEventListener('click', (e) => {
+      e.stopPropagation();
+      ev1TabPhoto.classList.add('active');
+      ev1TabLinkedin.classList.remove('active');
+      ev1ViewPhoto.classList.remove('hidden');
+      ev1ViewLinkedin.classList.add('hidden');
+    });
+
+    ev1TabLinkedin.addEventListener('click', (e) => {
+      e.stopPropagation();
+      ev1TabLinkedin.classList.add('active');
+      ev1TabPhoto.classList.remove('active');
+      ev1ViewLinkedin.classList.remove('hidden');
+      ev1ViewPhoto.classList.add('hidden');
+    });
+  }
+
+  // 9. Interactive Language Switcher (FR / EN)
+  let currentLang = 'fr';
+  const translations = {
+    fr: {
+      "nav-role": "Software Engineer",
+      "nav-home": "Accueil",
+      "nav-talk": "Le Talk",
+      "nav-projects": "Projets",
+      "nav-events": "Événements",
+      "nav-contact": "Contact",
+      "nav-cv": "Mon CV",
+      "hero-btn-cv": "Télécharger mon CV",
+      "cv-fr-short": "Format Synthétique (1 page)",
+      "cv-fr-full": "Format Complet Détaillé",
+      "cv-en-full": "Full Detailed Resume",
+      "nav-cta": "Me contacter",
+      "hero-badge": "En poste chez Dassault Systèmes · Promo ESTIA & Cranfield 2024",
+      "hero-greeting": "Bonjour, je suis",
+      "hero-subtitle": "Ingénieure logiciel passionnée par mon métier, tout autant que par la scène musicale, les conférences et l'engagement citoyen.",
+      "hero-tag-1": "Software & IA",
+      "hero-tag-2": "Musique & Scène",
+      "hero-tag-3": "Speaker TEDx",
+      "hero-tag-4": "Mentorat & Mixité",
+      "hero-desc": "En poste chez <strong>Dassault Systèmes</strong>, je développe des solutions d'automatisation de test performantes et augmentées par l'IA. Diplômée de l'ESTIA et de Cranfield University, je trouve mon équilibre entre rigueur d'ingénierie et passions humaines : chant et performances en live, conférences TEDx et engagement pour la mixité dans la tech.",
+      "hero-btn-talk": "Regarder mon TEDx",
+      "hero-btn-work": "Explorer mes projets",
+      "hero-city": "Paris · France",
+      "talk-badge": "Conférence",
+      "talk-title": "« Le serment que les ingénieurs n'ont jamais prêté »",
+      "talk-yt-btn": "Ouvrir sur YouTube",
+      "copy-link": "Partager",
+      "talk-desc": "Un talk questionnant la responsabilité éthique et sociétale des ingénieurs face aux technologies critiques, à l'intelligence artificielle et aux choix architecturaux d'aujourd'hui.",
+      "qr-title": "Scanner le QR",
+      "qr-subtitle": "Accès direct sur mobile",
+      "talk-topics": "Thèmes abordés :",
+      "topic-1": "Éthique",
+      "topic-2": "Ingénierie",
+      "topic-3": "Responsabilité IA",
+      "topic-4": "Futur tech",
+      "projects-badge": "Sélection de réalisations",
+      "projects-title": "Projets & Expériences",
+      "projects-all": "Voir tous les projets (6)",
+      "p1-tag": "CDI · 2026 - Présent",
+      "p1-title": "R&D Automation Software Engineer",
+      "p1-sub": "Dassault Systèmes · Vélizy",
+      "p1-desc": "Conception d'outils d'automatisation de test performants et augmentés par l'IA (LLM-as-a-Judge, assistants spécialisés, SDKs internes).",
+      "card-details-1": "Détails →",
+      "p2-tag": "Recherche · 2025",
+      "p2-title": "Sky Denied Web Application",
+      "p2-sub": "Cranfield University · MSc Project",
+      "p2-desc": "Application web de prédiction des retards de vols par Deep Learning intégrée à la théorie des files d'attente, déployée sur Azure Cloud.",
+      "card-details-2": "Détails →",
+      "p3-tag": "FinTech · 2024",
+      "p3-title": "Plateforme de Réconciliation Bancaire",
+      "p3-sub": "Orange Finances Mobiles · Dakar",
+      "p3-desc": "Pipeline complet de données et tableau de bord ergonomique pour l'analyse et la réconciliation automatisée de discordances transactionnelles.",
+      "card-details-3": "Détails →",
+      "events-badge": "Engagements & Prises de parole",
+      "events-title": "Événements & Initiatives",
+      "events-desc": "Des prises de parole, des hackathons d'innovation et des projets collectifs qui me tiennent à cœur pour partager, transmettre et créer.",
+      "ev1-tag": "Speaker & Rôle Modèle · 2024",
+      "ev1-title": "Journée « Filles & Sciences »",
+      "ev1-sub": "ESTIA Institute of Technology · Ingénierie au Féminin",
+      "ev1-desc": "J'ai eu la chance d'intervenir comme marraine et rôle modèle auprès de plus de 145 collégiennes et lycéennes au Pays Basque. À travers mon parcours et des échanges en ateliers, j'ai voulu leur transmettre ma passion pour les sciences, briser les stéréotypes de genre dans la tech et leur montrer qu'elles ont toute leur place en ingénierie.",
+      "ev1-tab-photo": "📷 Photo d'intervention",
+      "ev1-tab-linkedin": "💼 Post LinkedIn",
+      "ev1-img-label": "Conférence · 145+ participantes",
+      "ev1-b1": "Speaker",
+      "ev1-b2": "Mixité Tech",
+      "ev1-b3": "Mentorat",
+      "ev1-link": "Voir sur LinkedIn",
+      "ev2-tag": "Hackathon Européen · 2024",
+      "ev2-title": "Chanel Circularity Hackathon",
+      "ev2-sub": "Maison CHANEL · Circularité & Luxe Durable",
+      "ev2-desc": "J'ai fait partie des <strong>8 étudiants ingénieurs européens sélectionnés</strong> pour participer au hackathon Chanel sur l'économie circulaire en 2024. Au sein d'une équipe pluridisciplinaire, nous avons conçu et prototypé le <strong>Hembag</strong>, un sac éco-responsable aujourd'hui utilisé par les équipes Chanel pour acheminer les tenues et le matériel de leurs collaborateurs.",
+      "ev2-img1-label": "Le Hembag Chanel",
+      "ev2-img2-label": "Équipe 2024",
+      "ev2-b1": "Design du Hembag",
+      "ev2-b2": "Économie Circulaire",
+      "ev2-b3": "8 Invités Européens",
+      "ev3-tag": "Animatrice & Égérie · 2022 & 2023",
+      "ev3-title": "AfrikaEguna ESTIA",
+      "ev3-sub": "ESTIA · Célébration des cultures, dialogue & leadership",
+      "ev3-desc": "Durant deux éditions consécutives (2022 et 2023), j'ai eu la chance d'être l'égérie de l'AfrikaEguna et d'animer les tables rondes phares. J'y ai modéré des échanges enrichissants entre étudiants, chercheurs et entrepreneurs, célébrant la richesse des cultures, l'innovation technologique et le rôle moteur des diasporas.",
+      "ev3-img-label": "AfrikaEguna · Égérie & Animatrice",
+      "ev3-b1": "Modération de Table Ronde",
+      "ev3-b2": "Égérie",
+      "ev3-b3": "Dialogue Culturel",
+      "btn-zoom": "Agrandir",
+      "ev4-tag": "Organisation & Scène · 2022, 2023, 2025",
+      "ev4-title": "Gala de l'ESTIA",
+      "ev4-sub": "Organisatrice (2023) · Artiste & Performeuse (2022, 2023, 2025)",
+      "ev4-desc": "Ce gala réunit deux facettes qui me passionnent : coordonner des évènements et la scène. En 2023, j'ai participé à l'organisation globale de l'événement à travers ma position dans le Bureau des Etudiants (coordination de l'évènement et accueil de centaines de convives). Côté artistique, j'ai eu le bonheur de monter sur scène comme chanteuse et musicienne lors de trois éditions (2022, 2023 et 2025) pour partager ma musique avec toute la promotion.",
+      "ev4-live-label": "Prestation live · Gala ESTIA",
+      "ev4-play-label": "▶ Cliquer pour écouter",
+      "ev4-zoom-label": "Agrandir la photo",
+      "ev4-h1-title": "Organisatrice 2023",
+      "ev4-h1-desc": "Pilotage global de l'événement, coordination logistique & accueil de centaines de convives.",
+      "ev4-h2-title": "Artiste 2022, '23, '25",
+      "ev4-h2-desc": "Performances scéniques live et partage de ma passion musicale avec la promotion.",
+      "ev4-b1": "Gestion de Projet",
+      "ev4-b2": "Sens de l'Organisation",
+      "ev4-b3": "Pratique Musicale",
+      "ev4-link": "Voir sur YouTube",
+      "contact-badge": "Échangeons",
+      "contact-title": "Un projet, une question ou une opportunité ?",
+      "contact-desc": "Disponible pour échanger autour de l'ingénierie logicielle, de l'automatisation de test et de l'intelligence artificielle.",
+      "contact-email": "M'écrire par email",
+      "modal-about": "À propos du projet",
+      "modal-tech": "Technologies utilisées",
+      "tab-video": "📹 Démo Vidéo",
+      "tab-images": "🖼️ Galerie Images",
+      "footer-rights": "Tous droits réservés."
+    },
+    en: {
+      "nav-role": "Software Engineer",
+      "nav-home": "Home",
+      "nav-talk": "The Talk",
+      "nav-projects": "Projects",
+      "nav-events": "Events",
+      "nav-contact": "Contact",
+      "nav-cv": "My Resume",
+      "hero-btn-cv": "Download Resume",
+      "cv-fr-short": "One-Page Resume (FR)",
+      "cv-fr-full": "Comprehensive CV (FR)",
+      "cv-en-full": "Full Detailed Resume (EN)",
+      "nav-cta": "Get in touch",
+      "hero-badge": "At Dassault Systèmes · ESTIA & Cranfield 2024 Alum",
+      "hero-greeting": "Hi, I'm",
+      "hero-subtitle": "A passionate Software Engineer in love with my craft, and equally driven by live music, public speaking, and community leadership.",
+      "hero-tag-1": "💻 Software & AI",
+      "hero-tag-2": "🎤 Live Music & Vocals",
+      "hero-tag-3": "🎙️ TEDx Speaker",
+      "hero-tag-4": "✨ STEM Mentorship",
+      "hero-desc": "Currently at <strong>Dassault Systèmes</strong>, designing performance-driven and AI-augmented test automation solutions. An ESTIA and Cranfield University graduate, I thrive at the intersection of engineering excellence and creative energy: live vocal performance, TEDx speaking, and mentoring young women in STEM.",
+      "hero-btn-talk": "Watch my TEDx",
+      "hero-btn-work": "Explore my work",
+      "hero-city": "Paris · France",
+      "talk-badge": "Keynote Talk",
+      "talk-title": "“The oath that engineers never took”",
+      "talk-yt-btn": "Watch on YouTube",
+      "copy-link": "Share",
+      "talk-desc": "A talk questioning the ethical and societal responsibility of engineers building critical technologies, AI systems, and modern software architectures.",
+      "qr-title": "Scan QR Code",
+      "qr-subtitle": "Direct mobile access",
+      "talk-topics": "Topics covered:",
+      "topic-1": "Ethics",
+      "topic-2": "Engineering",
+      "topic-3": "AI Governance",
+      "topic-4": "Tech Futures",
+      "projects-badge": "Featured work",
+      "projects-title": "Projects & Experience",
+      "projects-all": "View all projects (6)",
+      "p1-tag": "Full-time · 2026 - Present",
+      "p1-title": "R&D Automation Software Engineer",
+      "p1-sub": "Dassault Systèmes · Vélizy",
+      "p1-desc": "Designing performance-driven, AI-augmented test automation solutions (LLM-as-a-Judge, specialized AI assistants, internal SDKs).",
+      "card-details-1": "Details →",
+      "p2-tag": "Research · 2025",
+      "p2-title": "Sky Denied Web Application",
+      "p2-sub": "Cranfield University · MSc Project",
+      "p2-desc": "Novel flight delay prediction web application integrating queueing theory with Deep Learning, deployed on Azure Cloud.",
+      "card-details-2": "Details →",
+      "p3-tag": "FinTech · 2024",
+      "p3-title": "Banking Reconciliation Platform",
+      "p3-sub": "Orange Finances Mobiles · Dakar",
+      "p3-desc": "End-to-end data pipeline and web dashboard for automated financial reconciliation of critical transactional discrepancies.",
+      "card-details-3": "Details →",
+      "events-badge": "Speaking & Leadership",
+      "events-title": "Events & Initiatives",
+      "events-desc": "Speaking engagements, innovation hackathons, and community leadership close to my heart—sharing, mentoring, and building.",
+      "ev1-tag": "Speaker & Role Model · 2024",
+      "ev1-title": "“Girls & Science” Day",
+      "ev1-sub": "ESTIA Institute of Technology · Women in Engineering",
+      "ev1-desc": "I had the privilege of speaking as a mentor and role model to over 145 young girls across the Basque region. Through my personal journey and breakout mentoring workshops, I shared my passion for sciences, challenged gender stereotypes in technology, and encouraged each of them to pursue ambitious STEM careers.",
+      "ev1-tab-photo": "📷 Keynote Photo",
+      "ev1-tab-linkedin": "💼 LinkedIn Post",
+      "ev1-img-label": "Keynote · 145+ participants",
+      "ev1-b1": "Speaker",
+      "ev1-b2": "Tech Diversity",
+      "ev1-b3": "Mentorship",
+      "ev1-link": "View on LinkedIn",
+      "ev2-tag": "European Hackathon · 2024",
+      "ev2-title": "Chanel Circularity Hackathon",
+      "ev2-sub": "Maison CHANEL · Circularity & Sustainable Luxury",
+      "ev2-desc": "I was selected as one of <strong>8 European engineering students</strong> invited to the 2024 Chanel Circularity Hackathon. In an interdisciplinary team, we designed and prototyped the <strong>Hembag</strong>—a sustainable carryall actively used today by Chanel teams to transport garments and equipment.",
+      "ev2-img1-label": "The Chanel Hembag",
+      "ev2-img2-label": "2024 Team",
+      "ev2-b1": "Hembag Design",
+      "ev2-b2": "Circular Economy",
+      "ev2-b3": "8 European Invitees",
+      "ev3-tag": "Host & Ambassador · 2022 & 2023",
+      "ev3-title": "AfrikaEguna ESTIA",
+      "ev3-sub": "ESTIA · Cultural celebration, dialogue & leadership",
+      "ev3-desc": "For two consecutive editions (2022 and 2023), I had the honor of serving as both event ambassador and round table host for AfrikaEguna. I moderated inspiring discussions between students, faculty, and entrepreneurs, celebrating cultural richness, technological innovation, and diaspora leadership.",
+      "ev3-img-label": "AfrikaEguna · Ambassador & Host",
+      "ev3-b1": "Round Table Moderation",
+      "ev3-b2": "Ambassador",
+      "ev3-b3": "Cultural Dialogue",
+      "btn-zoom": "Zoom",
+      "ev4-tag": "Event Leadership & Stage · 2022, 2023, 2025",
+      "ev4-title": "ESTIA Annual Gala",
+      "ev4-sub": "Head Organizer (2023) · Performing Artist (2022, 2023, 2025)",
+      "ev4-desc": "The annual Gala brings together two sides of who I am: leadership and artistic expression. In 2023, I directed the overall event organization (logistics, vendor coordination, budget, and hosting hundreds of guests). As a musical performer, I also had the joy of singing and performing on stage across three major editions (2022, 2023, and 2025) to share my love of music with our entire community.",
+      "ev4-live-label": "Live stage performance · ESTIA Gala",
+      "ev4-play-label": "▶ Click to listen",
+      "ev4-zoom-label": "Zoom photo",
+      "ev4-h1-title": "Organizer 2023",
+      "ev4-h1-desc": "Directing end-to-end logistics, vendor coordination & hosting hundreds of guests.",
+      "ev4-h2-title": "Artist 2022, '23, '25",
+      "ev4-h2-desc": "Live stage performances sharing my musical passion with the entire class.",
+      "ev4-b1": "Project Management",
+      "ev4-b2": "Organizational Skills",
+      "ev4-b3": "Live Music",
+      "ev4-link": "Watch on YouTube",
+      "contact-badge": "Get in Touch",
+      "contact-title": "A project, question, or opportunity?",
+      "contact-desc": "Available to connect around software engineering, test automation, and artificial intelligence.",
+      "contact-email": "Send an email",
+      "modal-about": "About the project",
+      "modal-tech": "Technologies used",
+      "tab-video": "📹 Video Demo",
+      "tab-images": "🖼️ Image Gallery",
+      "footer-rights": "All rights reserved."
+    }
+  };
+
+  const btnFr = document.getElementById('lang-fr');
+  const btnEn = document.getElementById('lang-en');
+  
+  function setLanguage(lang) {
+    currentLang = lang;
+    if (lang === 'fr') {
+      btnFr.className = "px-2.5 py-1 rounded-full bg-white text-[var(--bordeaux)] shadow-sm transition";
+      btnEn.className = "px-2.5 py-1 rounded-full text-[var(--muted)] hover:text-[var(--text)] transition";
+    } else {
+      btnEn.className = "px-2.5 py-1 rounded-full bg-white text-[var(--bordeaux)] shadow-sm transition";
+      btnFr.className = "px-2.5 py-1 rounded-full text-[var(--muted)] hover:text-[var(--text)] transition";
+    }
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+
+    if (videoTab) videoTab.textContent = translations[lang]["tab-video"];
+    if (imagesTab) imagesTab.textContent = translations[lang]["tab-images"];
+  }
+
+  btnFr.addEventListener('click', () => setLanguage('fr'));
+  btnEn.addEventListener('click', () => setLanguage('en'));
+
+  // 10. Project Modal Interactive Logic
+  const modal = document.getElementById('project-modal');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const closeModalBtn = document.getElementById('modal-close');
+  const modalTitle = document.getElementById('modal-title');
+  const modalImage = document.getElementById('modal-image');
+  const modalDescription = document.getElementById('modal-description');
+  const modalTech = document.getElementById('modal-tech');
+  const modalLinks = document.getElementById('modal-links');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const imageCounter = document.getElementById('image-counter');
+  const youtubeContainer = document.getElementById('modal-youtube-container');
+  const youtubeIframe = document.getElementById('modal-youtube-iframe');
+  const videoDescription = document.getElementById('video-description');
+  const videoDescriptionText = document.getElementById('video-description-text');
+  const videoTab = document.getElementById('video-tab');
+  const imagesTab = document.getElementById('images-tab');
+  const mediaTabs = document.getElementById('media-tabs');
+  const videoSubTabs = document.getElementById('video-sub-tabs');
+
+  let currentImages = [];
+  let currentIndex = 0;
+  let currentYouTubeIds = [];
+  let currentYouTubeTitles = [];
+  let currentVideoDescriptions = [];
+  let currentVideoIndex = 0;
+  let currentMediaType = 'video';
+
+  function showImages() {
+    modalImage.classList.remove('hidden');
+    youtubeContainer.classList.add('hidden');
+    if (youtubeIframe) youtubeIframe.src = '';
+    if (videoDescription) videoDescription.classList.add('hidden');
+    if (videoSubTabs) videoSubTabs.classList.add('hidden');
+
+    if (currentImages.length > 1) {
+      prevBtn.classList.remove('hidden');
+      nextBtn.classList.remove('hidden');
+      imageCounter.classList.remove('hidden');
+    } else {
+      prevBtn.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+      imageCounter.classList.add('hidden');
+    }
+
+    currentMediaType = 'images';
+    imagesTab.classList.add('active');
+    videoTab.classList.remove('active');
+
+    if (currentImages.length > 0) {
+      modalImage.src = currentImages[currentIndex].trim();
+      imageCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+      const zoomBtn = document.getElementById('modal-image-zoom-btn');
+      if (zoomBtn) zoomBtn.classList.remove('hidden');
+    }
+  }
+
+  function showVideo() {
+    modalImage.classList.add('hidden');
+    youtubeContainer.classList.remove('hidden');
+    prevBtn.classList.add('hidden');
+    nextBtn.classList.add('hidden');
+    imageCounter.classList.add('hidden');
+    const zoomBtn = document.getElementById('modal-image-zoom-btn');
+    if (zoomBtn) zoomBtn.classList.add('hidden');
+
+    currentMediaType = 'video';
+    videoTab.classList.add('active');
+    imagesTab.classList.remove('active');
+
+    if (currentYouTubeIds.length > 1) {
+      videoSubTabs.classList.remove('hidden');
+    } else {
+      videoSubTabs.classList.add('hidden');
+    }
+
+    if (currentYouTubeIds.length > 0) {
+      youtubeIframe.src = `https://www.youtube.com/embed/${currentYouTubeIds[currentVideoIndex].trim()}`;
+      if (videoDescription && videoDescriptionText && currentVideoDescriptions.length > 0) {
+        const desc = currentVideoDescriptions[currentVideoIndex] || currentVideoDescriptions[0];
+        if (desc) {
+          videoDescriptionText.textContent = desc.trim();
+          videoDescription.classList.remove('hidden');
+        } else {
+          videoDescription.classList.add('hidden');
+        }
+      } else if (videoDescription) {
+        videoDescription.classList.add('hidden');
+      }
+    }
+  }
+
+  function createVideoSubTabs() {
+    videoSubTabs.innerHTML = '';
+    if (currentYouTubeIds.length > 1) {
+      currentYouTubeTitles.forEach((title, index) => {
+        const btn = document.createElement('button');
+        btn.className = `video-sub-tab ${index === 0 ? 'active' : ''}`;
+        btn.textContent = title.trim();
+        btn.addEventListener('click', () => {
+          videoSubTabs.querySelectorAll('.video-sub-tab').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentVideoIndex = index;
+          youtubeIframe.src = `https://www.youtube.com/embed/${currentYouTubeIds[index].trim()}`;
+          if (videoDescription && videoDescriptionText && currentVideoDescriptions.length > 0) {
+            const desc = currentVideoDescriptions[index] || currentVideoDescriptions[0];
+            if (desc) {
+              videoDescriptionText.textContent = desc.trim();
+              videoDescription.classList.remove('hidden');
+            } else {
+              videoDescription.classList.add('hidden');
+            }
+          }
+        });
+        videoSubTabs.appendChild(btn);
+      });
+      videoSubTabs.classList.remove('hidden');
+    } else {
+      videoSubTabs.classList.add('hidden');
+    }
+  }
+
+  function showNextImage() {
+    if (currentMediaType === 'images' && currentImages.length > 1) {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      modalImage.src = currentImages[currentIndex].trim();
+      imageCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+  }
+
+  function showPrevImage() {
+    if (currentMediaType === 'images' && currentImages.length > 1) {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      modalImage.src = currentImages[currentIndex].trim();
+      imageCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+  }
+
+  function openModal(data) {
+    modalTitle.textContent = data.title || 'Projet';
+    modalDescription.innerHTML = data.description || '';
+
+    // Category tag
+    const categoryTag = document.getElementById('modal-category-tag');
+    if (categoryTag) {
+      const isPro = data.category === 'professional';
+      if (currentLang === 'en') {
+        categoryTag.textContent = isPro ? 'Professional Experience' : 'Academic Research';
+      } else {
+        categoryTag.textContent = isPro ? 'Expérience Pro' : 'Recherche Académique';
+      }
+    }
+
+    // Organization info
+    const orgInfo = document.getElementById('modal-organization-info');
+    const orgLogo = document.getElementById('modal-organization-logo');
+    const orgName = document.getElementById('modal-organization-name');
+    const orgTitle = data.company || data.school;
+    const orgImg = data.companyLogo || data.schoolLogo;
+
+    if (orgInfo && orgTitle) {
+      orgName.textContent = orgTitle;
+      if (orgImg) {
+        orgLogo.src = orgImg;
+        orgLogo.alt = orgTitle;
+        orgLogo.classList.remove('hidden');
+      } else {
+        orgLogo.classList.add('hidden');
+      }
+      orgInfo.classList.remove('hidden');
+    } else if (orgInfo) {
+      orgInfo.classList.add('hidden');
+    }
+
+    // Tech tags
+    modalTech.innerHTML = '';
+    if (data.tech) {
+      data.tech.split(',').forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = tag.trim();
+        modalTech.appendChild(span);
+      });
+    }
+
+    // Action links
+    modalLinks.innerHTML = '';
+    const liveText = currentLang === 'en' ? 'View Live Project' : 'Voir le projet en ligne';
+    const repoText = currentLang === 'en' ? 'Source Code' : 'Code source';
+    const paperText = currentLang === 'en' ? 'Research Paper (Pre-print)' : 'Article de Recherche (Pre-print)';
+
+    if (data.liveUrl && data.liveUrl !== '#') {
+      const a = document.createElement('a');
+      a.href = data.liveUrl;
+      a.target = '_blank';
+      a.className = 'pill-btn pill-btn-primary text-xs !py-2 !px-4';
+      a.innerHTML = `<span>${liveText}</span> ↗`;
+      modalLinks.appendChild(a);
+    }
+    if (data.repoUrl && data.repoUrl !== '#') {
+      const a = document.createElement('a');
+      a.href = data.repoUrl;
+      a.target = '_blank';
+      a.className = 'pill-btn pill-btn-secondary text-xs !py-2 !px-4';
+      a.innerHTML = `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> <span>${repoText}</span> ↗`;
+      modalLinks.appendChild(a);
+    }
+    if (data.paperUrl && data.paperUrl !== '#') {
+      const a = document.createElement('a');
+      a.href = data.paperUrl;
+      a.target = '_blank';
+      a.className = 'pill-btn pill-btn-secondary text-xs !py-2 !px-4';
+      a.innerHTML = `<span>${paperText}</span> ↗`;
+      modalLinks.appendChild(a);
+    }
+
+    // Media (Videos + Images)
+    currentImages = data.images ? data.images.split(',').map(s => s.trim()).filter(Boolean) : [];
+    if (data.youtubeIds) {
+      currentYouTubeIds = data.youtubeIds.split(',').map(s => s.trim()).filter(Boolean);
+      currentYouTubeTitles = data.youtubeTitles ? data.youtubeTitles.split(',').map(s => s.trim()).filter(Boolean) : currentYouTubeIds.map((_, i) => `Vidéo ${i + 1}`);
+      currentVideoDescriptions = data.videoDescriptions ? data.videoDescriptions.split(',').map(s => s.trim()).filter(Boolean) : [];
+    } else if (data.youtubeId) {
+      currentYouTubeIds = [data.youtubeId.trim()];
+      currentYouTubeTitles = ['Démo'];
+      currentVideoDescriptions = data.videoDescription ? [data.videoDescription] : [];
+    } else {
+      currentYouTubeIds = [];
+      currentYouTubeTitles = [];
+      currentVideoDescriptions = [];
+    }
+
+    currentVideoIndex = 0;
+    currentIndex = 0;
+    createVideoSubTabs();
+
+    const galleryContainer = document.getElementById('modal-gallery');
+    if (currentYouTubeIds.length > 0 && currentImages.length > 0) {
+      galleryContainer.classList.remove('hidden');
+      mediaTabs.classList.remove('hidden');
+      videoTab.classList.remove('hidden');
+      imagesTab.classList.remove('hidden');
+      showVideo();
+    } else if (currentYouTubeIds.length > 0) {
+      galleryContainer.classList.remove('hidden');
+      mediaTabs.classList.add('hidden');
+      showVideo();
+    } else if (currentImages.length > 0) {
+      galleryContainer.classList.remove('hidden');
+      mediaTabs.classList.add('hidden');
+      showImages();
+    } else {
+      galleryContainer.classList.add('hidden');
+    }
+
+    // Open modal
+    modal.classList.add('active');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.classList.remove('overflow-hidden');
+    if (youtubeIframe) youtubeIframe.src = '';
+  }
+
+  // Attach click listener to project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(card.dataset);
+    });
+  });
+
+  closeModalBtn.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    } else if (e.key === 'ArrowRight' && modal.classList.contains('active')) {
+      showNextImage();
+    } else if (e.key === 'ArrowLeft' && modal.classList.contains('active')) {
+      showPrevImage();
+    }
+  });
+
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrevImage(); });
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNextImage(); });
+  videoTab.addEventListener('click', showVideo);
+  imagesTab.addEventListener('click', showImages);
+
+
+  // ================= 11. Lightbox Logic =================
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxOverlay = document.getElementById('lightbox-overlay');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxTag = document.getElementById('lightbox-tag');
+
+  function openLightbox(src, caption, tag) {
+    if (!lightbox || !lightboxImg || !src) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = caption || 'Photo agrandie';
+    lightboxCaption.textContent = caption || '';
+    if (tag) {
+      lightboxTag.textContent = tag;
+      lightboxTag.classList.remove('hidden');
+    } else {
+      lightboxTag.classList.add('hidden');
+    }
+    lightbox.classList.add('active');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    // If project modal is not open, unlock body scroll
+    if (!modal || !modal.classList.contains('active')) {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+
+  // Click on modal-image or modal-image-zoom-btn to open in lightbox
+  const modalZoomBtn = document.getElementById('modal-image-zoom-btn');
+  if (modalImage) {
+    modalImage.addEventListener('click', () => {
+      if (modalImage.src) {
+        const title = modalTitle.textContent || 'Projet';
+        const counter = imageCounter && !imageCounter.classList.contains('hidden') ? ` (${imageCounter.textContent})` : '';
+        openLightbox(modalImage.src, `${title}${counter}`, 'Galerie Projet');
+      }
+    });
+  }
+  if (modalZoomBtn) {
+    modalZoomBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (modalImage && modalImage.src) {
+        const title = modalTitle.textContent || 'Projet';
+        const counter = imageCounter && !imageCounter.classList.contains('hidden') ? ` (${imageCounter.textContent})` : '';
+        openLightbox(modalImage.src, `${title}${counter}`, 'Galerie Projet');
+      }
+    });
+  }
+
+  // Concert zoom button
+  const concertZoomBtn = document.getElementById('concert-zoom-btn');
+  if (concertZoomBtn) {
+    concertZoomBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const src = concertZoomBtn.getAttribute('data-lightbox-src');
+      const cap = concertZoomBtn.getAttribute('data-lightbox-caption');
+      const tag = concertZoomBtn.getAttribute('data-lightbox-tag');
+      openLightbox(src, cap, tag);
+    });
+  }
+
+  // Delegated click on any element with data-lightbox-src
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-lightbox-src]');
+    if (trigger && trigger !== concertZoomBtn) {
+      const src = trigger.getAttribute('data-lightbox-src');
+      const cap = trigger.getAttribute('data-lightbox-caption') || trigger.getAttribute('alt') || '';
+      const tag = trigger.getAttribute('data-lightbox-tag') || '';
+      openLightbox(src, cap, tag);
+    }
+  });
+
+  // Keyboard escape handler: close lightbox first if open, else close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (lightbox && lightbox.classList.contains('active')) {
+        e.stopImmediatePropagation();
+        closeLightbox();
+      }
+    }
+  });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>

@@ -1,10 +1,10 @@
 /* --- Global Styles & Variables from your Portfolio --- */
 :root {
-    --primary-color: #a05fa4; /* Your purple */
-    --gold-accent: #D4AF37;   /* A subtle gold */
-    --dark-color: #1a1a1a;    /* Near-black for text */
+    --primary-color: #6E1F2B; /* Your purple */
+    --gold-accent: #C47D68;   /* A subtle gold */
+    --dark-color: #1C1917;    /* Near-black for text */
     --light-color: #ffffff;   /* White background */
-    --grey-color: #f4f4f4;    /* Light grey for subtle backgrounds */
+    --grey-color: #EADBCE;    /* Warm beige */
 }
 
 * {
@@ -14,8 +14,8 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #e0e0e0; /* A neutral background for the page "effect" */
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background-color: #EADBCE; /* Warm beige background requested */
     color: var(--dark-color);
     line-height: 1.6;
     font-size: 16px;
